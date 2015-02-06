@@ -1,0 +1,18 @@
+.navbar-form input[type=text]
+{
+    background: #6FA92E;
+}
+#SearchResults a h4, #SearchResults a
+{
+    color: #333 !important;
+}
+.course-information hr { 
+	border-color: #FF675B; 
+	opacity: 0.4;
+}
+.sidenav a {
+  color: #333;
+}
+.faqnav .nav>li>a:hover {
+    background-color: transparent;
+}

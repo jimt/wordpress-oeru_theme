@@ -1,0 +1,239 @@
+body, div, span, h1, h2, h3, h4, h5, h6, a, label, input, select, button
+{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+.brand {
+margin-top: 30px;
+margin-bottom: 20px;
+display: inline-block;
+}
+h1
+{
+    font-size: 42px;
+    margin-bottom: 30px;
+    font-weight: 300 !important;
+}
+h2
+{
+    font-size: 27px;
+    margin-bottom: 25px;
+    font-weight: 300 !important;
+}
+.panel-heading h2 {
+    color: #fff;
+    margin-bottom: 0px;
+}
+h3
+{
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    font-weight: 300 !important;
+}
+h4 a
+{
+    color: inherit;
+}
+h4 a:hover, h4 a:active
+{
+    color: inherit;
+    text-decoration: underline;
+}
+h4
+{
+    font-size: 27px;
+    margin-bottom: 25px;
+    font-weight: 300 !important;
+}
+h5
+{
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 15px;
+}
+header h2
+{
+    margin-top: 90px;
+}
+header h2, header p
+{
+    color: #FFF;
+}
+strong
+{
+    font-weight: 700;
+}
+#main p
+{
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+}
+ul li {
+    font-weight: 300;
+    list-style-type: disc;
+}
+.panel-heading a:hover, a:focus {
+color: #fff;
+text-decoration: underline;
+}
+
+/* Form */
+.field
+{
+    padding: 10px 0;
+}
+
+input.text, textarea
+{
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    display: block;
+    font-size: 14px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    vertical-align: middle;
+    max-width: 500px;
+    width: 100%;
+}
+input.text
+{
+    height: 34px;
+}
+
+input[type=submit]
+{
+    margin: 20px 0;
+    max-width: 300px;
+    background: #649D23;
+    color: #FFF;
+    border: none;
+}
+
+.radio, .checkbox {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    min-height: 20px;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+.mcq a{
+color: #005aab;
+}
+.mcq a:hover{
+color: #005aab;
+}
+.correct {
+  color: #6FA92E;
+  font-weight: 700;
+}
+.incorrect {
+  color: #a94442;
+  font-weight: 700;
+}
+
+
+/* Buttons */
+.button
+{
+    background-color: #6FA92E;
+    margin-bottom: 10px;
+    color: #FFF !important;
+}
+
+.button a 
+{
+    font-size: 13px;
+    color: #FFF;
+}
+
+.button, input[type=submit]
+{
+    padding: 7px 20px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #5a9319;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.button:hover, input[type=submit]:hover
+{
+    opacity: 0.95;
+    text-decoration: none;
+}
+
+.button a:hover,
+.button a:focus {
+color: #FFF;
+}
+
+.button:active
+{
+    top: 1px;
+}
+
+.warningbutton
+{
+    background-color: #ea9841;
+    margin-bottom: 10px;
+}
+
+.warningbutton a 
+{
+    font-size: 13px;
+    color: #FFF;
+}
+
+.warningbutton, input[type=submit]
+{
+    padding: 7px 20px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #cc7019;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.warningbutton:hover, input[type=submit]:hover
+{
+    opacity: 0.95;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.warningbutton:active
+{
+    top: 1px;
+}
+
+@media only screen and (max-width: 992px) {
+    h2
+    {
+        font-size: 18px;
+    }
+    h1
+    {
+        font-size: 32px;
+    }
+    .brandtext
+    {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    h3, h4
+    {
+        font-size: 17px;
+    }
+    .pedigogicalicon
+    {
+        height: 26px;
+        margin-top: 0px !important;
+    }
+}

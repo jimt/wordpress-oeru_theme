@@ -1,0 +1,100 @@
+/*
+*	This stylesheet includes the rules relating to all OERu colours on the site. 
+*/
+
+header {
+background-color: #6FA92E;
+}
+.brandtext > h1 a:hover, a:focus {
+color: #6FA92E;
+}
+.greenbg {
+background-color: #649D23;
+}
+nav {
+background-color: #649D23;
+}
+nav a {
+color: #D4E3C7;
+}
+.breadcrumb a {
+color: #D4E3C7;
+}
+.breadcrumb a:hover, a:focus {
+color: #FFF;
+}
+.breadcrumb > li + li:before {
+color: #D4E3C7;
+}
+.nav > li > a:hover, .nav > li > a:focus, .nav .current a {
+background-color: #5a9319;
+}
+.dropdown-menu {
+background-color: #00417A !important;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+color: #D4E3C7;
+background-color: #5a9319;
+}
+h1 {
+color: #6FA92E;
+}
+h1 a {
+color: #6FA92E;
+}
+h2 {
+color: #6FA92E;
+}
+h3 {
+color: #6FA92E;
+}
+h4 {
+color: #6FA92E;
+}
+h5 {
+color: #6FA92E;
+}
+.panel-heading {
+background-color: #6FA92E;
+}
+.pager li > a, .pager li > span {
+border: 1px solid #6FA92E;
+color: #6FA92E !important;
+}
+@media only screen and (max-width: 992px) .navbar-collapse {
+background-color: #649D23;
+}
+.navbar-toggle {
+background-color: #6EA72D;
+}
+@media (max-width: 767px) .breadcrumb a {
+color: #D4E3C7;
+}
+@media only screen and (max-width: 992px) .navbar-toggle:hover {
+color: #6FA92E;
+}
+.panel-default > .panel-heading {
+color: #6FA92E;
+}
+.button, input[type=submit] {
+border-bottom: 3px solid #5a9319;
+}
+.button {
+background-color: #6FA92E;
+}
+a {
+color: #428bca;
+}
+a:hover,
+a:focus {
+color: #2a6496;
+}
+.pagenav {
+background-color: #D0E9FF;
+}
+#pagenav .current {
+background-color: #98D6F6;
+}
+summary {
+color: #6FA92E;
+}

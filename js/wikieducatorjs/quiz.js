@@ -1,0 +1,10 @@
+jQuery(function() {   
+	jQuery('head').append('<style>'+ 'div.weQuiz { border-style: solid; border-width: 1px;' + 'border-color: #AAAAAA; padding: 1ex; background-color: #F6F9ED; }' + 'ul.weQquestion { list-style-type: decimal; list-style-image: none; margin-left: 75px;}'       + 'ul.weQoption { list-style-type: none; list-style-image: none;}'       + 'ul.weQresponse { list-style-type: none; list-style-image: none; display: none; }'       + 'img.weQuiz { float: left; }'       + 'h1.weQuiz {font-size: 130%; font-weight: bold; border: none; }'       + '');   
+	var qn = 'q' + 'z01';   
+	var mix = '';   
+	var rand = [[],[]];   
+	var $q = jQuery('#' + qn);   
+	$q.children('ul').addClass('weQquestion').wrap('<form>').children('li').addClass('weQquestion')     .children('ul').addClass('weQoption').children('li').addClass('weQoption')     .children('ul').addClass('weQresponse').children('li').addClass('weQresponse');   </p>
+<p>$qs = jQuery('li.weQquestion', $q);   // for each of the questions   if (mix == 'true'){      for (var i=0; i<$qs.length; ++i) {        rand.push([]);        jQuery('li.weQoption', $qs[i]).each(function(ix) {          var nqn = qn + '_' + i;          rand[i][ix]='
+<li class="weQoption"><input type="radio" name="' + nqn + '" id="' + nqn + '_' + ix + '"><label for="' + nqn + '_' + ix + '">' + jQuery(this).html() + '';         });      }     for (var i=0; i<$qs.length; ++i) {        rand[i].sort(function(){return Math.random() - 0.5});        jQuery('li.weQoption', $qs[i]).each(function(iy) {          jQuery(this).replaceWith(rand[i][iy]);         });      }   } else {     for (var i=0; i<$qs.length; ++i) {       jQuery('li.weQoption', $qs[i]).each(function(ix) {         var nqn = qn + '_' + i;         jQuery(this).replaceWith('
+<li class="weQoption"><input type="radio" name="' + nqn + '" id="' + nqn + '_' + ix + '"><label for="' + nqn + '_' + ix + '">' + jQuery(this).html() + '');         });      }   }   jQuery('li.weQoption', $q).click(function() {     jQuery(this).find('ul').show('fast');     }); });     </script>

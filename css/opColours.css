@@ -1,0 +1,100 @@
+/*
+*	This stylesheet includes the rules relating to all Otago Polytechnic colours on the site. 
+*/
+
+header {
+background-color: #005aab;
+}
+.brandtext > h1 a:hover, a:focus {
+color: #005aab;
+}
+.greenbg {
+background-color: #004d92;
+}
+nav {
+background-color: #004d92;
+}
+nav a {
+color: #c2cddd;
+}
+.breadcrumb a {
+color: #c2cddd;
+}
+.breadcrumb a:hover, a:focus {
+color: #FFF;
+}
+.breadcrumb > li + li:before {
+color: #c2cddd;
+}
+.nav > li > a:hover, .nav > li > a:focus, .nav .current a {
+background-color: #00417A;
+}
+.dropdown-menu {
+background-color: #00417A !important;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+color: #c2cddd;
+background-color: #003564;
+}
+h1 {
+color: #005aab;
+}
+h1 a {
+color: #005aab;
+}
+h2 {
+color: #005aab;
+}
+h3 {
+color: #005aab;
+}
+h4 {
+color: #005aab;
+}
+h5 {
+color: #005aab;
+}
+.panel-heading {
+background-color: #005aab;
+}
+.pager li > a, .pager li > span {
+border: 1px solid #005aab;
+color: #005aab !important;
+}
+@media only screen and (max-width: 992px) .navbar-collapse {
+background-color: #004d92;
+}
+.navbar-toggle {
+background-color: #005aab;
+}
+@media (max-width: 767px) .breadcrumb a {
+color: #c2cddd;
+}
+@media only screen and (max-width: 992px) .navbar-toggle:hover {
+background-color: #00417A;
+}
+.panel-default > .panel-heading {
+background-color: #005aab;
+}
+.button, input[type=submit] {
+border-bottom: 3px solid #004d92;
+}
+.button {
+background-color: #005aab;
+}
+a {
+color: #6FA92E;
+}
+a:hover,
+a:focus {
+color: #649D23;
+}
+.pagenav {
+background-color: #D0E9FF;
+}
+#pagenav .current {
+background-color: #98D6F6;
+}
+summary {
+color: #005aab;
+}

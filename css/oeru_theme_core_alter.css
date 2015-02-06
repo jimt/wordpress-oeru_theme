@@ -1,0 +1,259 @@
+html body{
+	background-color: inherit;
+}
+
+.home .row{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.not-home article header .panel-body{
+	padding:0px;
+}
+
+.not-home header.container{
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-top:10px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.not-home #main #primary #content article div.container{
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.not-home #main #primary #content article div.container .entry-content .container{
+	width: 100%;
+	padding: 0px;
+}
+
+.not-home header.entry-header > div:first-child{
+	margin: 0px;
+}
+
+.not-home header.entry-header .row a{
+	padding:0px;
+}
+
+.not-home header.entry-header h1{
+	padding: 10px;
+}
+
+.not-home header.entry-header .panel{
+	border-bottom: 1px solid #dfdfdd;
+}
+
+.home article header,
+.home article header .row{
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+footer{
+	padding-bottom:100px;
+}
+
+.tright{
+	float:right;
+}
+
+.thumbinner{
+	display: inline-block;
+	padding: 4px;
+	padding-top: 4px;
+	padding-right: 4px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+	margin-bottom: 20px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+
+.thumbcaption{
+	border:none;
+}
+
+.floatleft{
+	float:left;
+}
+
+div.weQuiz{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #AAAAAA;
+	padding: 1ex;
+	background-color: #F6F9ED;
+}
+
+article h1{
+	margin-bottom: 0px;
+}
+
+.weQuiz ul li{
+	list-style-type: decimal;
+	list-style-image: none;
+	margin-left: 10px;
+}
+
+.weQuiz ul li ul li{
+	list-style-type: disc;
+	list-style-image: none;
+}
+
+.weQuiz ul li ul li ul{
+	display: none;
+}
+
+.weQuiz ul li ul li ul li{
+	list-style: none;
+}
+
+.weQuiz ul{
+	margin-left: 40px;
+	padding: 0px;
+}
+
+.home article .panel{
+	margin-bottom: 0px;
+	border-bottom: none;
+}	
+
+.home article div.container{
+	padding-left: -15px;
+	padding-right: -15px;
+}
+
+.home article div.entry-content{
+	padding:10px;
+}
+
+.home article{
+	margin: 10px 0px;
+}
+
+.home article .entry-and-comments .panel .panel-body,
+.home article .entry-and-comments .col-md-12{
+	padding: 0px;
+}
+
+article .container .container{
+	width:100%;
+}	
+
+.home .pager{
+	display: none;
+}
+
+article.column-two{
+	width:40%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+}
+
+article.column-three{
+	width:30%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+}
+
+article.column-three-main{
+	width:30%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+}
+
+article.column-four{
+	width:22%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+}
+
+article.column-four h1{
+	font-size:30px;
+}
+
+article.column-two .container,
+article.column-three .container,
+article.column-three-main .container,
+article.column-four .container{
+	width: 100%;
+}
+
+body.columns{
+	text-align: center;
+	margin: 0 auto;
+}
+
+.home article.column-two .entry-content,
+.home article.column-three .entry-content,
+.home article.column-three-main .entry-content,
+.home article.column-four .entry-content{
+	padding: 15px;
+	width: 100%;
+}
+
+.home article.column-two header .row,
+.home article.column-three header .row,
+.home article.column-four header .row{
+	padding: 0px;
+}
+
+.home article.column-two .panel-body,
+.home article.column-three .panel-body,
+.home article.column-four .panel-body{
+	overflow: hidden;
+}
+
+#featured_three{
+	text-align:center;
+	margin:0 auto;
+}
+
+.header_image{
+	height: 150px;
+}
+
+/* font-awesome */
+
+.fa{
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	padding-right: 10px;
+}
+
+/* jQuery UI */
+
+#content .ui-state-active .ui-icon{
+	background:none;
+}
+
+#content .ui-state-default .ui-icon{
+	background:none;
+}
+
+#content .ui-icon-triangle-1-s{
+	background:none;
+}
+
+footer li{
+	list-style:none;
+	width: 23%;
+	margin:1%;
+}
