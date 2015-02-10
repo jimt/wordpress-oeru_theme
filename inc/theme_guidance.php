@@ -128,6 +128,10 @@ function oeru_theme_shortcodes(){
 	<p>Creates a quiz in which a series of answers need to be marked as correct to achieve success</p>
 	<p>Example [oeru_mtq question="Which is what?" success=""ell done amazing work let's move on" failure="oh dear, why did you do that" question_1="is this true" question_1_status="correct" question_2="is this not true" question_2_status="incorrect" question_2="is this not true" question_2_status="incorrect" question_3="correct" question_3_status="correct" question_4="incorrect" question_4_status="incorrect" label="check your answers"] </p>
 	<p>So question sets the question text. Success sets the positive feedback, failure the next feedback. Question_ and then a number creates a possible, with _status setting that question as correct or incorrect. Label is the text on the button</p>
+	<h2>[oer_column]</h2>
+	<p>Creates columns</p>
+	<p>Example [oeru_column per_row="2" column1="hello" column2="goodbye" column3="amazing"]</p>
+	<p>"Per row" is how many columns in a line acorss the page. The other variables are the content for each column</p>
 	<?PHP
 }
 

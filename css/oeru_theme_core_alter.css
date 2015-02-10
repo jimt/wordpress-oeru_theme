@@ -319,3 +319,14 @@ footer li{
 .oeru_mtq_response{
 	margin-top: 10px;
 }
+
+.oeru_column{
+	display: inline-block;
+	vertical-align: top;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.oeru_column_border{
+	border-left: 1px solid #ccc;
+}

@@ -183,9 +183,15 @@ function oeru_theme_extra_style(){
 			color: <?PHP echo get_theme_mod('site_header_colour'); ?>; 
 		}
 		
-		h1, h2, h3, h4, h5, summary {
+		h1, h2, h3, h4, h5, h6, summary,
+		#bodyContent h1,
+		#bodyContent h2,
+		#bodyContent h3,
+		#bodyContent h4,
+		#bodyContent h5,
+		#bodyContent h6{
 			/*#005aab*/
-			color: <?PHP echo get_theme_mod('site_header_colour'); ?>;
+			color: <?PHP echo get_theme_mod('site_menu_background_colour'); ?>;
 		}
 		
 		.navbar-toggle .icon-bar

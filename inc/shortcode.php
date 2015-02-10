@@ -344,6 +344,30 @@
 			return $output . "<div><button class='mtq_submit'>" . $atts['label'] . "</button></div><div class='oeru_mtq_response'></div></div>";
 			
 		}
+		
+		function column($atts){
+		
+			$columns_wide = $atts['per_row'];
+			$style = 95 / $columns_wide;
+			unset($atts['per_row']);
+			$output = "";
+			$counter = 1;
+			foreach($atts as $key){
+				$output .= "<div class='oeru_column ";
+				if($counter!=1){
+					$output .= "oeru_column_border ";
+				}
+				$output .= "' style='width:" . $style . "%'>" . $key . "</div>";
+				$counter++;
+				if($counter == ($columns_wide+1)){
+					$counter = 1;
+				}
+			}
+			
+			return $output;
+			
+		
+		}
 	
 	}
 	
@@ -367,4 +391,5 @@
 	add_shortcode('oeru_mcq', array($shortcode,'mcq'));
 	add_shortcode('oeru_mtq', array($shortcode,'mtq'));
 	add_filter('the_content', array($shortcode,'remove_third'));
+	add_shortcode('oeru_column', array($shortcode,'column'));
 	
