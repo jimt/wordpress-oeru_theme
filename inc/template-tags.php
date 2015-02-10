@@ -1,5 +1,70 @@
 <?php
 
+function oeru_third_level_menu(){
+
+	global $post;
+	
+	if(strpos($post->post_content, "[oeru_remove_third]") == FALSE){
+
+		if(isset($post->post_parent)){
+		
+			$parent = get_post($post->post_parent);
+			
+			if($parent->post_parent!=0){
+			
+				$the_query = new WP_Query( 'posts_per_page=9999&post_type=page&post_parent=' . $post->post_parent . "&orderby=ID&order=ASC" );
+		
+				if ( $the_query->have_posts() ) {
+				
+					?>
+					<div class="container third-level-nav">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
+									<div class="nomargin panel-heading">
+										<h2 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
+												<span class="glyphicon glyphicon-th-list"></span>Orientation
+											</a>
+										</h2>
+									</div>
+									<div id="collapseOne" class="panel-collapse collapse in">
+										<div id="pagenav" class="panel-body">
+											<div class="row"><?PHP
+			   
+					while ( $the_query->have_posts() ) {
+						$the_query->the_post();
+						$id = get_the_id();			
+						$title = get_the_title();
+						
+						?><div class="col-md-4">
+							<a href="<?PHP echo get_the_permalink($id); ?>">
+								<div class="pagenav"><?PHP echo $title; ?></div>
+							</a>
+						</div><?PHP
+						
+					}
+					
+					?></div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	</div>
+	</div>
+	</div><?PHP
+				
+				}
+			
+			}
+			
+		}
+	
+	}
+
+}
+
 function oeru_theme_extra_style(){
 
 	?><style>
@@ -69,9 +134,19 @@ function oeru_theme_extra_style(){
 			background-color: <?PHP echo get_theme_mod('site_menu_background_hover_colour'); ?>;
 		}
 		
-		body .nav > li > a:hover, body .nav > li > a:focus, body .nav .current a {
+		body .accordion .ui-state-active,
+		body .nav > li > a:hover, 
+		body .nav > li > a:focus, 
+		body .nav .current a {
 			/* #00417A; #003564 */
 			background-color: <?PHP echo get_theme_mod('site_menu_background_hover_colour'); ?>;  
+			color: <?PHP echo get_theme_mod('site_menu_text_hover_colour'); ?>;  
+		}
+		
+		body .ui-state-active, 
+		body .ui-accordion-header{
+			/* #00417A; #003564 */
+			background: <?PHP echo get_theme_mod('site_menu_background_colour'); ?>;  
 			color: <?PHP echo get_theme_mod('site_menu_text_hover_colour'); ?>;  
 		}
 
@@ -202,6 +277,16 @@ function oeru_theme_extra_style(){
 			background-color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;   
 		}
 		
+		.accordion .ui-widget-content{
+			background: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;   
+			color: <?PHP echo get_theme_mod('site_allsite_colour'); ?>;
+		}
+		
+		nav ul li .current_page_item a{
+			background: <?PHP echo get_theme_mod('site_menu_background_current_colour'); ?>;  
+			background-color: <?PHP echo get_theme_mod('site_menu_background_current_colour'); ?>;  
+		}
+		
 	</style><?PHP
 
 }
@@ -253,3 +338,52 @@ function oeru_theme_excerpt_more( $more ) {
 		);
 	return ' &hellip; ' . $link;
 }
+
+function oeru_theme_remove_next( $content ) {
+		
+	if(get_theme_mod("next_button")=="off"){
+	
+		$dom = new DOMDocument('1.0', 'utf-8');
+		@$dom->loadHTML($content);
+
+		$xpath = new DOMXPath($dom);
+
+		$items = $xpath->evaluate("//*[contains(@class, 'next')]");
+
+		foreach($items as $elem){
+			$elem->parentNode->removeChild($elem);
+		}
+		
+		$content = $dom->saveHTML();
+		
+		return $content;
+		
+	}else{
+		return $content;
+	}
+	
+}
+add_filter("the_content", "oeru_theme_remove_next");
+
+function oeru_theme_remove_prev( $content ) {
+	
+	if(get_theme_mod("prev_button")=="off"){
+		$dom = new DOMDocument('1.0', 'utf-8');
+		@$dom->loadHTML($content);
+
+		$xpath = new DOMXPath($dom);
+
+		$items = $xpath->evaluate("//*[contains(@class, 'previous')]");
+
+		foreach($items as $elem){
+			$elem->parentNode->removeChild($elem);
+		}
+		
+		$content = $dom->saveHTML();
+		
+		return $content;
+	}else{
+		return $content;
+	}
+}
+add_filter("the_content", "oeru_theme_remove_prev");

@@ -1,4 +1,13 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?PHP
+		
+			if(! is_home()) :
+				if(get_theme_mod("third_level_menu")!="off"){
+					oeru_third_level_menu();
+				}
+			endif;
+		
+	?>
 	<header class="entry-header container">
 		<div class="row">
 			<div class="col-md-12">
@@ -22,12 +31,12 @@
 		<div class="entry-content">
 		<?php
 		the_content( sprintf(
-			__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'arte_et_industria' ),
+			__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'oeru_theme' ),
 			the_title( '<span class="screen-reader-text">', '</span>', false )
 		) );
 
 		wp_link_pages( array(
-			'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'arte_et_industria' ) . '</span>',
+			'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'oeru_theme' ) . '</span>',
 			'after'       => '</div>',
 			'link_before' => '<span>',
 			'link_after'  => '</span>',
@@ -40,5 +49,8 @@
 	} ?>
 	</div>
 	<?PHP
+
+	get_sidebar();
+
 
 ?></article>

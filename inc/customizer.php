@@ -69,6 +69,75 @@ function oeru_theme_customize_register_front_page_layout( $wp_customize ){
 	
 }
 
+function oeru_theme_customize_navigation( $wp_customize ){
+
+	$wp_customize->add_section( 'site_navigation' , array(
+		'title'      => __( 'Site Navigation', 'oeru_theme' ),
+		'priority'   => 2,
+	) );
+
+	$wp_customize->add_setting(
+		'third_level_menu',
+		array(
+			'default' => 'on',
+		)
+	);
+	 
+	$wp_customize->add_control(
+		'third_level_menu',
+		array(
+			'type' => 'radio',
+			'label' => 'Show third level menu (ignoring page shortcodes)',
+			'section' => 'site_navigation',
+			'choices' => array(
+				'on' => "On",			
+				'off' => "Off",			
+			),
+		)
+	);
+	
+	$wp_customize->add_setting(
+		'next_button',
+		array(
+			'default' => 'on',
+		)
+	);
+	 
+	$wp_customize->add_control(
+		'next_button',
+		array(
+			'type' => 'radio',
+			'label' => 'Show next button (ignoring page shortcodes)',
+			'section' => 'site_navigation',
+			'choices' => array(
+				'on' => "On",			
+				'off' => "Off",			
+			),
+		)
+	);
+	
+	$wp_customize->add_setting(
+		'prev_button',
+		array(
+			'default' => 'on',
+		)
+	);
+	 
+	$wp_customize->add_control(
+		'prev_button',
+		array(
+			'type' => 'radio',
+			'label' => 'Show previous button (ignoring page shortcodes)',
+			'section' => 'site_navigation',
+			'choices' => array(
+				'on' => "On",			
+				'off' => "Off",			
+			),
+		)
+	);
+	
+}
+
 function oeru_theme_customize_register_fav_icon( $wp_customize ){
 	
 	$wp_customize->add_section( 'fav_icon' , array(
@@ -93,7 +162,6 @@ function oeru_theme_customize_register_fav_icon( $wp_customize ){
 	);
 	
 }
-
 
 function oeru_theme_customize_register_add_site_colours( $wp_customize ) {
 	
@@ -278,6 +346,26 @@ function oeru_theme_customize_register_add_site_colours( $wp_customize ) {
 				'label' => 'Site Menu Background Hover Colour',
 				'section' => 'site_colours',
 				'settings' => 'site_menu_background_hover_colour'
+			)
+		)
+	);
+	
+	$wp_customize->add_setting(
+		'site_menu_background_current_colour',
+		array(
+			'default' => '',
+			'transport' => 'postMessage',
+		)
+	);
+	
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'site_menu_background_current_colour',
+			array(
+				'label' => 'Site Menu Current Page Colour',
+				'section' => 'site_colours',
+				'settings' => 'site_menu_background_current_colour'
 			)
 		)
 	);
@@ -495,6 +583,7 @@ function oeru_theme_customize_register( $wp_customize ) {
 	oeru_theme_customize_register_modify_static_page( $wp_customize );
 	oeru_theme_customize_register_front_page_layout( $wp_customize );
 	oeru_theme_customize_register_fav_icon( $wp_customize );
+	oeru_theme_customize_navigation( $wp_customize );
 	
 }
 add_action( 'customize_register', 'oeru_theme_customize_register' );

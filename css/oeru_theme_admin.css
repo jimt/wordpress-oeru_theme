@@ -1,0 +1,18 @@
+.half-width{
+	display: inline-block;
+	width: 45%;
+	margin-right: 4%;
+	vertical-align: top;
+}
+
+.half-width ul{
+	margin: 0px;
+}
+	
+.half-width ul li ul{
+	padding: 10px 20px;
+}	
+
+.half-width ul li{
+	list-style: radius;
+}	

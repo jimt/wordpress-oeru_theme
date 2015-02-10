@@ -226,6 +226,10 @@ body.columns{
 	height: 150px;
 }
 
+li {
+	font-weight: normal;
+}
+
 /* font-awesome */
 
 .fa{
@@ -256,4 +260,62 @@ footer li{
 	list-style:none;
 	width: 23%;
 	margin:1%;
+}
+
+.accordion h3{
+	padding: 10px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+#content .accordion  .ui-accordion-content{
+	padding: 10px;
+}
+
+/* Short codes */
+
+.oeru_idevice{
+	width:100%;
+	background:#efefef;
+	border:#cccccc 1px solid;
+	padding: 10px;
+}
+
+.oeru_idevice .idevice_image{
+	display: inline-block;
+	vertical-align: top;
+	height: 48px;
+	width: 48px;
+}
+
+.oeru_idevice .idevice_content{
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 10px;
+}
+
+.oeru_true_false .accordian-heading .panel-title a{
+	color:#000;
+} 
+
+.oeru_true_false .correct,
+.oeru_mcq .correct,
+.oeru_mtq .correct,
+.oeru_true_false .incorrect,
+.oeru_mcq .incorrect,
+.oeru_mtq .incorrect{
+	padding-right: 10px;
+}
+	
+.oeru_mcq label,
+.oeru_mtq label{
+	padding-left:10px;
+}
+
+.oeru_mcq_feedback{
+	display:none;
+}
+
+.oeru_mtq_response{
+	margin-top: 10px;
 }

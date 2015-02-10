@@ -3,8 +3,6 @@
 	query_posts( array( 'post_type' => 'post', 'posts_per_page' => 4, 'category_name' => "Front Page" ) );
 
 	$first_post = TRUE;
-	
-	echo "HELLO";
 
 	if ( have_posts() ) :
 		

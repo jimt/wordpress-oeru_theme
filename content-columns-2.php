@@ -3,4 +3,7 @@
 	
 	get_template_part("index-columns");
 
+	get_sidebar();
+
+
 ?></article>

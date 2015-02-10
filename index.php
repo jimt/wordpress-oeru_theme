@@ -32,7 +32,12 @@
 		
 		?>
 		</div>
-	</div>	
+	</div>
+	<?PHP
+		get_sidebar();
+	?>
+	
+	
 </div>
 
 <?php

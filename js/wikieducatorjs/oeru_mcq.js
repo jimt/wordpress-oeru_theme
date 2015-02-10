@@ -1,0 +1,21 @@
+jQuery(document).ready(
+	function(){
+		$( ".oeru_mcq" )
+			.keydown(
+				function(event){
+					jQuery(this)
+						.next()
+						.next()
+						.css("display","block");
+				}
+			)
+			.click(
+				function(event){
+					jQuery(this)
+						.next()
+						.next()
+						.css("display","block");
+				}
+			)
+	}
+);

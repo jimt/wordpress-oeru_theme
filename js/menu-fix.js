@@ -5,6 +5,8 @@ jQuery(document).ready(
 			.click(
 				function(){
 				
+					console.log("here");
+				
 					elem =  jQuery(this)
 								.children()
 								.last();
@@ -18,10 +20,16 @@ jQuery(document).ready(
 										
 					}else{
 					
-						console.log("here in submenu hide");
+						console.log("sub-menu-hide");
 					
-						jQuery(elem)
+						if(jQuery(event.currentTarget).hasClass("menu-item-has-children")){
+						
+							console.log("here i am");
+						
+							jQuery(elem)
 								.css("display","none");
+								
+						}
 						
 					}
 					
@@ -35,8 +43,8 @@ jQuery(document).ready(
 			.click(
 				function(event){
 					
-					console.log("OH NO");
-				
+					console.log("here");
+					
 					elem =  jQuery(this)
 								.children()
 								.last();
@@ -91,74 +99,21 @@ jQuery(document).ready(
 					
 			);
 	
-		/*
+		
 		jQuery(document)
 			.click(
 				function(event){
-				
-					console.log(event.target);
-				
-					if(jQuery(event.target).hasClass("dropdown")){
-					
-						console.log("here");
-						
-						elem = jQuery(event.target)
-									.children()
-									.last()
-									
-								if(jQuery(elem).is(":visible")){ 
-									jQuery(elem)
-										.css("display", "none");
-								}else{
-									jQuery(elem)
-										.css("display", "block");
-								}
-								
-					}else if(jQuery(event.target).hasClass("icon-bar")){
-						
-						
-					}else{
-					
-						console.log("BOOM");
-					
-						jQuery(".dropdown ul")
+					if(!jQuery(event.currentTarget.activeElement).hasClass("dropdown-toggle")){
+						jQuery(".dropdown-menu")
 							.each(
 								function(index,value){
-									if(jQuery(value).is(":visible")){
-									
-										console.log("hello");
-									
-										jQuery(value)
-											.css("display","none");
-									}
+									jQuery(value)
+										.css("display","none");
 								}
 							);
-					
 					}
-				}
-			);*/
-			
-			/*.each(
-				function(index,value){
 				
-					console.log("here");
-				
-					jQuery(this)
-						.click(
-							function(){
-								elem = jQuery(this)
-									.children()
-									.last()
-								if(jQuery(elem).is(":visible")){ 
-									jQuery(elem)
-										.css("display", "none");
-								}else{
-									jQuery(elem)
-										.css("display", "block");
-								}
-							}
-						);
 				}
-			);*/
+			);
 	}
 );
