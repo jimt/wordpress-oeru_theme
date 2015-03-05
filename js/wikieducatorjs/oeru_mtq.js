@@ -48,6 +48,8 @@ function mtq_parse(obj){
 		);
 		
 	if(correct == total){
+	
+		console.log("here");
 		jQuery(obj)
 			.parent()
 			.parent()
@@ -55,6 +57,8 @@ function mtq_parse(obj){
 			.last()
 			.html('<span class="correct"><span class="glyphicon glyphicon-ok"></span></span>' + jQuery(obj).parent().parent().attr("success"));
 	}else{
+	
+		console.log("no here");
 		jQuery(obj)
 			.parent()
 			.parent()
@@ -76,6 +80,28 @@ jQuery(document).ready(
 			.click(
 				function(event){
 					mtq_parse(this);
+				}
+			)
+			
+		$( ".oeru_mtq" )
+			.keydown(
+				function(event){
+					jQuery(this)
+						.parent()
+						.parent()
+						.children()
+						.last()
+						.html("");
+				}
+			)
+			.click(
+				function(event){
+					jQuery(this)
+						.parent()
+						.parent()
+						.children()
+						.last()
+						.html("");
 				}
 			)
 	}

@@ -1,7 +1,5 @@
 <?php
 
-require_once("inc/Walker_OERU_Menu.php");
-
 function oeru_theme_setup() {
 
 	if(!get_option("oeru_course_setup")){
@@ -50,15 +48,19 @@ add_action( 'after_setup_theme', 'oeru_theme_add_category' );
 function oeru_theme_scripts_and_styles() {
 	
 	wp_enqueue_style( 'wordpress-oeru-theme-bootstrap', get_template_directory_uri() . '/css/bootstrap.css', array(), '1' );
+	wp_enqueue_style( 'wordpress-oeru-theme-font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '1' );
 	wp_enqueue_style( 'wordpress-oeru-theme-layout', get_template_directory_uri() . '/css/layout.css', array(), '1' );
 	wp_enqueue_style( 'wordpress-oeru-theme-typography', get_template_directory_uri() . '/css/typography.css', array(), '1' );
 	wp_enqueue_style( 'wordpress-oeru-theme-colours', get_template_directory_uri() . '/css/colours.css', array(), '1' );
 	wp_enqueue_style( 'wordpress-oeru-theme-core-alter', get_template_directory_uri() . '/css/oeru_theme_core_alter.css', array(), '1' );
+	wp_enqueue_style( 'wordpress-oeru-theme-jquery-ui', get_template_directory_uri() . '/css/jquery-ui.min.css', array(), '1' );
+	wp_enqueue_style( 'wordpress-oeru-theme-open-sans-font', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,700,600&subset=latin,greek-ext,greek,cyrillic,latin-ext,vietnamese,cyrillic-ext', array(), '1' );
 	
 	wp_enqueue_script( 'wordpress-oeru_theme-jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', array(), '20131205', true );
-	wp_enqueue_script( 'wordpress-oeru_theme-quiz', get_template_directory_uri() . '/js/wikieducatorjs/quiz.js', array('wordpress-oeru_theme-jquery'), array(), '20131205', true );
 	wp_enqueue_script( 'wordpress-oeru_theme-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
-	wp_enqueue_script( 'wordpress-oeru_theme-menu-fix', get_template_directory_uri() . '/js/menu-fix.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
+	wp_enqueue_script( 'wordpress-oeru_theme-menu-fix', get_template_directory_uri() . '/js/wikieducatorjs/menu-fix.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
+	wp_enqueue_script( 'wordpress-oeru_theme-feedback', get_template_directory_uri() . '/js/wikieducatorjs/oeru_feedback.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
+	wp_enqueue_script( 'wordpress-oeru_theme-details-fix', get_template_directory_uri() . '/js/wikieducatorjs/oeru_details_fix.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
 	wp_enqueue_script( 'jquery-ui-accordion');
 	wp_enqueue_script( 'wordpress-oeru_theme-accordion', get_template_directory_uri() . '/js/wikieducatorjs/oeru_accordion.js', array('jquery-ui-accordion'), '20131205', true );
 	wp_enqueue_script( 'wordpress-oeru_theme-mcq', get_template_directory_uri() . '/js/wikieducatorjs/oeru_mcq.js', array('jquery'), '20131205', true );
@@ -85,12 +87,20 @@ require get_template_directory() . '/inc/customizer.php';
 // Add shortcodes.
 require get_template_directory() . '/inc/shortcode.php';
 
-// Add shortcodes.
+// Add image attribution.
 require get_template_directory() . '/inc/image_attribution.php';
 
-// Add shortcodes.
+// Add theme guidance.
 require get_template_directory() . '/inc/theme_guidance.php';
 
+//Add basic menu
+require_once("inc/Walker_OERU_Menu.php");
+
+//Add reduced menu
+require_once("inc/Walker_OERU_Menu_Depth.php");
+
+//Add scan page menu
+require_once("inc/scanpage_settings.php");
 
 
 

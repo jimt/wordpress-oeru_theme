@@ -1,20 +1,45 @@
 jQuery(document).ready(
 	function(){
 		$( ".oeru_mcq" )
-			.keydown(
+			.keydown(			
 				function(event){
-					jQuery(this)
-						.next()
-						.next()
-						.css("display","block");
+				
+					if(jQuery(this).is(':checked')){
+				
+						jQuery(this)
+							.next()
+							.next()
+							.css("display","block");
+					
+					}else{
+					
+						jQuery(this)
+							.next()
+							.next()
+							.css("display","none");
+					
+					}
 				}
 			)
 			.click(
 				function(event){
-					jQuery(this)
-						.next()
-						.next()
-						.css("display","block");
+				
+					if(jQuery(this).is(':checked')){
+					
+						jQuery(this)
+							.next()
+							.next()
+							.css("display","block");
+					
+					}else{
+					
+						jQuery(this)
+							.next()
+							.next()
+							.css("display","none");
+					
+					}
+					
 				}
 			)
 	}

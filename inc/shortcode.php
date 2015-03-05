@@ -18,11 +18,11 @@
 			if(strpos($content,"[oeru_remove_next]")!==FALSE){
 				
 				$dom = new DOMDocument('1.0', 'utf-8');
-				@$dom->loadHTML($content);
+				@$dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
 
 				$xpath = new DOMXPath($dom);
 
-				$items = $xpath->evaluate("//*[contains(@class, 'next')]");
+				$items = $xpath->evaluate("//*[contains(@class, 'next')]/a");
 
 				foreach($items as $elem){
 					$elem->parentNode->removeChild($elem);
@@ -30,7 +30,7 @@
 				
 				$content = $dom->saveHTML();
 				
-				return str_replace("[remove_next]","",$content);
+				return str_replace("[oeru_remove_next]","",$content);
 				
 			}else{
 				return $content;
@@ -41,11 +41,11 @@
 		function remove_prev( $content ) {
 			if(strpos($content,"[oeru_remove_prev]")!==FALSE){
 				$dom = new DOMDocument('1.0', 'utf-8');
-				@$dom->loadHTML($content);
+				@$dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
 
 				$xpath = new DOMXPath($dom);
 
-				$items = $xpath->evaluate("//*[contains(@class, 'previous')]");
+				$items = $xpath->evaluate("//*[contains(@class, 'previous')]/a");
 
 				foreach($items as $elem){
 					$elem->parentNode->removeChild($elem);
@@ -53,7 +53,7 @@
 				
 				$content = $dom->saveHTML();
 				
-				return str_replace("[remove_prev]","",$content);
+				return str_replace("[oeru_remove_prev]","",$content);
 			}else{
 				return $content;
 			}
@@ -61,7 +61,7 @@
 		
 		function button($atts){
 		
-			return "<button><a target='" . $atts['target'] . "' href='" . addslashes($atts['href']) . "'>" . $atts['label'] . "</a></button>";
+			return "<div class='button'><a target='" . $atts['target'] . "' title='" . addslashes($atts['title']) . "' href='" . addslashes($atts['href']) . "'>" . $atts['label'] . "</a></div>";
 		
 		}
 		
@@ -69,31 +69,39 @@
 		
 			$id = "button_" . time() . rand(0,time());
 		
-			return "<button onclick=\"javascript:document.getElementById('" . $id . "').style.display='block';\">" . $atts['label'] . "</button><p id=\"" . $id . "\" style='display:none'>" . $atts['feedback'] . "</p>";
+			return "<div class='oeru_feedback_container'><button class='oeru_feedback'>" . $atts['label'] . "</button><p style='display:none'>" . $atts['feedback'] . "</p></div>";
 		
 		}
 		
 		function faq($atts){
 		
-			return "<details>
-                <summary>" . $atts['question'] . "</summary>
-                <p>" . $atts['answer'] . "</p>
+			return "<details class='oeru_details'>
+                <summary><span class='accordion-icon'>+</span>" . $atts['question'] . "</summary>
+                <p>" . $atts['feedback'] . "</p>
               </details>";
 		
 		}
 		
 		function hint($atts){
 		
-			return "<details class='hint'>	
+			return "<details class='oeru_details hint'>	
                   <summary><i class='fa fa-info-circle'></i>" . $atts['hint'] . "</summary>
                   <p>" . $atts['reveal'] . "</p>
                 </details>";
 		
 		}
 		
-		function accordion($atts){
+		function accordion_multi($atts){
 		
 			$output = "";
+			
+			if(isset($atts['active'])){
+				$active = $atts['active'];
+			}else{
+				$active = false;
+			}
+			
+			unset($atts['active']);
 			
 			foreach($atts as $key => $value){
 				if(strpos($key, "data")===FALSE){
@@ -101,7 +109,32 @@
 				}
 			}
 			
-			return "<div class='accordion'>" . $output . "</div>";
+			return "<div class='accordion' active='" . $active . "'>" . $output . "</div>";
+		
+		}
+		
+		function accordion($atts){
+		
+			$id = rand(1, time());
+		
+			return '<div class="panel-group" id="accordion' . $id . '">
+						<div class="panel panel-default">
+							<div class="nomargin panel-heading">
+								<h2 class="panel-title">
+									<a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse' . $id . '">
+										<span></span>' . $atts['title'] . '
+									</a>
+								</h2>
+							</div>
+							<div id="collapse' . $id . '" class="panel-collapse collapse">
+								<div id="pagenav" class="panel-body">
+									<div class="row">'
+										. $atts['body'] . 
+									'</div>
+								</div>
+							</div>
+						</div>
+					</div>';
 		
 		}
 		
@@ -192,49 +225,73 @@
 		}
 		
 		function device($atts){
+		
+			$label = $atts['type'];
 			
-			$atts['type'] = ucfirst($atts['type']);
+			$atts['type'] = strtolower($atts['type']);
 			
 			switch($atts['type']){
 			
-				case "Activity" : $img = "http://wikieducator.org/images/4/4e/Icon_activity.jpg"; break;	
-				case "Portfolio Activity" : $img = "http://wikieducator.org/images/4/4e/Icon_activity.jpg"; break; 	
-				case "Extension exercise" :	$img = "http://wikieducator.org/images/4/4e/Icon_activity.jpg"; break;
-				case "Assignment" :	$img = "http://wikieducator.org/images/9/90/Icon_assess.gif"; break;
-				case "Question" : $img = "http://wikieducator.org/images/c/c6/Icon_qmark.gif"; break;
-				case "Questions" : $img = "http://wikieducator.org/images/c/c6/Icon_qmark.gif"; break;	
-				case "Did you know?" : $img = "http://wikieducator.org/images/c/c6/Icon_qmark.gif"; break;
-				case "Did you notice?" : $img = "http://wikieducator.org/images/c/c6/Icon_qmark.gif"; break;	 
-				case "Definition" : $img = "http://wikieducator.org/images/f/f0/Icon_define.gif"; break;	
-				case "Definitions" : $img = "http://wikieducator.org/images/f/f0/Icon_define.gif"; break;	
-				case "Discussion" :	$img = "http://wikieducator.org/images/0/04/Icon_discussion.gif"; break;
-				case "Tell us a story" : $img = "http://wikieducator.org/images/0/04/Icon_discussion.gif"; break;	
-				case "Case study" :	$img = "http://wikieducator.org/images/6/61/Icon_casestudy.gif"; break;
-				case "Example" : $img = "http://wikieducator.org/images/6/61/Icon_casestudy.gif"; break;	
-				case "Objective" : $img = "http://wikieducator.org/images/9/91/Icon_objectives.jpg"; break;	
-				case "Objectives" : $img = "http://wikieducator.org/images/9/91/Icon_objectives.jpg"; break;	
-				case "Outcomes" : $img = "http://wikieducator.org/images/9/91/Icon_objectives.jpg"; break;	
-				case "Key points" : $img = "http://wikieducator.org/images/2/25/Icon_key_points.gif"; break;	
-				case "Media required" : $img = "http://wikieducator.org/images/e/ea/Icon_multimedia.gif"; break;	
-				case "Media" : $img = "http://wikieducator.org/images/e/ea/Icon_multimedia.gif"; break;	
-				case "Reading" : $img = "http://wikieducator.org/images/b/bc/Icon_review.gif"; break;	
-				case "Competency" : $img = "http://wikieducator.org/images/b/bc/Icon_review.gif"; break;	
-				case "Competencies" : $img = "http://wikieducator.org/images/b/bc/Icon_review.gif"; break;	
-				case "Summary" : $img = "http://wikieducator.org/images/c/c7/Icon_summary.gif"; break;	
-				case "Self assessment" : $img = "http://wikieducator.org/images/c/c6/Icon_qmark.gif"; break;	
-				case "Assessment" : $img = "http://wikieducator.org/images/c/c6/Icon_qmark.gif"; break;	
-				case "Reflection" : $img = "http://wikieducator.org/images/9/9d/Icon_reflection.gif"; break;	
-				case "Preknowledge"	: $img = "http://wikieducator.org/images/6/64/Icon_preknowledge.gif"; break;
-				case "Web Resources" : $img = "http://wikieducator.org/images/9/9a/Icon_inter.gif"; break;
-				default : $img = "http://wikieducator.org/images/c/c6/Icon_qmark.gif"; break;
+				case "activity" : $img = get_template_directory_uri() . "/idevices/Icon_activity.png"; break;	
+				case "portfolio activity" : $img = get_template_directory_uri() . "/idevices/Icon_activity.png"; break; 	
+				case "extension exercise" :	$img = get_template_directory_uri() . "/idevices/Icon_activity.png"; break;
+				case "assignment" :	$img = get_template_directory_uri() . "/idevices/Icon_assess.png"; break;
+				case "question" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;
+				case "questions" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;	
+				case "did you know?" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;
+				case "did you notice?" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;	 
+				case "definition" : $img = get_template_directory_uri() . "/idevices/Icon_define.png"; break;	
+				case "definitions" : $img = get_template_directory_uri() . "/idevices/Icon_define.png"; break;	
+				case "discussion" :	$img = get_template_directory_uri() . "/idevices/Icon_discussion.png"; break;
+				case "tell us a story" : $img = get_template_directory_uri() . "/idevices/Icon_discussion.png"; break;	
+				case "case study" :	$img = get_template_directory_uri() . "/idevices/Icon_casestudy.png"; break;
+				case "example" : $img = get_template_directory_uri() . "/idevices/Icon_casestudy.png"; break;	
+				case "objective" : $img = get_template_directory_uri() . "/idevices/Icon_objectives.png"; break;	
+				case "objectives" : $img = get_template_directory_uri() . "/idevices/Icon_objectives.png"; break;	
+				case "outcomes" : $img = get_template_directory_uri() . "/idevices/Icon_objectives.png"; break;	
+				case "key points" : $img = get_template_directory_uri() . "/idevices/Icon_key_points.png"; break;	
+				case "media required" : $img = get_template_directory_uri() . "/idevices/Icon_multimedia.png"; break;	
+				case "media" : $img = get_template_directory_uri() . "/idevices/Icon_multimedia.png"; break;	
+				case "reading" : $img = get_template_directory_uri() . "/idevices/Icon_review.png"; break;	
+				case "competency" : $img = get_template_directory_uri() . "/idevices/Icon_review.png"; break;	
+				case "competencies" : $img = get_template_directory_uri() . "/idevices/Icon_review.png"; break;	
+				case "summary" : $img = get_template_directory_uri() . "/idevices/Icon_summary.png"; break;	
+				case "self assessment" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;	
+				case "assessment" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;	
+				case "reflection" : $img = get_template_directory_uri() . "/idevices/Icon_reflection.png"; break;	
+				case "preknowledge"	: $img = get_template_directory_uri() . "/idevices/Icon_preknowledge.png"; break;
+				case "web resources" : $img = get_template_directory_uri() . "/idevices/Icon_inter.png"; break;
+				default : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;
 			
 			}
 			
-			return "<div class='oeru_idevice'><div class='idevice_image'><img src='" . $img . "' /></div><div class='idevice_content'><h2>" . $atts['type'] . "</h2>" . $atts['content'] . "</div></div>";
+			if(isset($atts['title'])){
+				$title = $atts['title'];
+			}else{
+				$title = $label;
+			}
 			
+			$title = ucfirst(strtolower($title));
+			
+			return '<div class="panel">
+				<div class="panel-heading">
+					<div>
+						<img class="pedagogicalicon" alt="' . $title . '" src="' . $img . '">
+					</div>
+				<div>
+					<h2>' . $title . '</h2>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="col-md-12">'
+					. $atts['body'] .
+				'</div>
+			</div>
+			</div>';
+        	
 		}
 		
-		public function fitb($atts){
+		function fitb($atts){
 		
 			$length = strlen($atts['answer']) * rand(0,3);
 		
@@ -242,12 +299,23 @@
 		
 		}
 		
+		function quotation($atts){
+		
+			return "<blockquote>
+                    <p>" . $atts['quote'] . "</p>
+                    <p><small><cite title='Source Title'>" . $atts['name'] . "<sup><a href='" . $atts['link'] . "'>[" . $atts['number'] . "]</a></sup></cite></small></p>
+                  </blockquote>";
+		
+		}
+		
 		public function fitb_check(){
-			
+		
 			if(wp_verify_nonce($_POST['nonce'], "oeru_fitb_check")){
 				if(crypt($_POST['submission'], CRYPT_SHA512) == $_POST['answer']){
 					echo "true";
 				}
+			}else{
+				echo "nonce fail";
 			}
 			
 			die();
@@ -379,6 +447,7 @@
 	add_shortcode( 'oeru_feedback_button', array($shortcode,'feedback_button') );
 	add_shortcode( 'oeru_faq', array($shortcode,'faq') );
 	add_shortcode( 'oeru_hint', array($shortcode,'hint') );
+	add_shortcode( 'oeru_accordion_multi', array($shortcode,'accordion_multi') );	
 	add_shortcode( 'oeru_accordion', array($shortcode,'accordion') );	
 	add_shortcode('oeru_basic_footer', array($shortcode,'basic_footer_text_record'));
 	add_action('oer_footer', array($shortcode,'basic_footer_text_show'));
@@ -390,6 +459,7 @@
 	add_shortcode('oeru_true_false', array($shortcode,'true_false'));
 	add_shortcode('oeru_mcq', array($shortcode,'mcq'));
 	add_shortcode('oeru_mtq', array($shortcode,'mtq'));
+	add_shortcode('oeru_quotation', array($shortcode,'quotation'));
 	add_filter('the_content', array($shortcode,'remove_third'));
 	add_shortcode('oeru_column', array($shortcode,'column'));
 	

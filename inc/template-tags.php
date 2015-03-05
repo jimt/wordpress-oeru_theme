@@ -63,6 +63,8 @@ function oeru_third_level_menu(){
 	
 	}
 
+	wp_reset_query();
+
 }
 
 function oeru_theme_extra_style(){
@@ -110,7 +112,8 @@ function oeru_theme_extra_style(){
 			background-color: <?PHP echo get_theme_mod('site_menu_background_colour'); ?>;
 		}
 
-		nav a{
+		nav a,
+		#main .panel-heading h2{
 			/* #c2cddd */
 			color :  <?PHP echo get_theme_mod('site_menu_text_colour'); ?>;
 		}
@@ -137,7 +140,8 @@ function oeru_theme_extra_style(){
 		body .accordion .ui-state-active,
 		body .nav > li > a:hover, 
 		body .nav > li > a:focus, 
-		body .nav .current a {
+		body .nav .current a,
+		.oeru_idevice{
 			/* #00417A; #003564 */
 			background-color: <?PHP echo get_theme_mod('site_menu_background_hover_colour'); ?>;  
 			color: <?PHP echo get_theme_mod('site_menu_text_hover_colour'); ?>;  
@@ -288,7 +292,7 @@ function oeru_theme_extra_style(){
 			color: <?PHP echo get_theme_mod('site_allsite_colour'); ?>;
 		}
 		
-		nav ul li .current_page_item a{
+		nav ul li .current-menu-item a{
 			background: <?PHP echo get_theme_mod('site_menu_background_current_colour'); ?>;  
 			background-color: <?PHP echo get_theme_mod('site_menu_background_current_colour'); ?>;  
 		}

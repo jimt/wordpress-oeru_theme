@@ -1,6 +1,6 @@
 <?php
 
-class Walker_OERU_Menu extends Walker {
+class Walker_OERU_Menu_Depth extends Walker {
 
     // Tell Walker where to inherit it's parent and id values
     var $db_fields = array(
@@ -13,23 +13,37 @@ class Walker_OERU_Menu extends Walker {
     
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 	
-		$output .= "<ul class='dropdown-menu menu-depth-" . $depth . "'>";
+		if($depth<=0){
+	
+			$output .= "<ul class='dropdown-menu'>";
+		
+		}
 	
 	}
 
 	function end_lvl( &$output, $depth = 0, $args = array() ) {
 	
-		$output .= "</ul>";
+		if($depth<=0){
+	
+			$output .= "</ul>";
+			
+		}
 	
 	}
 	
 	function end_el( &$output, $object, $depth = 0, $args = array() ) {
 	
-		$output .= "</li>";
+		if($depth<=0){
+	
+			$output .= "</li>";
+			
+		}
 	
 	}
 	
     function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	
+		if($depth<=1){
 	
 		$page_class = "";
 		
@@ -67,11 +81,17 @@ class Walker_OERU_Menu extends Walker {
 			$output .= " href='" . $item->url . "'>" . $item->title;
 		}
 	
-		if(in_array("menu-item-has-children",$item->classes)){
-			$output .= "<span class='caret'></span>";	
+		if($depth==0){
+		
+			if(in_array("menu-item-has-children",$item->classes)){
+				$output .= "<span class='caret'></span>";	
+			}
+		
 		}
 		
 		$output .=  "</a>";
+		
+		}
 		
     }
 

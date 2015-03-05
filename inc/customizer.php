@@ -136,6 +136,66 @@ function oeru_theme_customize_navigation( $wp_customize ){
 		)
 	);
 	
+	$wp_customize->add_setting(
+		'menu_depth',
+		array(
+			'default' => 'all',
+		)
+	);
+	 
+	$wp_customize->add_control(
+		'menu_depth',
+		array(
+			'type' => 'radio',
+			'label' => 'How deep should the main navigation go?',
+			'section' => 'site_navigation',
+			'choices' => array(
+				'two' => "1st level only",			
+				'all' => "As deep as menu",			
+			),
+		)
+	);
+	
+	$wp_customize->add_setting(
+		'scan_page',
+		array(
+			'default' => 'on',
+		)
+	);
+	 
+	$wp_customize->add_control(
+		'scan_page',
+		array(
+			'type' => 'radio',
+			'label' => 'Show the scan page?',
+			'section' => 'site_navigation',
+			'choices' => array(
+				'on' => "Yes",			
+				'off' => "No",			
+			),
+		)
+	);
+	
+	$wp_customize->add_setting(
+		'log_on_page',
+		array(
+			'default' => 'on',
+		)
+	);
+	 
+	$wp_customize->add_control(
+		'log_on_page',
+		array(
+			'type' => 'radio',
+			'label' => 'Show the login option?',
+			'section' => 'site_navigation',
+			'choices' => array(
+				'on' => "Yes",			
+				'off' => "No",			
+			),
+		)
+	);
+	
 }
 
 function oeru_theme_customize_register_fav_icon( $wp_customize ){

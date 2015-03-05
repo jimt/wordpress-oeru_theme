@@ -11,7 +11,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<title><?php echo wp_title( '|', true, 'right' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<link rel="icon" href="<?PHP echo get_theme_mod("fav_icon_url"); ?>">
@@ -34,7 +34,7 @@
 		  ?>
 		  <div class="container">
 			  <div class="brandtext">
-				<h1><a href="<?PHP echo home_url("/"); ?>">OCL4Ed</a></h1>
+				<h1><a href="<?PHP echo home_url("/"); ?>"><?PHP echo get_bloginfo ( 'name' ); ?></a></h1>
 			  </div>
 		  </div>
 		</div>
@@ -53,19 +53,41 @@
 			
 						if ( has_nav_menu( "primary" ) ) {
 						
+							if(get_theme_mod("menu_depth")=="two"){
+								$menu_obj = new Walker_OERU_Menu_Depth();
+							}else{
+								$menu_obj = new Walker_OERU_Menu();
+							}
+						
 							wp_nav_menu( 
 									array( 
 										'theme_location' => 'primary', 
 										'menu_class' => 'nav navbar-nav' ,
-										'walker'  => new Walker_OERU_Menu() 
+										'walker'  => $menu_obj 
 									)
 								); 
 								
 						}
 					?>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a data-toggle="modal" data-target="#siteMapmodal"><span class="glyphicon glyphicon-tree-conifer"></span></a></li>
-							<li><a data-toggle="modal" data-target="#usermodal"><span class="glyphicon glyphicon-user"></span></a></li>
+							<?PHP
+							
+								if(get_theme_mod("scan_page")=="on"):
+							
+									?><li><a data-toggle="modal" data-target="#siteMapmodal"><span class="glyphicon glyphicon-tree-conifer"></span></a></li><?PHP
+							
+								endif;
+							
+							?>
+							<?PHP
+							
+								if(get_theme_mod("log_on_page")=="on"):
+							
+									?><li><a href="<?PHP echo wp_login_url(); ?>"><span class="glyphicon glyphicon-user"></span></a></li><?PHP
+							
+								endif;
+							
+							?>							
 						</ul>
 					</div>
 				</div>
