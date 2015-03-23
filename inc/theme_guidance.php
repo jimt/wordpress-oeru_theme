@@ -174,11 +174,13 @@ function oeru_theme_menu_hierarchy($menu_id, $post_parent, $menu_parent){
 			
 			$last_page = wp_update_nav_menu_item($menu_id, 0, 
 				array(
-					'menu-item-title' =>  __($title),
+					'menu-item-title' => __($title),
 					'menu-item-classes' => $title,
-					'menu-item-url' => get_the_permalink($id), 
+					'menu-item-object' => 'page',
+					'menu-item-object-id' => $id,
+					'menu-item-type' => 'post_type',
 					'menu-item-status' => 'publish',
-					'menu-item-parent-id' => $menu_parent,
+					'menu-item-parent-id' => $menu_parent,					
 				)
 			);
 			
@@ -191,11 +193,29 @@ function oeru_theme_menu_hierarchy($menu_id, $post_parent, $menu_parent){
 }
 
 function oeru_theme_menu(){
+
 	if(isset($_POST['menu_create'])){
 	
 		if(wp_verify_nonce($_POST["oeru_theme_menu_create"], "oeru_theme_menu_create")){
+
+			if($_POST['delete_menu']=="on"){
+			
+				$menu_id = oeru_theme_create_menu();
+				if($menu_id == false){
+					wp_delete_nav_menu("OERu Import Menu");
+					$menu_id = oeru_theme_create_menu();
+				}
+				oeru_theme_menu_hierarchy($menu_id, 0, 0);
+				$locations = get_theme_mod('nav_menu_locations');
+				$locations['primary'] = $menu_id;
+				set_theme_mod('nav_menu_locations', $locations);
+				?><h2>Menu Creation</h2>
+				<p>Menu Created</p>
+				<p>Menu can be changed on the <a href='nav-menus.php'>Menu Admin</a> page</p><?PHP
+			
+			}else{
 		
-			?><h2>Menu Creation</h2><?PHP
+				?><h2>Menu Creation</h2><?PHP
 			
 				$menu_id = oeru_theme_create_menu();
 				
@@ -203,17 +223,50 @@ function oeru_theme_menu(){
 					?><p>Menu being created....</p><?PHP
 					oeru_theme_menu_hierarchy($menu_id, 0, 0);	
 					?><p>Menu Created</p>
+					<h2>Make this the primary menu</h2>
+					<p>Although this menu has been created it isn't yet the main menu for the site.</p>
+					<form action="" method="POST">
+						<?PHP
+							 wp_nonce_field( "oeru_theme_menu_primary", "oeru_theme_menu_primary" );
+						?>
+						<input type="hidden" name="menu_primary" value="go" />
+						<input type="hidden" name="menu_id" value="<?PHP echo $menu_id; ?>" />
+						<input type="submit" value="Set as Main Menu" />
+					</form>
 					<p>Menu can be changed on the <a href='nav-menus.php'>Menu Admin</a> page</p>
 					<?PHP
 				}else{
 					?><p>Error - Menu already exists. Please delete "OERu Import Menu" on the <a href='nav-menus.php'>Menu Admin</a> page</p><?PHP
 				}
+				
+			}
 		
 		}else{
 		
 			?><p>Sorry, the nonce did not verify, please refresh the page</p><?PHP
 
 		}
+	
+	}else if(isset($_POST['menu_primary'])){
+	
+		if(wp_verify_nonce($_POST["oeru_theme_menu_primary"], "oeru_theme_menu_primary")){
+		
+			$locations = get_theme_mod('nav_menu_locations');
+			$locations['primary'] = $_POST['menu_id'];
+			set_theme_mod('nav_menu_locations', $locations);
+		
+			?>
+			<h2>Menu Creation</h2>
+			<p>Menu now set as primary</p>
+			<p>Menu can be changed on the <a href='nav-menus.php'>Menu Admin</a> page</p>
+			<?PHP
+		
+		}else{
+		
+			?><p>Sorry, the nonce did not verify, please refresh the page</p><?PHP
+
+		}
+	
 	
 	}else{
 		?><h2>Menu Creation</h2>
@@ -227,6 +280,9 @@ function oeru_theme_menu(){
 				<?PHP
 					 wp_nonce_field( "oeru_theme_menu_create", "oeru_theme_menu_create" );
 				?>
+				<p>
+					<input type="checkbox" name="delete_menu"> Create menu and set as site menu (will delete existing OER menu)
+				</p>
 				<input type="hidden" name="menu_create" value="go" />
 				<input type="submit" value="Create Menu" />
 			</form>

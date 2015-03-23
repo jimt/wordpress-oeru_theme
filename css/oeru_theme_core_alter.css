@@ -432,3 +432,44 @@ details summary::-webkit-details-marker { display:none; }
 	padding-right: 20px;
 	height: 36px;
 }
+
+.thumb{
+	z-index:1;
+}
+
+.single .entry-content h1,
+.single .entry-content h2,
+.single .entry-content h3,
+.single .entry-content h4,
+.single .entry-content h5,
+.single .entry-content h6,
+.single .entry-content p{
+	padding-left: 25px;
+}
+
+.commentlist li article footer,
+.commentlist li article p,
+.commentlist li article div{
+	margin: 5px;
+	padding: 5px;
+}
+
+.commentlist li article div p{
+	margin: 0px;
+	padding: 0px;
+}
+
+#main .commentlist li{
+	list-style: none;
+	margin: 2px 0px;
+	padding: 2px 0px;
+}
+
+.commentlist{
+	margin: 0px;
+	padding: 0px;
+}
+
+.commentlist li article footer{
+	padding: 0px;
+}

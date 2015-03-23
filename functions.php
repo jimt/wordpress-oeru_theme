@@ -1,11 +1,32 @@
 <?php
 
+function oeru_theme_menu_default() {
+
+	if(!get_option("oeru_theme_menu_create")){
+	
+		require_once("inc/theme_guidance.php");
+		$menu_id = oeru_theme_create_menu();
+		if($menu_id == false){
+			wp_delete_nav_menu("OERu Import Menu");
+			$menu_id = oeru_theme_create_menu();
+		}
+		oeru_theme_menu_hierarchy($menu_id, 0, 0);
+		$locations = get_theme_mod('nav_menu_locations');
+		$locations['primary'] = $menu_id;
+		set_theme_mod('nav_menu_locations', $locations);
+		add_option("oeru_theme_menu_create", "true");
+		
+	}
+
+}
+add_action( 'admin_head', 'oeru_theme_menu_default' );
+
 function oeru_theme_setup() {
 
-	if(!get_option("oeru_course_setup")){
+	if(!get_option("oeru_course_colour_profile_setup")){
 	
-		//require_once("inc/install_profile.php");
-		//add_option("oeru_course_setup", "true");
+		require_once("inc/install_profile.php");
+		add_option("oeru_course_colour_profile_setup", "true");
 		
 	}
 
@@ -101,6 +122,9 @@ require_once("inc/Walker_OERU_Menu_Depth.php");
 
 //Add scan page menu
 require_once("inc/scanpage_settings.php");
+
+//Add colour choice options
+require_once("inc/colour_scheme.php");
 
 
 

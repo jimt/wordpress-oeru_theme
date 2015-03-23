@@ -25,7 +25,7 @@ function oeru_third_level_menu(){
 									<div class="nomargin panel-heading">
 										<h2 class="panel-title">
 											<a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
-												<span class="glyphicon glyphicon-th-list"></span>Orientation
+												<span class="glyphicon glyphicon-th-list"></span><?PHP echo $parent->post_title; ?>
 											</a>
 										</h2>
 									</div>
@@ -82,7 +82,7 @@ function oeru_theme_extra_style(){
 			color: <?PHP echo get_theme_mod('site_allsite_colour'); ?>;
 		}
 		
-		footer
+		footer#colophon
 		{
 			/* #868A8D; */
 			color: <?PHP echo get_theme_mod('site_footer_colour'); ?>;
@@ -281,10 +281,25 @@ function oeru_theme_extra_style(){
 		}
 		
 		article .container .row .panel,
+		.commentlist li article,
 		article header .row,
 		.home article .entry-content{
 			/* #98D6F6; */
 			background-color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;   
+		}
+		
+		.home .panel{
+			background-color: <?PHP echo get_theme_mod('site_allsite_background_colour'); ?>;
+		}
+	
+		.home .panel .panel{
+			background-color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;
+		}
+		
+		#bodyContent h1,
+		#bodyContent b,
+		#bodyContent p{
+			background-color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;
 		}
 		
 		.accordion .ui-widget-content{

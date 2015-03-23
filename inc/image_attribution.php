@@ -40,13 +40,17 @@ function oeru_theme_attachment_field_credit_save( $post, $attachment ) {
 }
 add_filter( 'attachment_fields_to_save', 'oeru_theme_attachment_field_credit_save', 10, 2 );
 	
-function boom($in){
+function oeru_add_attribution($in){
 
 	$output .= "<span class='attrib_picture'>" . $in;
 
 	$name = get_post_meta( $_POST['attachment']['id'], 'oeru-attribution-name', true );
 	$url = get_post_meta( $_POST['attachment']['id'], 'oeru-url', true );
 	$license = get_post_meta( $_POST['attachment']['id'], 'oeru-license', true );
+	
+	if($name == ""){
+		return $in;
+	}
 
 	$output .= "<ul><li>Name :" . $name . "</li>";
 	$output .= "<li>URL :" . $url . "</li>";
@@ -57,4 +61,4 @@ function boom($in){
 	return $output;
 	
 }
-add_filter('media_send_to_editor',"add_attribution");
+add_filter('media_send_to_editor',"oeru_add_attribution");
