@@ -28,6 +28,8 @@ jQuery(document).ready(
 					
 						if(jQuery(event.currentTarget).hasClass("menu-item-has-children")){
 						
+							console.log("here");
+						
 							jQuery(elem)
 								.css("display","none");
 								

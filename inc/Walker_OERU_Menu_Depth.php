@@ -69,13 +69,19 @@ class Walker_OERU_Menu_Depth extends Walker {
 		}else{
 			$item->classes[] = "parent-menu";
 		}
+		
+		if($depth !=0){
+			if(($key = array_search("menu-item-has-children", $item->classes)) !== false) {
+				unset($item->classes[$key]);
+			}
+		}
 	
         $output .= "<li class='" . implode(" ", $item->classes) . "'><a ";
 		if ( $item->object_id === get_the_ID() ) {
 			$output .= " class='current' ";
 		}
 		
-		if(in_array("menu-item-has-children",$item->classes)){
+		if($depth == 0){
 			$output .= " href='#' class='dropdown-toggle'>" . $item->title;
 		}else{
 			$output .= " href='" . $item->url . "'>" . $item->title;

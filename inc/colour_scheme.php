@@ -17,12 +17,14 @@ function oeru_theme_colour(){
 				set_theme_mod('site_allsite_background_colour','#efefef');
 				set_theme_mod('site_alllink_colour','#180084');
 				set_theme_mod('site_content_background_colour','#fefefe');
-				set_theme_mod('site_alllink_hover_colour','#6FA92E');
+				set_theme_mod('site_alllink_hover_colour', '#544a84');
 				set_theme_mod('site_footer_colour','#868A8D');
 				set_theme_mod('site_footer_background_colour','#42484D');
-				set_theme_mod('site_menu_background_colour','#004d92');
-				set_theme_mod('site_menu_background_hover_colour','#004d92');
+				set_theme_mod('site_menu_background_colour','#003882');
+				set_theme_mod('site_menu_background_hover_colour','#002566');
 				set_theme_mod('site_menu_background_current_colour','#0b0060');
+				set_theme_mod('site_menu_dropdown_background_colour','#002566');
+				set_theme_mod('site_menu_dropdown_background_hover_colour','#001944');
 				set_theme_mod('site_top_background_colour','#ffffff');
 				set_theme_mod('site_menu_text_colour','#c2cddd');
 				set_theme_mod('site_menu_text_hover_colour','#ffffff');
@@ -31,6 +33,7 @@ function oeru_theme_colour(){
 				set_theme_mod('site_top_background_colour','#fdfdfd');
 				set_theme_mod('site_button_colour','#004d92');
 				set_theme_mod('Button Text Colour','#fff');
+				set_theme_mod('site_button_background_colour','#004d92');
 				set_theme_mod('site_pagenav_colour','#D0E9FF');
 				set_theme_mod('site_pagenav_current_colour','#98D6F6');
 			
@@ -40,12 +43,15 @@ function oeru_theme_colour(){
 			
 				set_theme_mod('site_allsite_background_colour','#efefef');
 				set_theme_mod('site_alllink_colour','#6fa92e');
+				set_theme_mod('site_alllink_hover_colour', '#89a866');
 				set_theme_mod('site_content_background_colour','#fefefe');
 				set_theme_mod('site_alllink_hover_colour','#6FA92E');
 				set_theme_mod('site_footer_colour','#868A8D');
 				set_theme_mod('site_footer_background_colour','#42484D');
 				set_theme_mod('site_menu_background_colour','#649d23');
-				set_theme_mod('site_menu_background_hover_colour','#75c900');
+				set_theme_mod('site_menu_background_hover_colour','#008922');
+				set_theme_mod('site_menu_dropdown_background_colour','#008922');
+				set_theme_mod('site_menu_dropdown_background_hover_colour','#104c00');
 				set_theme_mod('site_top_background_colour','#ffffff');
 				set_theme_mod('site_menu_background_current_colour','#77bc27');
 				set_theme_mod('site_menu_text_colour','#dddddd');
@@ -55,6 +61,7 @@ function oeru_theme_colour(){
 				set_theme_mod('site_top_background_colour','#fdfdfd');
 				set_theme_mod('site_button_colour','#649d23');
 				set_theme_mod('Button Text Colour','#fff');
+				set_theme_mod('site_button_background_colour','#649d23');
 				set_theme_mod('site_pagenav_colour','#b6f26d');
 				set_theme_mod('site_pagenav_current_colour','#8bd62f');
 				

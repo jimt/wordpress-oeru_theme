@@ -263,6 +263,21 @@ li {
 
 	body #main #main-content header.container{
 		padding-right: 30px;
+	}	
+	
+	body #pagenav span.counter{
+		display: inline;
+	}
+	
+	body nav .dropdown-menu{
+		position: static;
+		float: none;
+		width: auto;
+		margin-top: 0;
+		background-color: transparent;
+		border: 0;
+		-webkit-box-shadow: none;
+		box-shadow: none;
 	}
 
 }
@@ -472,4 +487,31 @@ details summary::-webkit-details-marker { display:none; }
 
 .commentlist li article footer{
 	padding: 0px;
+}
+
+#pagenav span.counter{
+	display: none;
+}
+
+dd p{
+	line-height: 1.42857143;
+	font-size: 14px;
+}
+
+#bodyContent dd{
+	margin-left: 10px;
+}
+	
+#bodyContent td b{
+	background-color: inherit;
+}
+
+#bodyContent .weQuiz h1{
+	background-color: inherit;
+}
+
+.gallerybox li{
+	list-style: none;
+	display: inline-block;
+	position: relative;
 }

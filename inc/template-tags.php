@@ -4,6 +4,8 @@ function oeru_third_level_menu(){
 
 	global $post;
 	
+	$this_post_id = $post->ID;
+	
 	if(strpos($post->post_content, "[oeru_remove_third]") == FALSE){
 
 		if(isset($post->post_parent)){
@@ -33,6 +35,8 @@ function oeru_third_level_menu(){
 										<div id="pagenav" class="panel-body">
 											<div class="row"><?PHP
 			   
+					$counter = 1;
+			   
 					while ( $the_query->have_posts() ) {
 						$the_query->the_post();
 						$id = get_the_id();			
@@ -40,7 +44,7 @@ function oeru_third_level_menu(){
 						
 						?><div class="col-md-4">
 							<a href="<?PHP echo get_the_permalink($id); ?>">
-								<div class="pagenav"><?PHP echo $title; ?></div>
+								<div class="pagenav <?PHP if($id == $this_post_id){ echo "current-page-nav"; } ?>"><span class="counter"><?PHP echo $counter++; ?>. </span><?PHP echo $title; ?></div>
 							</a>
 						</div><?PHP
 						
@@ -74,7 +78,8 @@ function oeru_theme_extra_style(){
 		html,
 		section,
 		.not-home header.container,
-		.home article header
+		.home article header,
+		.gallerybox li
 		{
 			/*#FBFAF6*/
 			background-color: <?PHP echo get_theme_mod('site_allsite_background_colour'); ?>;
@@ -113,6 +118,7 @@ function oeru_theme_extra_style(){
 		}
 
 		nav a,
+		nav a:visited,
 		#main .panel-heading h2{
 			/* #c2cddd */
 			color :  <?PHP echo get_theme_mod('site_menu_text_colour'); ?>;
@@ -134,7 +140,7 @@ function oeru_theme_extra_style(){
 		
 		.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
 			color: <?PHP echo get_theme_mod('site_menu_text_hover_colour'); ?>;
-			background-color: <?PHP echo get_theme_mod('site_menu_background_hover_colour'); ?>;
+			background-color: <?PHP echo get_theme_mod('site_menu_dropdown_background_hover_colour'); ?>;
 		}
 		
 		body .accordion .ui-state-active,
@@ -155,7 +161,7 @@ function oeru_theme_extra_style(){
 		}
 
 		nav .dropdown-menu {
-			background-color: <?PHP echo get_theme_mod('site_menu_background_colour'); ?> !important; 
+			background-color: <?PHP echo get_theme_mod('site_menu_dropdown_background_colour'); ?> !important; 
 		}
 
 		nav {
@@ -187,13 +193,13 @@ function oeru_theme_extra_style(){
 			color: <?PHP echo get_theme_mod('site_header_colour'); ?>; 
 		}
 		
-		h1, h2, h3, h4, h5, h6, summary,
-		#bodyContent h1,
-		#bodyContent h2,
-		#bodyContent h3,
-		#bodyContent h4,
-		#bodyContent h5,
-		#bodyContent h6{
+		#main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main summary,
+		#main #bodyContent h1,
+		#main #bodyContent h2,
+		#main #bodyContent h3,
+		#main #bodyContent h4,
+		#main #bodyContent h5,
+		#main #bodyContent h6{
 			/*#005aab*/
 			color: <?PHP echo get_theme_mod('site_menu_background_colour'); ?>;
 		}
@@ -210,6 +216,11 @@ function oeru_theme_extra_style(){
 		}
 
 		a{
+			/*#6FA92E;*/
+			color: <?PHP echo get_theme_mod('site_alllink_colour'); ?>;
+		}
+		
+		a:visited{
 			/*#6FA92E;*/
 			color: <?PHP echo get_theme_mod('site_alllink_colour'); ?>;
 		}
@@ -246,7 +257,7 @@ function oeru_theme_extra_style(){
 		}
 		
 		body .pager li > a, body .pager li > span{
-			border: 1px solid <?PHP echo get_theme_mod('site_button_background_colour'); ?>;
+			border: 1px solid <?PHP echo get_theme_mod('site_button_colour'); ?>;
 			color: <?PHP echo get_theme_mod('site_button_colour'); ?> !important;
 			background-color: <?PHP echo get_theme_mod('site_button_text_colour'); ?> !important;
 		}
@@ -275,7 +286,7 @@ function oeru_theme_extra_style(){
 			background-color: <?PHP echo get_theme_mod('site_pagenav_colour'); ?>; 
 		}
 		
-		#pagenav .current {
+		#pagenav .current-page-nav {
 			/* #98D6F6; */
 			background-color: <?PHP echo get_theme_mod('site_pagenav_current_colour'); ?>;   
 		}

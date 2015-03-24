@@ -411,6 +411,46 @@ function oeru_theme_customize_register_add_site_colours( $wp_customize ) {
 	);
 	
 	$wp_customize->add_setting(
+		'site_menu_dropdown_background_colour',
+		array(
+			'default' => '',
+			'transport' => 'postMessage',
+		)
+	);
+	
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'site_menu_dropdown_background_colour',
+			array(
+				'label' => 'Site Menu Dropdown Background Colour',
+				'section' => 'site_colours',
+				'settings' => 'site_menu_dropdown_background_colour'
+			)
+		)
+	);
+	
+	$wp_customize->add_setting(
+		'site_menu_dropdown_background_hover_colour',
+		array(
+			'default' => '',
+			'transport' => 'postMessage',
+		)
+	);
+	
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'site_menu_dropdown_background_hover_colour',
+			array(
+				'label' => 'Site Menu Dropdown Background Hover Colour',
+				'section' => 'site_colours',
+				'settings' => 'site_menu_dropdown_background_hover_colour'
+			)
+		)
+	);
+	
+	$wp_customize->add_setting(
 		'site_menu_background_current_colour',
 		array(
 			'default' => '',
