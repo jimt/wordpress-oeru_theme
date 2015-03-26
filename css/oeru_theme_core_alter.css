@@ -493,6 +493,15 @@ details summary::-webkit-details-marker { display:none; }
 	display: none;
 }
 
+dd{
+  font-size: 16px;
+  line-height: 28px;
+}
+
+dt{
+	margin-top: 10px; 
+}
+
 dd p{
 	line-height: 1.42857143;
 	font-size: 14px;
@@ -510,8 +519,18 @@ dd p{
 	background-color: inherit;
 }
 
-.gallerybox li{
+li.gallerybox{
 	list-style: none;
 	display: inline-block;
 	position: relative;
+	border: 1px solid #ccc;
+}
+
+#main .oeru_true_false p{
+	white-space: normal;
+}
+
+#main li{
+	font-size: 16px;
+	line-height: 28px;
 }

@@ -1,7 +1,7 @@
 <?PHP
 
 set_theme_mod('layout_style', 'all_pages_no_parent');
-set_theme_mod('third_level_menu','off');
+set_theme_mod('third_level_menu','on');
 set_theme_mod('next_button','on');
 set_theme_mod('prev_button','on');
 set_theme_mod('menu_depth','two');
@@ -15,9 +15,9 @@ set_theme_mod('site_alllink_hover_colour','#6FA92E');
 set_theme_mod('site_footer_colour','#868A8D');
 set_theme_mod('site_footer_background_colour','#42484D');
 set_theme_mod('site_menu_background_colour','#649d23');
-set_theme_mod('site_menu_background_hover_colour','#008922');
-set_theme_mod('site_menu_dropdown_background_colour','#008922');
-set_theme_mod('site_menu_dropdown_background_hover_colour','#104c00');
+set_theme_mod('site_menu_background_hover_colour','#5a9319');
+set_theme_mod('site_menu_dropdown_background_colour','#5a9319');
+set_theme_mod('site_menu_dropdown_background_hover_colour','#0f8200');
 set_theme_mod('site_top_background_colour','#ffffff');
 set_theme_mod('site_menu_background_current_colour','#77bc27');
 set_theme_mod('site_menu_text_colour','#dddddd');

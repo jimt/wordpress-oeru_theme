@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?PHP
 		
-			if(!is_home() && is_single()) :
+			if(is_page() || is_single()) :
 				if(get_theme_mod("third_level_menu")!="off"){
 					oeru_third_level_menu();
 				}

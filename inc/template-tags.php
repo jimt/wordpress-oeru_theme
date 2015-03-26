@@ -79,7 +79,7 @@ function oeru_theme_extra_style(){
 		section,
 		.not-home header.container,
 		.home article header,
-		.gallerybox li
+		li.gallerybox
 		{
 			/*#FBFAF6*/
 			background-color: <?PHP echo get_theme_mod('site_allsite_background_colour'); ?>;
@@ -311,6 +311,21 @@ function oeru_theme_extra_style(){
 		#bodyContent b,
 		#bodyContent p{
 			background-color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;
+		}
+		
+		#main .accordion h3,
+		#main #bodyContent .panel-heading h1,
+		#main #bodyContent .panel-heading h2,
+		#main #bodyContent .panel-heading h3,
+		#main #bodyContent .panel-heading h4,
+		#main #bodyContent .panel-heading h5,
+		#main #bodyContent .panel-heading h6{
+			color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;
+		}
+		
+		#bodyContent .activity .panel-heading p{
+			color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;
+			background-color: <?PHP echo get_theme_mod('site_header_colour'); ?>;
 		}
 		
 		.accordion .ui-widget-content{

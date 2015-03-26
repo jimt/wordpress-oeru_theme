@@ -324,7 +324,7 @@
 		
 		public function true_false($atts){
 	
-			if($atts['option_1_answer']=="true"){
+			if($atts['option_1']=="true"){
 				$option_1 = "glyphicon-ok";
 				$class_1 = "correct";
 			}else{
@@ -332,7 +332,7 @@
 				$class_1 = "incorrect";
 			}
 			
-			if($atts['option_2_answer']=="true"){
+			if($atts['option_2']=="true"){
 				$option_2 = "glyphicon-ok";
 				$class_2 = "correct";
 			}else{
@@ -346,7 +346,7 @@
                 <div class="accordian panel-default">
                       <div class="accordian-heading">
                         <p class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-pencil"></span>' . $atts['option_1'] . '</a>
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-pencil"></span>' . $atts['option_1_answer'] . '</a>
                         </p>
                       </div>
                       <div id="collapseTwo" class="panel-collapse collapse">
@@ -358,7 +358,7 @@
                     </div>
                     <div class="accordian-heading">
                         <p class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-pencil"></span>' . $atts['option_2'] . '</a>
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-pencil"></span>' . $atts['option_2_answer'] . '</a>
                         </p>
                       </div>
                       <div id="collapseThree" class="panel-collapse collapse">
