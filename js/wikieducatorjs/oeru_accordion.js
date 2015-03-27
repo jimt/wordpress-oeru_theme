@@ -24,7 +24,7 @@ jQuery(document).ready(
 					
 					}
 				);
-			jQuery( "#toggle" ).button().click(function() {
+			jQuery( "#toggle" ).click(function() {
 			  if ( jQuery( ".accordion" ).accordion( "option", "icons" ) ) {
 				jQuery( ".accordion" ).accordion( "option", "icons", null );
 			  } else {
