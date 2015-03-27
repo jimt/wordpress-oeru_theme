@@ -220,12 +220,19 @@ function oeru_theme_extra_style(){
 			color: <?PHP echo get_theme_mod('site_alllink_colour'); ?>;
 		}
 		
+		a:active{
+			/*#6FA92E;*/
+			color: <?PHP echo get_theme_mod('site_alllink_colour'); ?>;
+		}
+		
 		a:visited{
 			/*#6FA92E;*/
 			color: <?PHP echo get_theme_mod('site_alllink_colour'); ?>;
 		}
 		
 		a:hover,
+		.panel-heading a:focus,
+		#bodyContent a:focus,
 		a:focus{
 			/* #6FA92E; */
 			color: <?PHP echo get_theme_mod('site_alllink_hover_colour'); ?>;
