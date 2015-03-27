@@ -306,6 +306,11 @@ function oeru_theme_extra_style(){
 			background-color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;   
 		}
 		
+		div.panel-heading{
+			/* #98D6F6; */
+			color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;   
+		}
+		
 		.home .panel{
 			background-color: <?PHP echo get_theme_mod('site_allsite_background_colour'); ?>;
 		}
