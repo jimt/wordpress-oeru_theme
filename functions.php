@@ -98,6 +98,27 @@ function oeru_admin_theme_scripts_and_styles() {
 
 add_action( 'admin_enqueue_scripts', 'oeru_admin_theme_scripts_and_styles' );
 
+// add XMLRPC options
+add_filter( 'xmlrpc_blog_options', function( $xmlrpc_options ) {
+	if (is_array($xmlrpc_options)) {
+		$xmlrpc_options['show_on_front'] = array(
+			'desc'	    => __( 'Show on front' ),
+			'readonly'  => false,
+			'option'    => 'show_on_front'
+		);
+		$xmlrpc_options['page_on_front'] = array(
+			'desc'	    => __( 'Page to show on front page' ),
+			'readonly'  => false,
+			'option'    => 'page_on_front'
+		);
+		$xmlrpc_options['oeru_theme_menu_create'] = array(
+			'desc'	    => __( 'Create the OERu top menu' ),
+			'readonly'  => false,
+			'option'    => 'oeru_theme_menu_create'
+		);
+	}
+	return $xmlrpc_options;
+});
 
 // Custom template tags for this theme.
 require get_template_directory() . '/inc/template-tags.php';
