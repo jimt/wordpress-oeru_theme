@@ -56,7 +56,7 @@ function oeru_theme_setup() {
 add_action( 'after_setup_theme', 'oeru_theme_setup' );
 
 function oeru_theme_add_category(){
-	$cat_defaults = array(
+	$catarr = array(
 		'cat_name' => "Front Page Featured",
 		'category_description' => "Items to feature on the front page",
 		'category_nicename' => "front-page",
