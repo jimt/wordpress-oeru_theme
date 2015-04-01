@@ -94,4 +94,5 @@
 			</nav>
 		</div>
     </header>
+	<div id="scroller">Scroll to the top</div>
 	<div id="main" class="site-main">
