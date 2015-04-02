@@ -72,7 +72,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<?PHP
 							
-								if(get_theme_mod("scan_page")=="on"):
+								if(get_theme_mod("scan_page")=="on" || get_option("oeru_theme_scan_page")=="on"):
 							
 									?><li><a data-toggle="modal" data-target="#siteMapmodal"><span class="glyphicon glyphicon-tree-conifer"></span></a></li><?PHP
 							

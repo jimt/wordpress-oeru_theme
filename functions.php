@@ -21,6 +21,19 @@ function oeru_theme_menu_default() {
 }
 add_action( 'admin_head', 'oeru_theme_menu_default' );
 
+function oeru_theme_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Widget Area', 'oeru_theme' ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Add widgets here to appear in your sidebar.', 'oeru_theme' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'oeru_theme_widgets_init' );
+
 function oeru_theme_setup() {
 
 	if(!get_option("oeru_course_colour_profile_setup")){
@@ -51,7 +64,7 @@ function oeru_theme_setup() {
 	add_theme_support( 'html5', array(
 		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
 	) );
-
+	
 }
 add_action( 'after_setup_theme', 'oeru_theme_setup' );
 
@@ -116,6 +129,21 @@ add_filter( 'xmlrpc_blog_options', function( $xmlrpc_options ) {
 			'desc'	    => __( 'Create the OERu top menu' ),
 			'readonly'  => false,
 			'option'    => 'oeru_theme_menu_create'
+		);
+		$xmlrpc_options['oeru_theme_scan_page_html'] = array(
+			'desc'	    => __( 'HTML for the scan page' ),
+			'readonly'  => false,
+			'option'    => 'oeru_theme_scan_page_html'
+		);
+		$xmlrpc_options['oeru_theme_scan_page'] = array(
+			'desc'	    => __( 'Turn the Scan Page on' ),
+			'readonly'  => false,
+			'option'    => 'oeru_theme_scan_page'
+		);
+		$xmlrpc_options['oeru_theme_footer'] = array(
+			'desc'	    => __( 'Footer content' ),
+			'readonly'  => false,
+			'option'    => 'oeru_theme_footer'
 		);
 	}
 	return $xmlrpc_options;
