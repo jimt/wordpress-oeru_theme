@@ -187,11 +187,11 @@
 		
 			global $post, $wp_registered_sidebars;
 			
-			if(isset($post->oer_advanced_footer)){				
+			if(isset($post->oer_footer)){				
 			
-				$footer = $wp_registered_sidebars['footer-sidebar-id'];
+				$footer = $wp_registered_sidebars['sidebar-1'];
 				
-				echo $footer['before_widget'];
+				printf($footer['before_widget'], $post->oer_footer['title'], $post->oer_footer['title']);
 				echo $footer['before_title'];
 				echo $post->oer_footer['title'];
 				echo $footer['after_title'];
@@ -218,8 +218,67 @@
 			
 			if(isset($post->oer_advanced_footer)){
 			
-				?><div class='advanced_footer'><?PHP echo $post->oer_advanced_footer['content']; ?></div><?PHP
+				?><div class='advanced_footer entry-header container'><?PHP echo $post->oer_advanced_footer['content']; ?></div><?PHP
 			
+			}
+		
+		}
+		
+		function extended_footer_text_record($atts){
+		
+			global $post;
+			
+			$post->oer_extended_footer = $atts;
+			
+			return "";
+			
+		}
+		
+		function extended_footer_text_show(){
+		
+			global $post, $wp_registered_sidebars;
+			
+			if(isset($post->oer_extended_footer)){
+			
+				$footer = $wp_registered_sidebars['sidebar-1'];
+				
+				foreach($post->oer_extended_footer as $key => $value){
+			
+					if(strpos($key,"title")!==FALSE){
+					
+						printf($footer['before_widget'], $key, $key);
+						echo $footer['before_title'];
+						echo $value;
+						echo $footer['after_title'];
+						$id = explode("_", $key);
+						echo $post->oer_extended_footer['widget_' . $id[1] . '_content'];
+						echo $footer['after_widget'];
+					
+					}
+					
+				}
+				
+			}
+			
+			if(get_option('oeru_theme_footer')){
+				$data = json_decode(get_option('oeru_theme_footer'));
+				
+				foreach($data as $key => $value){
+			
+					if(strpos($key,"title")!==FALSE){
+					
+						echo $footer['before_widget'];//, $key, $key);
+						echo $footer['before_title'];//, $key, $key);
+						echo $value;
+						echo $footer['after_title'];
+						$id = explode("_", $key);
+						echo $post->oer_extended_footer['widget_' . $id[1] . '_content'];
+						echo $footer['after_widget'];
+					
+					}
+					
+				}
+				
 			}
 		
 		}
@@ -450,9 +509,11 @@
 	add_shortcode( 'oeru_accordion_multi', array($shortcode,'accordion_multi') );	
 	add_shortcode( 'oeru_accordion', array($shortcode,'accordion') );	
 	add_shortcode('oeru_basic_footer', array($shortcode,'basic_footer_text_record'));
-	add_action('oer_footer', array($shortcode,'basic_footer_text_show'));
+	add_action('oeru_post_footer', array($shortcode,'basic_footer_text_show'));
 	add_shortcode('oeru_advanced_footer', array($shortcode,'advanced_footer_text_record'));
-	add_action('oer_post_footer', array($shortcode,'advanced_footer_text_show'));
+	add_action('oeru_post_footer', array($shortcode,'advanced_footer_text_show'));
+	add_shortcode('oeru_extended_footer', array($shortcode,'extended_footer_text_record'));
+	add_action('oeru_post_footer', array($shortcode,'extended_footer_text_show'));
 	add_shortcode('oeru_table', array($shortcode,'table'));
 	add_shortcode('oeru_idevice', array($shortcode,'device'));
 	add_shortcode('oeru_fitb', array($shortcode,'fitb'));

@@ -66,8 +66,10 @@ html body{
 	margin-bottom: 0px;
 }
 
-footer{
+footer#colophon{
 	padding-bottom:100px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .tright{
@@ -266,7 +268,7 @@ li {
 	}	
 	
 	body #pagenav span.counter{
-		display: inline;
+		display: none;
 	}
 	
 	body nav .dropdown-menu{
@@ -489,10 +491,6 @@ details summary::-webkit-details-marker { display:none; }
 	padding: 0px;
 }
 
-#pagenav span.counter{
-	display: none;
-}
-
 dd{
   font-size: 16px;
   line-height: 28px;
@@ -534,3 +532,44 @@ li.gallerybox{
 	font-size: 16px;
 	line-height: 28px;
 }
+
+#scroller{
+	display: none;
+	cursor: pointer;
+	cursor: hand;
+	position: fixed;
+	bottom: 10px;
+	right: 30px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	z-index:10000;
+	padding:20px;
+	font-size: 20px;
+	-webkit-box-shadow: 3px 6px 18px 0px rgba(50, 50, 50, 0.63);
+	-moz-box-shadow:    3px 6px 18px 0px rgba(50, 50, 50, 0.63);
+	box-shadow:         3px 6px 18px 0px rgba(50, 50, 50, 0.63);
+}
+
+.error404 #main{
+	text-align: center;
+}
+
+.error404 #main .page-title{
+	padding: 20px 0px;
+	margin: 0px;
+}
+
+footer#colophon div.container aside{
+	display:inline-block;
+	width: 20%;
+	margin: 0px 4% 10px 0px;
+}
+
+footer#colophon div.container{
+	padding: 0px;
+}	
+
+footer#colophon div.advanced_footer{
+	margin: 10px 0px;
+}	

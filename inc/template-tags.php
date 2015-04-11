@@ -27,7 +27,7 @@ function oeru_third_level_menu(){
 									<div class="nomargin panel-heading">
 										<h2 class="panel-title">
 											<a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
-												<span class="glyphicon glyphicon-th-list"></span><?PHP echo $parent->post_title; ?>
+												<span class="glyphicon glyphicon-th-list third_level_menu_title"></span><span class="third_level_menu_title"><?PHP echo $parent->post_title; ?></span>
 											</a>
 										</h2>
 									</div>
@@ -95,7 +95,9 @@ function oeru_theme_extra_style(){
 			background-color: <?PHP echo get_theme_mod('site_footer_background_colour'); ?>;
 		}
 		
-		.nav > li > a:hover, .nav > li > a:focus {
+		.nav > li > a:hover, 
+		.nav > li > a:focus,
+		#scroller {
 			/*#004d92*/
 			text-decoration: none;
 			background-color: <?PHP echo get_theme_mod('site_menu_background_colour'); ?>; 
@@ -118,6 +120,9 @@ function oeru_theme_extra_style(){
 		}
 
 		nav a,
+		.error404 #main .page-title,
+		#scroller,
+		.third_level_menu_title,
 		nav a:visited,
 		#main .panel-heading h2{
 			/* #c2cddd */
