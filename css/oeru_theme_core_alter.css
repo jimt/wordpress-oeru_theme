@@ -572,4 +572,8 @@ footer#colophon div.container{
 
 footer#colophon div.advanced_footer{
 	margin: 10px 0px;
-}	
+}
+
+#menu-oeru-import-menu>li:first-of-type {
+	display: none;
+}
