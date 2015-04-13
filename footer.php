@@ -31,7 +31,6 @@
 		</div>
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<div class="entry-header container">
-				<?php do_action("oeru_post_footer"); ?>
 				<?php get_sidebar("sidebar-1"); ?>
 			</div>
 		</footer><!-- #colophon -->
