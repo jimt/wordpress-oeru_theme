@@ -41,7 +41,11 @@
 			'link_before' => '<span>',
 			'link_after'  => '</span>',
 		) ); ?>		
-		</div> <?PHP
+		</div>
+		<div class="oeru_footer">
+			<?php do_action("oeru_post_footer"); ?>
+		</div>
+	<?PHP
 	if ( comments_open() || get_comments_number() ) {
 		?><div id="comment_holder"><?PHP
 			comments_template();

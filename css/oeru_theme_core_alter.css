@@ -531,6 +531,7 @@ li.gallerybox{
 #main li{
 	font-size: 16px;
 	line-height: 28px;
+	font-weight: 300;
 }
 
 #scroller{
@@ -560,16 +561,17 @@ li.gallerybox{
 	margin: 0px;
 }
 
-footer#colophon div.container aside{
+.oeru_footer aside{
 	display:inline-block;
 	width: 20%;
 	margin: 0px 4% 10px 0px;
 }
 
-footer#colophon div.container{
+.oeru_footer div.container{
 	padding: 0px;
 }	
 
-footer#colophon div.advanced_footer{
+#main #primary #content .entry-and-comments .oeru_footer div.advanced_footer{
 	margin: 10px 0px;
+	padding: 0px;
 }	
