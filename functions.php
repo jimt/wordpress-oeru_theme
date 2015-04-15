@@ -93,7 +93,9 @@ function oeru_theme_scripts_and_styles() {
 	wp_enqueue_script( 'wordpress-oeru_theme-jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', array(), '20131205', true );
 	wp_enqueue_script( 'wordpress-oeru_theme-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
 	wp_enqueue_script( 'wordpress-oeru_theme-scroll', get_template_directory_uri() . '/js/wikieducatorjs/scroll.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
-	wp_enqueue_script( 'wordpress-oeru_theme-menu-fix', get_template_directory_uri() . '/js/wikieducatorjs/menu-fix.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
+	if(get_theme_mod("menu_depth")!="two"){
+		wp_enqueue_script( 'wordpress-oeru_theme-menu-fix', get_template_directory_uri() . '/js/wikieducatorjs/menu-fix.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
+	}
 	wp_enqueue_script( 'wordpress-oeru_theme-feedback', get_template_directory_uri() . '/js/wikieducatorjs/oeru_feedback.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
 	wp_enqueue_script( 'wordpress-oeru_theme-details-fix', get_template_directory_uri() . '/js/wikieducatorjs/oeru_details_fix.js', array('wordpress-oeru_theme-jquery'), '20131205', true );
 	wp_enqueue_script( 'jquery-ui-accordion');
