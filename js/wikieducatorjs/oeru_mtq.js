@@ -22,8 +22,6 @@ function mtq_parse(obj){
 						.first()
 						.is(":checked");
 					
-					console.log(status + " " + checked);
-	
 					if(status == "correct"){
 						total+=1;
 						if(checked == true){
@@ -71,7 +69,7 @@ function mtq_parse(obj){
 
 jQuery(document).ready(
 	function(){
-		$( ".mtq_submit" )
+		jQuery( ".mtq_submit" )
 			.keydown(
 				function(event){
 					mtq_parse(this);
@@ -83,7 +81,7 @@ jQuery(document).ready(
 				}
 			)
 			
-		$( ".oeru_mtq" )
+		jQuery( ".oeru_mtq" )
 			.keydown(
 				function(event){
 					jQuery(this)

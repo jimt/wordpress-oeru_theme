@@ -1,6 +1,6 @@
 jQuery(document).ready(
 	function(){
-		$( ".oeru_feedback" )
+		jQuery( ".oeru_feedback" )
 			.on( "click",
 				function(event){
 				

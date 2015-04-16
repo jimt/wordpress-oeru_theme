@@ -28,8 +28,6 @@ jQuery(document).ready(
 					
 						if(jQuery(event.currentTarget).hasClass("menu-item-has-children")){
 						
-							console.log("here");
-						
 							jQuery(elem)
 								.css("display","none");
 								
@@ -53,19 +51,22 @@ jQuery(document).ready(
 				
 					if(!jQuery(elem).is(":visible")){
 							
+						list = Array();	
+							
 						jQuery("ul.dropdown-menu")
 							.each(
-								function(index,value){
-									
-									if(jQuery(value).is(":visible")){
-									
-										jQuery(value)
-											.css("display","none");
-									
+								function(index,value){	
+									if(jQuery(value).is(":visible")){									
+										list.push(value);									
 									}
 								
 								}
 							);
+							
+						for(x in list){
+							jQuery(list[x])
+								.css("display", "none");
+						}	
 							
 						jQuery(elem)
 							.css("display","block");
@@ -73,8 +74,6 @@ jQuery(document).ready(
 					}else{
 					
 						if(jQuery(event.currentTarget).hasClass("sub-menu")){
-						
-							console.log("here first");
 						
 							jQuery(elem)
 								.css("display","none");
@@ -96,8 +95,7 @@ jQuery(document).ready(
 					
 					}
 					
-				}
-					
+				}					
 					
 			);
 	
@@ -105,7 +103,8 @@ jQuery(document).ready(
 		jQuery(document)
 			.click(
 				function(event){
-					if(!jQuery(event.currentTarget.activeElement).hasClass("dropdown-toggle")){
+					console.log(event.currentTarget.activeElement);
+					if(!jQuery(event.currentTarget.activeElement).hasClass("dropdown")){
 						jQuery(".dropdown-menu")
 							.each(
 								function(index,value){
