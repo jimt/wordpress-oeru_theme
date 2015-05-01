@@ -285,7 +285,7 @@ function oeru_theme_menu(){
 					 wp_nonce_field( "oeru_theme_menu_create", "oeru_theme_menu_create" );
 				?>
 				<p>
-					<input type="checkbox" name="delete_menu"> Create menu and set as site menu (will delete existing OER menu)
+					<input type="checkbox" name="delete_menu" checked> Create menu and set as site menu (will delete existing OER menu)
 				</p>
 				<input type="hidden" name="menu_create" value="go" />
 				<input type="submit" value="Create Menu" />
