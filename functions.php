@@ -1,5 +1,13 @@
 <?php
 
+function oeru_theme_defaults() {
+	global $wp_rewrite;
+
+	$wp_rewrite->set_permalink_structure( '/%postname%/' );
+	$wp_rewrite->flush_rules();
+}
+add_action( 'after_switch_theme', 'oeru_theme_defaults' );
+
 function oeru_theme_menu_default() {
 
 	if(!get_option("oeru_theme_menu_create")){
@@ -31,6 +39,7 @@ function oeru_theme_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	unregister_sidebar( 'sidebar-1' );
 }
 add_action( 'widgets_init', 'oeru_theme_widgets_init' );
 
