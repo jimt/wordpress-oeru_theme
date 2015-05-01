@@ -7,6 +7,7 @@ function oeru_theme_defaults() {
 	$wp_rewrite->flush_rules();
 }
 add_action( 'after_switch_theme', 'oeru_theme_defaults' );
+register_activation_hook( __FILE__, 'oeru_theme_defaults' );
 
 function oeru_theme_menu_default() {
 
