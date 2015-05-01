@@ -1,6 +1,6 @@
 jQuery(document).ready(
 	function(){
-		$( ".oeru_mcq" )
+		jQuery( ".oeru_mcq" )
 			.keydown(			
 				function(event){
 				

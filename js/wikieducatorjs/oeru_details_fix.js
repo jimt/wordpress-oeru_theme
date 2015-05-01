@@ -1,6 +1,6 @@
 jQuery(document).ready(
 	function(){
-		$( ".oeru_details" )
+		jQuery( ".oeru_details" )
 			.on( "click",
 				function(event){
 				

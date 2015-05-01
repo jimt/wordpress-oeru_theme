@@ -242,7 +242,7 @@ body.columns{
 }
 
 li {
-	font-weight: 300;
+	font-weight: normal;
 }
 
 .panel-heading h2{
@@ -270,7 +270,11 @@ li {
 	body #pagenav span.counter{
 		display: none;
 	}
-	
+
+}
+
+@media (max-width: 765px){
+
 	body nav .dropdown-menu{
 		position: static;
 		float: none;
@@ -281,10 +285,6 @@ li {
 		-webkit-box-shadow: none;
 		box-shadow: none;
 	}
-
-}
-
-@media (max-width: 765px){
 
 	body .dropdown-menu{
 		margin-left: auto;

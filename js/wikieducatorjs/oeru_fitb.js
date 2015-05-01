@@ -25,7 +25,7 @@ function oeru_fitb_theme_check(event){
 
 jQuery(document).ready(
 	function(){
-		$( ".oeru_fitb" )
+		jQuery( ".oeru_fitb" )
 			.blur(
 				function(event){				
 					oeru_fitb_theme_check(event);					

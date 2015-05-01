@@ -159,7 +159,7 @@ function oeru_theme_customize_navigation( $wp_customize ){
 	$wp_customize->add_setting(
 		'scan_page',
 		array(
-			'default' => 'on',
+			'default' => 'off',
 		)
 	);
 	 
@@ -179,7 +179,7 @@ function oeru_theme_customize_navigation( $wp_customize ){
 	$wp_customize->add_setting(
 		'log_on_page',
 		array(
-			'default' => 'on',
+			'default' => 'off',
 		)
 	);
 	 

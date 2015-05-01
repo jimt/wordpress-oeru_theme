@@ -62,13 +62,13 @@ class Walker_OERU_Menu extends Walker {
 		}
 		
 		if(in_array("menu-item-has-children",$item->classes)){
-			$output .= " href='#' class='dropdown-toggle'>" . $item->title;
+			$output .= " href='#' class='dropdown dropdown-toggle'>" . $item->title;
 		}else{
 			$output .= " href='" . $item->url . "'>" . $item->title;
 		}
 	
 		if(in_array("menu-item-has-children",$item->classes)){
-			$output .= "<span class='caret'></span>";	
+			$output .= "<span class='dropdown caret'></span>";	
 		}
 		
 		$output .=  "</a>";
