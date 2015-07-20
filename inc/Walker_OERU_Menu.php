@@ -2,7 +2,7 @@
 
 class Walker_OERU_Menu extends Walker {
 
-    // Tell Walker where to inherit it's parent and id values
+    // Tell Walker where to inherit its parent and id values
     var $db_fields = array(
         'parent' => 'menu_item_parent', 
         'id'     => 'db_id' 
@@ -62,17 +62,14 @@ class Walker_OERU_Menu extends Walker {
 		}
 		
 		if(in_array("menu-item-has-children",$item->classes)){
-			$output .= " href='#' class='dropdown dropdown-toggle'>" . $item->title;
+			$output .= " href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>" . $item->title;
+			$output .= "<span class='caret'></span>";
 		}else{
 			$output .= " href='" . $item->url . "'>" . $item->title;
 		}
 	
-		if(in_array("menu-item-has-children",$item->classes)){
-			$output .= "<span class='dropdown caret'></span>";	
-		}
-		
 		$output .=  "</a>";
-		
+
     }
 
 }

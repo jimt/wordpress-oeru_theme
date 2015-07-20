@@ -82,7 +82,7 @@ class Walker_OERU_Menu_Depth extends Walker {
 		}
 		
 		if($depth == 0){
-			$output .= " href='#' data-toggle='dropdown' class='dropdown dropdown-toggle'>" . $item->title;
+			$output .= " href='#' data-toggle='dropdown' class='dropdown-toggle'>" . $item->title;
 		}else{
 			$output .= " href='" . $item->url . "'>" . $item->title;
 		}
