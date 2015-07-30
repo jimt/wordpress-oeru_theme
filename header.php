@@ -14,11 +14,11 @@
 		}
 	?>
 	<link rel="icon" href="<?PHP echo $favicon_url; ?>">
+	<?php oeru_theme_extra_style(); ?>
+	<?php wp_head(); ?>
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
-	<?php oeru_theme_extra_style(); ?>
-	<?php wp_head(); ?>
 </head>
 <body <?php body_class(oeru_theme_body_class()); ?>>
 <div id="page" class="hfeed site">
