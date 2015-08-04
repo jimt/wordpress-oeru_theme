@@ -576,7 +576,7 @@ li.gallerybox{
 	padding: 0px;
 }	
 
-#menu-oeru-import-menu>li:first-of-type {
+#menu-oeru-import-menu li:first-child {
 	display: none;
 }
 
