@@ -33,7 +33,7 @@ h1 .brand:hover
 }
 nav a
 {
-    text-align: center;
+    text-align: left;
     padding: 10px 15px;
     text-transform: none;
 }
