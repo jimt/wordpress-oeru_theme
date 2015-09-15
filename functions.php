@@ -187,5 +187,7 @@ require_once("inc/scanpage_settings.php");
 //Add colour choice options
 require_once("inc/colour_scheme.php");
 
+//Add icon set selection
+require_once("inc/icon_set.php");
 
 

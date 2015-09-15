@@ -283,47 +283,71 @@
 		
 		}
 		
+		// assoc array accessor with default value
+		function array_get( &$v, $default=null) {
+			return isset($v) ? $v : $default;
+		}
+
 		function device($atts){
-		
+			// map iDevice type to icon
+			// see http://wikieducator.org/Template:IDevice subpages	
+			$icon = array(
+				'Line' => array(
+					'activity' => 'Icon_activity.png',
+					'portfolio activity' => 'Icon_activity.png',
+					'extension exercise' => 'Icon_activity.png',
+					'assignment' => 'Icon_assess.png',
+					'question' => 'Icon_qmark.png',
+					'questions' => 'Icon_qmark.png',
+					'did you know?' => 'Icon_qmark.png',
+					'did you notice?' => 'Icon_qmark.png',
+					'definition' => 'Icon_define.png',
+					'definitions' => 'Icon_define.png',
+					'discussion' => 'Icon_discussion.png',
+					'tell us a story' => 'Icon_discussion.png',
+					'case study' => 'Icon_casestudy.png',
+					'example' => 'Icon_casestudy.png',
+					'objective' => 'Icon_objectives.png',
+					'objectives' => 'Icon_objectives.png',
+					'outcomes' => 'Icon_objectives.png',
+					'key points' => 'Icon_key_points.png',
+					'media required' => 'Icon_multimedia.png',
+					'media' => 'Icon_multimedia.png',
+					'reading' => 'Icon_review.png',
+					'competency' => 'Icon_review.png',
+					'competencies' => 'Icon_review.png',
+					'summary' => 'Icon_summary.png',
+					'self assessment' => 'Icon_qmark.png',
+					'assessment' => 'Icon_qmark.png',
+					'reflection' => 'Icon_reflection.png',
+					'preknowledge' => 'Icon_preknowledge.png',
+					'web resources' => 'Icon_inter.png',
+					'default' => 'Icon_qmark.png'
+				),
+				'Ind' => array(
+					'activity' => 'ind/Icon_learning_activity.png',
+					'activities' => 'ind/Icon_learning_activity.png',
+					'portfolio activity' => 'ind/Icon_learning_activity.png',
+					'extension exercise' => 'ind/Icon_learning_activity.png',
+					'aim' => 'ind/Icon_learning_objectives.png',
+					'aims' => 'ind/Icon_learning_objectives.png',
+					'objective' => 'ind/Icon_learning_objectives.png',
+					'objectives' => 'ind/Icon_learning_objectives.png',
+					'outcomes' => 'ind/Icon_learning_objectives.png',
+					'key point' => 'ind/Icon_key_idea.png',
+					'key points' => 'ind/Icon_key_idea.png',
+					'reading' => 'ind/Icon_reading_activity.png',
+					'reflection' => 'ind/Icon_reflection.png',
+					'default' => 'ind/Icon_unknown.png'
+				)
+			);
+
 			$label = $atts['type'];
 			
 			$atts['type'] = strtolower($atts['type']);
 			
-			switch($atts['type']){
-			
-				case "activity" : $img = get_template_directory_uri() . "/idevices/Icon_activity.png"; break;	
-				case "portfolio activity" : $img = get_template_directory_uri() . "/idevices/Icon_activity.png"; break; 	
-				case "extension exercise" :	$img = get_template_directory_uri() . "/idevices/Icon_activity.png"; break;
-				case "assignment" :	$img = get_template_directory_uri() . "/idevices/Icon_assess.png"; break;
-				case "question" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;
-				case "questions" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;	
-				case "did you know?" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;
-				case "did you notice?" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;	 
-				case "definition" : $img = get_template_directory_uri() . "/idevices/Icon_define.png"; break;	
-				case "definitions" : $img = get_template_directory_uri() . "/idevices/Icon_define.png"; break;	
-				case "discussion" :	$img = get_template_directory_uri() . "/idevices/Icon_discussion.png"; break;
-				case "tell us a story" : $img = get_template_directory_uri() . "/idevices/Icon_discussion.png"; break;	
-				case "case study" :	$img = get_template_directory_uri() . "/idevices/Icon_casestudy.png"; break;
-				case "example" : $img = get_template_directory_uri() . "/idevices/Icon_casestudy.png"; break;	
-				case "objective" : $img = get_template_directory_uri() . "/idevices/Icon_objectives.png"; break;	
-				case "objectives" : $img = get_template_directory_uri() . "/idevices/Icon_objectives.png"; break;	
-				case "outcomes" : $img = get_template_directory_uri() . "/idevices/Icon_objectives.png"; break;	
-				case "key points" : $img = get_template_directory_uri() . "/idevices/Icon_key_points.png"; break;	
-				case "media required" : $img = get_template_directory_uri() . "/idevices/Icon_multimedia.png"; break;	
-				case "media" : $img = get_template_directory_uri() . "/idevices/Icon_multimedia.png"; break;	
-				case "reading" : $img = get_template_directory_uri() . "/idevices/Icon_review.png"; break;	
-				case "competency" : $img = get_template_directory_uri() . "/idevices/Icon_review.png"; break;	
-				case "competencies" : $img = get_template_directory_uri() . "/idevices/Icon_review.png"; break;	
-				case "summary" : $img = get_template_directory_uri() . "/idevices/Icon_summary.png"; break;	
-				case "self assessment" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;	
-				case "assessment" : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;	
-				case "reflection" : $img = get_template_directory_uri() . "/idevices/Icon_reflection.png"; break;	
-				case "preknowledge"	: $img = get_template_directory_uri() . "/idevices/Icon_preknowledge.png"; break;
-				case "web resources" : $img = get_template_directory_uri() . "/idevices/Icon_inter.png"; break;
-				default : $img = get_template_directory_uri() . "/idevices/Icon_qmark.png"; break;
-			
-			}
-			
+			$img = get_template_directory_uri() . '/idevices/' . $this->array_get($icon[get_theme_mod('icon_set', 'Line')][$atts['type']], $icon[get_theme_mod('icon_set')]['default']);
+
 			if(isset($atts['title'])){
 				$title = $atts['title'];
 			}else{
