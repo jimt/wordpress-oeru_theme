@@ -97,7 +97,7 @@ function oeru_theme_colour(){
 				'site_menu_text_hover_colour' => '#ffffff',
 				'site_header_colour' => '#662620',
 				'site_header_text_colour' => '#ffffff',
-				'site_idevice_colour' => '#00000',
+				'site_idevice_colour' => '#000000',
 				'site_idevice_background_colour' => '#fcc572',
 				'site_button_colour' => '#fcc572',
 				'Button Text Colour' => '#fff',
