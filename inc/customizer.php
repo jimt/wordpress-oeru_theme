@@ -551,6 +551,46 @@ function oeru_theme_customize_register_add_site_colours( $wp_customize ) {
 	);
 	
 	$wp_customize->add_setting(
+		'site_idevice_colour',
+		array(
+			'default' => '',
+			'transport' => 'postMessage',
+		)
+	);
+	
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'site_idevice_colour',
+			array(
+				'label' => 'iDevice Text Colour',
+				'section' => 'site_colours',
+				'settings' => 'site_idevice_colour'
+			)
+		)
+	);
+	
+	$wp_customize->add_setting(
+		'site_idevice_background_colour',
+		array(
+			'default' => '',
+			'transport' => 'postMessage',
+		)
+	);
+	
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'site_idevice_background_colour',
+			array(
+				'label' => 'iDevice Header Background Colour',
+				'section' => 'site_colours',
+				'settings' => 'site_idevice_background_colour'
+			)
+		)
+	);
+	
+	$wp_customize->add_setting(
 		'site_top_background_colour',
 		array(
 			'default' => '',

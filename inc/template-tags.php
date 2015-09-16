@@ -354,6 +354,13 @@ function oeru_theme_extra_style(){
 			background: <?PHP echo get_theme_mod('site_menu_background_current_colour'); ?>;  
 			background-color: <?PHP echo get_theme_mod('site_menu_background_current_colour'); ?>;  
 		}
+
+		.idevice-heading {
+			background-color: <?php echo get_theme_mod('site_idevice_background_colour', '#808080'); ?>;
+		}
+		#main #bodyContent .idevice-heading h2 {
+			color: <?php echo get_theme_mod('site_idevice_colour', '#fff'); ?>;
+		}
 		
 	</style><?PHP
 

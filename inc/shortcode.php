@@ -357,7 +357,7 @@
 			$title = ucfirst(strtolower($title));
 			
 			return '<div class="panel">
-				<div class="panel-heading">
+				<div class="panel-heading idevice-heading">
 					<div>
 						<img class="pedagogicalicon" alt="' . $title . '" src="' . $img . '">
 					</div>
