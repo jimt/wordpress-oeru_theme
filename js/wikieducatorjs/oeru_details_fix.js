@@ -90,10 +90,10 @@ jQuery(document).ready(
 				    d = new Date(t),
 				    h = hour(d),
 				    m = minute(d),
-				    ds = days[d.getDay()] + ', ' + months[d.getMonth()] + d.getDate() + ' ' + h.h + ':' + m + h.a + ' ' + d.toString().replace(/.*\(([^)]+)\)$/, '$1'),
+				    ds = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ' ' + h.h + ':' + m + h.a + ' ' + d.toString().replace(/.*\(([^)]+)\)$/, '$1'),
 				    html = $(this).html();
 				// replace SPAN with A to get theme styling
-				$(this).replaceWith('<a class="weLTime plainlinks" data-toggle="tooltip" title="' + ds + '" href="#">' + $(this).html() + '</a>');
+				$(this).replaceWith('<a class="weLTime plainlinks" data-toggle="tooltip" title="' + ds + '">' + $(this).html() + '</a>');
 			});
 		$('.weLTime').tooltip();
 	}
