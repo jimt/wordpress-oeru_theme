@@ -316,3 +316,35 @@ function oeru_theme_get_pages_no_parent($post_parent){
 	}
 	
 }
+
+function oeru_theme_menu_create( $args ) {
+	// require the user to be logged in
+	global $wp_xmlrpc_server;
+	$wp_xmlrpc_server->escape( $args );
+	$blog_id = $args[0];
+	$user = $args[1];
+	$pass = $args[2];
+	if ( ! $user = $wp_xmlrpc_server->login( $user, $pass ) ) {
+		return $wp_xmlrpc_server->error;
+	}
+
+	// create the menu and install it
+	$menu_id = oeru_theme_create_menu();
+	if ( $menu_id == false ) {
+		wp_delete_nav_menu( "OERu Import Menu" );
+		$menu_id = oeru_theme_create_menu();
+	}
+	oeru_theme_menu_hierarchy($menu_id, 0, 0);
+	$locations = get_theme_mod( 'nav_menu_locations' );
+	$locations['primary'] = $menu_id;
+	set_theme_mod( 'nav_menu_locations', $locations );
+	return 0;
+}
+
+function oeru_theme_xmlrpc_methods( $methods ) {
+	$methods['oeru_theme.menu_create'] = 'oeru_theme_menu_create';
+	return $methods;
+}
+
+add_filter( 'xmlrpc_methods', 'oeru_theme_xmlrpc_methods' );
+
