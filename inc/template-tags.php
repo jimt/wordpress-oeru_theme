@@ -324,12 +324,6 @@ function oeru_theme_extra_style(){
 			background-color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;
 		}
 		
-		#bodyContent h1,
-		#bodyContent b,
-		#bodyContent p{
-			background-color: <?PHP echo get_theme_mod('site_content_background_colour'); ?>;
-		}
-		
 		#main .accordion h3,
 		#main #bodyContent .panel-heading h1,
 		#main #bodyContent .panel-heading h2,
