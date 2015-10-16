@@ -160,6 +160,33 @@ add_filter( 'xmlrpc_blog_options', function( $xmlrpc_options ) {
 	return $xmlrpc_options;
 });
 
+// allow IFRAME in network WordPress
+// FIXME this really isn't a theme-specific issue,
+//       this should probably be a separate plugin for any network install
+function oeru_theme_allow_iframe( $allowedposttags ) {
+	if ( !current_user_can( 'publish_posts' ) ) {
+		return $allowedposttags;
+	}
+
+	$allowedposttags['iframe'] = array(
+		'align' => true,
+		'width' => true,
+		'height' => true,
+		'frameborder' => true,
+		'name' => true,
+		'src' => true,
+		'id' => true,
+		'class' => true,
+		'style' => true,
+		'scrolling' => true,
+		'marginwidth' => true,
+		'marginheight' => true,
+		'allowfullscreen' => true,
+	);
+	return $allowedposttags;
+}
+add_filter( 'wp_kses_allowed_html', 'oeru_theme_allow_iframe' );
+
 // Custom template tags for this theme.
 require get_template_directory() . '/inc/template-tags.php';
 
