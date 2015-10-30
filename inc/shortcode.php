@@ -293,7 +293,10 @@
 			// see http://wikieducator.org/Template:IDevice subpages	
 			$icon = array(
 				'Line' => array(
+					'activities' => 'Icon_activity.png',
 					'activity' => 'Icon_activity.png',
+					'aim' => 'Icon_objectives.png',
+					'aims' => 'Icon_objectives.png',
 					'portfolio activity' => 'Icon_activity.png',
 					'extension exercise' => 'Icon_activity.png',
 					'assignment' => 'Icon_assess.png',
@@ -325,12 +328,12 @@
 					'default' => 'Icon_qmark.png'
 				),
 				'Ind' => array(
-					'activity' => 'ind/Icon_learning_activity.png',
 					'activities' => 'ind/Icon_learning_activity.png',
-					'portfolio activity' => 'ind/Icon_learning_activity.png',
-					'extension exercise' => 'ind/Icon_learning_activity.png',
+					'activity' => 'ind/Icon_learning_activity.png',
 					'aim' => 'ind/Icon_learning_objectives.png',
 					'aims' => 'ind/Icon_learning_objectives.png',
+					'portfolio activity' => 'ind/Icon_learning_activity.png',
+					'extension exercise' => 'ind/Icon_learning_activity.png',
 					'objective' => 'ind/Icon_learning_objectives.png',
 					'objectives' => 'ind/Icon_learning_objectives.png',
 					'outcomes' => 'ind/Icon_learning_objectives.png',

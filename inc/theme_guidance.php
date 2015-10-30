@@ -98,6 +98,9 @@ function oeru_theme_shortcodes(){
 	<p>The types are as follows:</p>
 	<ul>
 		<li>Activity</li>
+		<li>Activities</li>
+		<li>Aim</li>
+		<li>Aims</li>
 		<li>Portfolio</li>
 		<li>Extension exercise</li>
 		<li>Assignment</li>
