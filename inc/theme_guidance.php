@@ -86,11 +86,16 @@ function oeru_theme_shortcodes(){
 	<p>The headings value is the top row of the table, with each | separating a column heading</p>
 	<p>Then each value in order from the first is a cell in the table</p>
 	<h2>[oeru_idevice]</h2>
-	<p>Use this to add a table</p>
+	<p>Use this to add a pedagogical template</p>
 	<p>Example [oeru_idevice type="Question" body="What is the best way to do this"]</p>
-	<p>The type value sets the title on the page and the associated image. Body sets what appears below this</p>
-	<p>If you use title="This is my title" the title will become this instead.</p>
-	<p>The types are as follows</p>
+	<p><em>or</em></p>
+	<p>[oeru_idevice type="Question" title="What do you think?"]<br>
+	What is the best way to do this?</br>
+	[/oeru_idevice]</p>
+	<p><em>Because of a limitation in WordPress, the two types must not be mixed on a page.</em></p>
+	<p>The type value sets the title on the page and the associated image. Body sets what appears below this.</p>
+	<p>If you use title="This is my title" it overrides the displayed title for this iDevice.</p>
+	<p>The types are as follows:</p>
 	<ul>
 		<li>Activity</li>
 		<li>Portfolio</li>
@@ -120,7 +125,7 @@ function oeru_theme_shortcodes(){
 		<li>Assessment</li>
 		<li>Reflection</li>
 		<li>Preknowledge</li>
-		<li>Web Resources</li>
+		<li>Web resources</li>
 	</ul>
 	<h2>[oeru_fitb]</h2>
 	<p>Use this to create a fill in the blank area</p>

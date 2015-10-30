@@ -288,7 +288,7 @@
 			return isset($v) ? $v : $default;
 		}
 
-		function device($atts){
+		function device( $atts, $content = null ){
 			// map iDevice type to icon
 			// see http://wikieducator.org/Template:IDevice subpages	
 			$icon = array(
@@ -344,22 +344,24 @@
 
 			$label = $atts['type'];
 			
-			$atts['type'] = strtolower($atts['type']);
-			
-			$img = get_template_directory_uri() . '/idevices/' . $this->array_get($icon[get_theme_mod('icon_set', 'Line')][$atts['type']], $icon[get_theme_mod('icon_set')]['default']);
+			$img = get_template_directory_uri() . '/idevices/' . $this->array_get($icon[get_theme_mod('icon_set', 'Line')][strtolower($atts['type'])], $icon[get_theme_mod('icon_set')]['default']);
 
 			if(isset($atts['title'])){
 				$title = $atts['title'];
 			}else{
 				$title = $label;
 			}
-			
-			$title = ucfirst(strtolower($title));
-			
+
+			// FIXME the WP Codex claimed $content will be null for the self-closing
+			// form, but in practice it is an empty string (WordPress 4.x)
+			if ( empty( $content ) ) {
+				$content = $atts['body'];
+			}
+
 			return '<div class="panel">
 				<div class="panel-heading idevice-heading">
 					<div>
-						<img class="pedagogicalicon" alt="' . $title . '" src="' . $img . '">
+						<img class="pedagogicalicon" alt="' . $label . '" src="' . $img . '">
 					</div>
 				<div>
 					<h2>' . $title . '</h2>
@@ -367,7 +369,7 @@
 			</div>
 			<div class="panel-body">
 				<div class="col-md-12">'
-					. $atts['body'] .
+					. $content .
 				'</div>
 			</div>
 			</div>';
