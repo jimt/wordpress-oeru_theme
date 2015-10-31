@@ -106,7 +106,9 @@ function oeru_theme_shortcodes(){
 		<li>Assignment</li>
 		<li>Question</li>
 		<li>Questions</li>
+		<li>Did you know</li>
 		<li>Did you know?</li>
+		<li>Did you notice</li>
 		<li>Did you notice?</li>
 		<li>Definition</li>
 		<li>Definitions</li>
@@ -117,6 +119,7 @@ function oeru_theme_shortcodes(){
 		<li>Objective</li>
 		<li>Objectives</li>
 		<li>Outcomes</li>
+		<li>Key point</li>
 		<li>Key points</li>
 		<li>Media required</li>
 		<li>Media</li>
