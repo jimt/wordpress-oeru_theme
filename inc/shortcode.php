@@ -202,10 +202,13 @@
 			
 		}
 		
-		function advanced_footer_text_record($atts){
+		function advanced_footer_text_record( $atts, $content = null ){
 		
 			global $post;
 			
+			if ( !empty( $content ) ) {
+				$atts['content'] = $content;
+			}
 			$post->oer_advanced_footer = $atts;
 			
 			return "";

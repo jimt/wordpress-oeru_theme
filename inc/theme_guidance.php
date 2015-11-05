@@ -75,10 +75,14 @@ function oeru_theme_shortcodes(){
 	<p>Example [oeru_basic_footer title="Our University" content="Our address"] - will add a widget with title as the title and content as the content</p>
 	<h2>[oeru_advanced_footer]</h2>
 	<p>Use this short code to place additional content in the footer</p>
-	<p>Example [oeru_advanced_footer content="Our address"] - will add the content to the footer</p>
+	<p>Example <tt>[oeru_advanced_footer content="Our address"]</tt> - will add the content to the footer</p>
+	<p><em>or</em></p>
+	<p><tt>[oeru_advanced_footer]<br>
+	Our address<br>
+	[/oeru_advanced_footer]</tt></p>
 	<h2>[oeru_extended_footer]</h2>
 	<p>Use this short code to place a series of widgets in the footer</p>
-	<p>Example [oeru_extended_footer widget_1_title="hello" widget_1_content="text stuff" widget_2_title="hello" widget_2_content="text stuff" widget_4_title="hello" widget_4_content="text stuff" widget_3_title="hello" widget_3_content="text stuff"] - will add the content to the footer.</p>
+	<p>Example <tt>[oeru_extended_footer widget_1_title="hello" widget_1_content="text stuff" widget_2_title="hello" widget_2_content="text stuff" widget_4_title="hello" widget_4_content="text stuff" widget_3_title="hello" widget_3_content="text stuff"]</tt> - will add the content to the footer.</p>
 	<p>Each title is a widget title, each content is the body of the widget.</p>
 	<h2>[oeru_table]</h2>
 	<p>Use this to add a table</p>
