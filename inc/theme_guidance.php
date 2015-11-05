@@ -89,6 +89,15 @@ function oeru_theme_shortcodes(){
 	<p>Example [oeru_table headings="this|that|there" level_1="maybe" level_2="perhaps" level_3="almost"]</p>
 	<p>The headings value is the top row of the table, with each | separating a column heading</p>
 	<p>Then each value in order from the first is a cell in the table</p>
+	<h2>[oeru_analytics]</h2>
+	<p>Allows specifying one or more web analytics tracking engines.</p>
+	<p>Example <tt>[oeru_analytics type="piwik" url="//stats.oeru.org" id="999999"]</tt></p>
+	<p>Attributes:</p>
+	<dl>
+	  <dt>type</dt><dd>one of <tt>piwik</tt>, <tt>google</tt></dd>
+	  <dt>url</dt><dd>if type is piwik, this specifies the base URL of the piwik tracking engine, e.g. <tt>//stats.oeru.org</tt></dd>
+	  <dt>id</dt><dd>the tracking id for this property</dd>
+	</dl>
 	<h2>[oeru_idevice]</h2>
 	<p>Use this to add a pedagogical template</p>
 	<p>Example [oeru_idevice type="Question" body="What is the best way to do this"]</p>
