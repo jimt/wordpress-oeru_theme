@@ -101,6 +101,7 @@ function oeru_theme_scripts_and_styles() {
 	wp_enqueue_style( 'wordpress-oeru-theme-open-sans-font', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,700,600&subset=latin,greek-ext,greek,cyrillic,latin-ext,vietnamese,cyrillic-ext', array(), '1' );
 	
 	wp_enqueue_script( 'wordpress-oeru_theme-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '20131205', true );
+	wp_enqueue_script( 'wordpress-oeru_theme-swipe', get_template_directory_uri() . '/js/jquery.touchSwipe.min.js', array('jquery'), '20131205', true );
 	wp_enqueue_script( 'wordpress-oeru_theme-scroll', get_template_directory_uri() . '/js/wikieducatorjs/scroll.js', array('jquery'), '20131205', true );
 	if(get_theme_mod("menu_depth")!="two"){
 		wp_enqueue_script( 'wordpress-oeru_theme-menu-fix', get_template_directory_uri() . '/js/wikieducatorjs/menu-fix.js', array('jquery'), '20131205', true );
