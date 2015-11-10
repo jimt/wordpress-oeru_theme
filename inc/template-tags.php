@@ -26,12 +26,12 @@ function oeru_third_level_menu(){
 								<div class="panel panel-default">
 									<div class="nomargin panel-heading">
 										<h2 class="panel-title">
-											<a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
+											<a class="collapsed accordion-toggle" data-toggle="collapse" href="#collapseOne">
 												<span class="glyphicon glyphicon-th-list third_level_menu_title"></span><span class="third_level_menu_title"><?PHP echo $parent->post_title; ?></span>
 											</a>
 										</h2>
 									</div>
-									<div id="collapseOne" class="panel-collapse collapse in">
+									<div id="collapseOne" class="panel-collapse collapse">
 										<div id="pagenav" class="panel-body">
 											<div class="row"><?PHP
 			   
