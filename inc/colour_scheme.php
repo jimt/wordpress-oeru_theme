@@ -22,7 +22,7 @@ EOL;
 	wp_nonce_field( "oeru_theme_colour", "oeru_theme_colour" );
 	echo <<<EOL
 		<br>
-		<input type="submit" value="Change colours" />
+		<input type="submit" value="Change Colours" class="button button-primary" />
 	</form>
 	</div>
 EOL;

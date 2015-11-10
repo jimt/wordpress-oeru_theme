@@ -217,4 +217,6 @@ require_once("inc/colour_scheme.php");
 //Add icon set selection
 require_once("inc/icon_set.php");
 
+//Add analytics configuration
+require_once("inc/analytics.php");
 

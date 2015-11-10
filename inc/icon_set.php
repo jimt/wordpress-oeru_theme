@@ -28,7 +28,7 @@ EOL;
 	}
 	echo <<<EOL
 		<br>
-		<input type="submit" value="Save selection" />
+		<input type="submit" value="Save Selection" class="button button-primary" />
 	</form>
 	</div>
 EOL;
