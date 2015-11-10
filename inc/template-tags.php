@@ -350,10 +350,10 @@ function oeru_theme_extra_style(){
 		}
 
 		.idevice-heading {
-			background-color: <?php echo get_theme_mod('site_idevice_background_colour', '#808080'); ?>;
+			background-color: <?php echo get_theme_mod('site_idevice_background_colour'); ?>;
 		}
 		#main #bodyContent .idevice-heading h2 {
-			color: <?php echo get_theme_mod('site_idevice_colour', '#fff'); ?>;
+			color: <?php echo get_theme_mod('site_idevice_colour'); ?>;
 		}
 		
 	</style><?PHP
