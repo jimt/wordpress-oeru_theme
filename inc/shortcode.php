@@ -383,7 +383,7 @@ EOT;
 					'web resources' => 'Icon_inter.png',
 					'default' => 'Icon_qmark.png'
 				),
-				'Line (black)' => array(
+				'Line-black' => array(
 					'activities' => 'black/Icon_activity.png',
 					'activity' => 'black/Icon_activity.png',
 					'aim' => 'black/Icon_objectives.png',

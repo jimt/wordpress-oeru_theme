@@ -7,7 +7,7 @@ add_action('admin_menu', 'oeru_theme_icon_page');
 
 $oeru_theme_icon_sets = array(
 	"Line" => "",
-	"Line (black)" => "/black",
+	"Line-black" => "/black",
 	"Ind" => "/ind"
 );
 
