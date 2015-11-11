@@ -7,6 +7,7 @@ set_theme_mod('prev_button','on');
 set_theme_mod('menu_depth','two');
 set_theme_mod('scan_page','off');
 set_theme_mod('log_on_page','off');
+set_theme_mod( 'swipe', 'off' );
 set_theme_mod( 'icon_set', 'Line' );
 
 /* set initial colours to the green set */

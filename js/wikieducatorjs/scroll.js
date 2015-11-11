@@ -46,8 +46,9 @@ jQuery( document ).ready( function( $ ) {
 			}
 		);
 
-	
-        setSwipeable('.previous>a', 'right');
-        setSwipeable('.next>a', 'left');
+	if (jQuery.fn.swipe) {
+                setSwipeable('.previous>a', 'right');
+                setSwipeable('.next>a', 'left');
+        }
 } );
 

@@ -196,6 +196,26 @@ function oeru_theme_customize_navigation( $wp_customize ){
 		)
 	);
 	
+	$wp_customize->add_setting(
+		'swipe',
+		array(
+			'default' => 'off',
+		)
+	);
+
+	$wp_customize->add_control(
+		'swipe',
+		array(
+			'type' => 'radio',
+			'label' => 'Enable swipe navigation for previous/next page?',
+			'section' => 'site_navigation',
+			'choices' => array(
+				'on' => "Yes",
+				'off' => "No",
+			),
+		)
+	);
+
 }
 
 function oeru_theme_customize_register_fav_icon( $wp_customize ){
