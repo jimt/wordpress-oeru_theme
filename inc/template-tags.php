@@ -179,7 +179,7 @@ function oeru_theme_extra_style(){
 		
 		.pager li > a, .pager li > span {
 			border: 1px solid <?PHP echo get_theme_mod('site_header_colour'); ?>; 
-			color: <?PHP echo get_theme_mod('site_header_colour'); ?>; !important; 
+			color: <?PHP echo get_theme_mod('site_header_colour'); ?> !important; 
 		}
 	
 		header, 
@@ -284,7 +284,7 @@ function oeru_theme_extra_style(){
 			border-bottom: none;
 		}
 		
-		.body button a{
+		body .button a{
 			color: <?PHP echo get_theme_mod('site_button_text_colour'); ?>;
 		}
 		
