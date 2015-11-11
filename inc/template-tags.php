@@ -177,11 +177,6 @@ function oeru_theme_extra_style(){
 			color: <?PHP echo get_theme_mod('site_header_colour'); ?>; 
 		}
 		
-		.pager li > a, .pager li > span {
-			border: 1px solid <?PHP echo get_theme_mod('site_header_colour'); ?>; 
-			color: <?PHP echo get_theme_mod('site_header_colour'); ?> !important; 
-		}
-	
 		header, 
 		.panel-heading,
 		.faqnav .nav > .active > a,
@@ -269,9 +264,9 @@ function oeru_theme_extra_style(){
 		}
 		
 		body .pager li > a, body .pager li > span{
-			border: 1px solid <?PHP echo get_theme_mod('site_button_colour'); ?>;
-			color: <?PHP echo get_theme_mod('site_button_colour'); ?> !important;
-			background-color: <?PHP echo get_theme_mod('site_button_text_colour'); ?> !important;
+			border: 1px solid <?PHP echo get_theme_mod('site_pager_text_colour', get_theme_mod('site_button_colour')); ?>;
+			color: <?PHP echo get_theme_mod('site_pager_text_colour', get_theme_mod('site_button_colour')); ?> !important;
+			background-color: <?PHP echo get_theme_mod('site_pager_colour', get_theme_mod('site_button_text_colour')); ?> !important;
 		}
 		
 		.course-content .row span:first-child h4 {

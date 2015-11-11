@@ -225,471 +225,86 @@ function oeru_theme_customize_register_fav_icon( $wp_customize ){
 
 function oeru_theme_customize_register_add_site_colours( $wp_customize ) {
 	
+	// map setting name to human readable customizer label
+	$c_colors = array(
+		'site_allsite_background_colour' =>
+			'Site background colour',
+		'site_alllink_colour' =>
+			'Site Link Colour',
+		'site_alllink_hover_colour' =>
+			'Site Link hover Colour',
+		'site_content_background_colour' =>
+			'Site Content Background Colour',
+		'site_alltext_colour' =>
+			'Site Text Colour',
+		'site_footer_colour' =>
+			'Site Footer Text Colour',
+		'site_footer_background_colour' =>
+			'Site Footer Background Colour',
+		'site_menu_background_colour' =>
+			'Site Menu Background Colour',
+		'site_menu_background_hover_colour' =>
+			'Site Menu Background Hover Colour',
+		'site_menu_dropdown_background_colour' =>
+			'Site Menu Dropdown Background Colour',
+		'site_menu_dropdown_background_hover_colour' =>
+			'Site Menu Dropdown Background Hover Colour',
+		'site_menu_background_current_colour' =>
+			'Site Menu Current Page Colour',
+		'site_menu_text_colour' =>
+			'Site Menu Text Colour',
+		'site_menu_text_hover_colour' =>
+			'Site Menu Text Hover Colour',
+		'site_header_colour' =>
+			'Site Header Background Colour',
+		'site_header_text_colour' =>
+			'Site Header Text Colour',
+		'site_idevice_colour' =>
+			'iDevice Header Text Colour',
+		'site_idevice_background_colour' =>
+			'iDevice Header Background Colour',
+		'site_top_background_colour' =>
+			'Top Background Colour',
+		'site_button_colour' =>
+			'Button Colour',
+		'site_button_text_colour' =>
+			'Button Text Colour',
+		'site_pager_colour' =>
+			'Previous/Next Colour',
+		'site_pager_text_colour' =>
+			'Previous/Next Text/Border Colour',
+		'site_pagenav_colour' =>
+			'Page Navigation Colour',
+		'site_pagenav_current_colour' =>
+			'Page Navigation Current Item Colour',
+	);
+
 	$wp_customize->add_section( 'site_colours' , array(
 		'title'      => __( 'Site Colours', 'oeru_theme' ),
 		'priority'   => 30,
 	) );
 	
-	$wp_customize->add_setting(
-		'site_allsite_background_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_allsite_background_colour',
+	foreach ( $c_colors as $k => $v ) {
+		$wp_customize->add_setting(
+			$k,
 			array(
-				'label' => 'Site background colour',
-				'section' => 'site_colours',
-				'settings' => 'site_allsite_background_colour'
+				'default' => '',
+				'transport' => 'postMessage',
 			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_alllink_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_alllink_colour',
-			array(
-				'label' => 'Site Link Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_alllink_colour'
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$k,
+				array(
+					'label' => $v,
+					'section' => 'site_colours',
+					'settings' => $k
+				)
 			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_alllink_hover_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_content_background_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_content_background_colour',
-			array(
-				'label' => 'Site Content Background Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_content_background_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_alllink_hover_colour',
-			array(
-				'label' => 'Site Link hover Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_alllink_hover_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_alltext_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_alltext_colour',
-			array(
-				'label' => 'Site Text Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_alltext_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_footer_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_footer_colour',
-			array(
-				'label' => 'Site Footer Text Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_footer_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_footer_background_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_footer_background_colour',
-			array(
-				'label' => 'Site Footer Background Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_footer_background_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_menu_background_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_menu_background_colour',
-			array(
-				'label' => 'Site Menu Background Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_menu_background_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_menu_background_hover_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_menu_background_hover_colour',
-			array(
-				'label' => 'Site Menu Background Hover Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_menu_background_hover_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_menu_dropdown_background_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_menu_dropdown_background_colour',
-			array(
-				'label' => 'Site Menu Dropdown Background Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_menu_dropdown_background_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_menu_dropdown_background_hover_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_menu_dropdown_background_hover_colour',
-			array(
-				'label' => 'Site Menu Dropdown Background Hover Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_menu_dropdown_background_hover_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_menu_background_current_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_menu_background_current_colour',
-			array(
-				'label' => 'Site Menu Current Page Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_menu_background_current_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_menu_text_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_menu_text_colour',
-			array(
-				'label' => 'Site Menu Text Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_menu_text_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_menu_text_hover_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_menu_text_hover_colour',
-			array(
-				'label' => 'Site Menu Text Hover Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_menu_text_hover_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_header_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_header_colour',
-			array(
-				'label' => 'Site Header Background Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_header_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_header_text_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_header_text_colour',
-			array(
-				'label' => 'Site Header Text Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_header_text_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_idevice_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_idevice_colour',
-			array(
-				'label' => 'iDevice Text Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_idevice_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_idevice_background_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_idevice_background_colour',
-			array(
-				'label' => 'iDevice Header Background Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_idevice_background_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_top_background_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_top_background_colour',
-			array(
-				'label' => 'Top Background Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_top_background_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_button_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_button_colour',
-			array(
-				'label' => 'Button Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_button_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_button_text_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_button_text_colour',
-			array(
-				'label' => 'Button Text Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_button_text_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_pagenav_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_pagenav_colour',
-			array(
-				'label' => 'Page Navigation Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_pagenav_colour'
-			)
-		)
-	);
-	
-	$wp_customize->add_setting(
-		'site_pagenav_current_colour',
-		array(
-			'default' => '',
-			'transport' => 'postMessage',
-		)
-	);
-	
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'site_pagenav_current_colour',
-			array(
-				'label' => 'Page Navigation Current Item Colour',
-				'section' => 'site_colours',
-				'settings' => 'site_pagenav_current_colour'
-			)
-		)
-	);
-	
+		);
+	}
 }
 
 function oeru_theme_customize_register_modify_static_page( $wp_customize ) {
