@@ -109,7 +109,8 @@ function oeru_theme_shortcodes(){
 	<p>The type value sets the title on the page and the associated image. Body sets what appears below this.</p>
 	<p>If you use title="This is my title" it overrides the displayed title for this iDevice.</p>
 	<p>The types are as follows:</p>
-	<ul>
+	<div style="-webkit-column-width: 20em; -moz-column-width: 20em; column-width: 20em;">
+	<ul style="margin-top: 0;">
 		<li>Activity</li>
 		<li>Activities</li>
 		<li>Aim</li>
@@ -146,6 +147,7 @@ function oeru_theme_shortcodes(){
 		<li>Preknowledge</li>
 		<li>Web resources</li>
 	</ul>
+	</div>
 	<h2>[oeru_fitb]</h2>
 	<p>Use this to create a fill in the blank area</p>
 	<p>Example [oeru_fitb answer="lima"] to create an area which will the learner will need to enter lima to have it accepted as an answer</p>
