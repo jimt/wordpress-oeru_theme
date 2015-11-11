@@ -297,6 +297,8 @@ function oeru_theme_customize_register_add_site_colours( $wp_customize ) {
 			'Page Navigation Colour',
 		'site_pagenav_current_colour' =>
 			'Page Navigation Current Item Colour',
+		'site_pagenav_bottom' =>
+			'Page Navigation Bottom Border',
 	);
 
 	$wp_customize->add_section( 'site_colours' , array(

@@ -54,6 +54,7 @@ $oeru_colours = array(
 			'site_pager_text_colour' => '#004d92',
 			'site_pagenav_colour' => '#D0E9FF',
 			'site_pagenav_current_colour' => '#98D6F6',
+			'site_pagenav_bottom' => '#dddddd',
 		),
 	'green' => array(
 			'site_allsite_background_colour' => '#efefef',
@@ -80,6 +81,7 @@ $oeru_colours = array(
 			'site_pager_text_colour' => '#649d23',
 			'site_pagenav_colour' => '#b6f26d',
 			'site_pagenav_current_colour' => '#8bd62f',
+			'site_pagenav_bottom' => '#dddddd',
 		),
 	'red' => array(
 			'site_allsite_background_colour' => '#efefef',
@@ -106,6 +108,7 @@ $oeru_colours = array(
 			'site_pager_text_colour' => '#fcc572',
 			'site_pagenav_colour' => '#ffffff',
 			'site_pagenav_current_colour' => '#fcc572',
+			'site_pagenav_bottom' => '#dddddd',
 		)
 );
 

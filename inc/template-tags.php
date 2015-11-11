@@ -297,6 +297,10 @@ function oeru_theme_extra_style(){
 			/* #98D6F6; */
 			background-color: <?PHP echo get_theme_mod('site_pagenav_current_colour'); ?>;   
 		}
+
+		.third-level-nav .panel {
+			border-bottom-color: <?PHP echo get_theme_mod( 'site_pagenav_bottom', '#ddd' ); ?>;
+		}
 		
 		article .container .row .panel,
 		.commentlist li article,
