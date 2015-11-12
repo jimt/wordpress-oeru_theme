@@ -275,6 +275,10 @@ function oeru_theme_customize_register_add_site_colours( $wp_customize ) {
 			'Site Menu Text Colour',
 		'site_menu_text_hover_colour' =>
 			'Site Menu Text Hover Colour',
+		'site_menu_dropdown_text_colour' =>
+			'Site Menu Dropdown Text Colour',
+		'site_menu_dropdown_text_hover_colour' =>
+			'Site Menu Dropdown Text Hover Colour',
 		'site_header_colour' =>
 			'Site Header Background Colour',
 		'site_header_text_colour' =>

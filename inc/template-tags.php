@@ -143,8 +143,12 @@ function oeru_theme_extra_style(){
 			color :  <?PHP echo get_theme_mod('site_menu_text_colour'); ?>; 
 		}
 		
+		.dropdown-menu > li > a {
+			color: <?PHP echo get_theme_mod( 'site_menu_dropdown_text_colour', get_theme_mod( 'site_menu_text_colour' ) ); ?>;
+		}
+
 		.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-			color: <?PHP echo get_theme_mod('site_menu_text_hover_colour'); ?>;
+			color: <?PHP echo get_theme_mod( 'site_menu_dropdown_text_hover_colour', get_theme_mod( 'site_menu_text_hover_colour' )); ?>;
 			background-color: <?PHP echo get_theme_mod('site_menu_dropdown_background_hover_colour'); ?>;
 		}
 		
