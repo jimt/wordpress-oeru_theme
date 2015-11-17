@@ -74,6 +74,7 @@ footer#colophon{
 
 .tright{
 	float:right;
+	margin-left: 2em;
 }
 
 .thumbinner{
@@ -99,6 +100,7 @@ footer#colophon{
 
 .floatleft{
 	float:left;
+	margin-right: 2em;
 }
 
 div.weQuiz{
