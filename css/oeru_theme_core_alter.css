@@ -327,7 +327,7 @@ li {
 
 /* jQuery UI */
 
-.panel-heading .accordion-toggle:hover, .panel-heading .accordion-toggle:visited, .panel-heading .accordion-toggle:focus {
+.accordion-toggle:hover, .accordion-toggle:visited, .accordion-toggle:focus {
 	text-decoration: none;
 }
 
@@ -351,6 +351,21 @@ footer li{
 #content .accordion  .ui-accordion-content{
 	padding: 10px;
 }
+
+/* third level menu clickable panel */
+.accordion-toggle .panel-heading .third_level_menu_title-title:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e113";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: #fff;         /* adjust as needed */
+}
+.accordion-toggle.collapsed .panel-heading .third_level_menu_title-title:after {
+    /* symbol for "collapsed" panels */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+}
+
+
 
 /* Short codes */
 
