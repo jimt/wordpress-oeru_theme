@@ -255,8 +255,6 @@ function oeru_theme_customize_register_add_site_colours( $wp_customize ) {
 			'Site Link hover Colour',
 		'site_content_background_colour' =>
 			'Site Content Background Colour',
-		'site_alltext_colour' =>
-			'Site Text Colour',
 		'site_footer_colour' =>
 			'Site Footer Text Colour',
 		'site_footer_background_colour' =>

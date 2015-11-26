@@ -12,7 +12,7 @@ function oeru_theme_colour_menu($colours, $header=null) {
 	}
 	echo <<<EOL
 <form action="" method="POST">
-<p>You can use the customiser to change colour scheme or select a standard one here.</p>
+<p>You can select a colour scheme here as a starting point, and then use the customiser to tweak it.</p>
 EOL;
 	foreach ($colours as $colour => $v) {
 		echo <<<EOL
@@ -29,6 +29,35 @@ EOL;
 }
 
 $oeru_colours = array(
+	'black/yellow' => array(
+			'site_allsite_background_colour' => '#ffffff',
+			'site_alllink_colour' => '#005a96',
+			'site_alllink_hover_colour' =>  '#005a96',
+			'site_content_background_colour' => '#fefefe',
+			'site_footer_colour' => '#868a8d',
+			'site_footer_background_colour' => '#42484D',
+			'site_menu_background_colour' => '#1e1e1e',
+			'site_menu_background_hover_colour' => '#1e1e1e',
+			'site_menu_dropdown_background_colour' => '#efe9e5',
+			'site_menu_dropdown_background_hover_colour' => '#aca095',
+			'site_top_background_colour' => '#ffffff',
+			'site_menu_background_current_colour' => '#76848f',
+			'site_menu_text_colour' => '#ffffff',
+			'site_menu_text_hover_colour' => '#ffd100',
+			'site_menu_dropdown_text_colour' => '#000000',
+			'site_menu_dropdown_text_hover_colour' => '#494949',
+			'site_header_colour' => '#1e1e1e',
+			'site_header_text_colour' => '#ffffff',
+			'site_idevice_colour' => '#1e1e1e',
+			'site_idevice_background_colour' => '#ffd100',
+			'site_button_colour' => '#ffd100',
+			'site_button_text_colour' => '#000000',
+			'site_pager_colour' => '#000000',
+			'site_pager_text_colour' => '#ffffff',
+			'site_pagenav_colour' => '#efe9e5',
+			'site_pagenav_current_colour' => '#faa61a',
+			'site_pagenav_bottom' => '#ffffff',
+		),
 	'blue' => array(
 			'site_allsite_background_colour' => '#efefef',
 			'site_alllink_colour' => '#180084',
@@ -115,7 +144,7 @@ $oeru_colours = array(
 			'site_pagenav_colour' => '#ffffff',
 			'site_pagenav_current_colour' => '#fcc572',
 			'site_pagenav_bottom' => '#dddddd',
-		)
+		),
 );
 
 function oeru_theme_set_colours( $colour_name ) {
