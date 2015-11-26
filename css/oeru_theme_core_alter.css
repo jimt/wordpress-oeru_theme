@@ -327,6 +327,10 @@ li {
 
 /* jQuery UI */
 
+.panel-heading .accordion-toggle:hover, .panel-heading .accordion-toggle:visited, .panel-heading .accordion-toggle:focus {
+	text-decoration: none;
+}
+
 .accordion .ui-state-active .ui-icon,
 .accordion .ui-state-default .ui-icon{
 	background-image: url("images/ui-icons_ffffff_256x240.png");
