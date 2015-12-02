@@ -601,3 +601,8 @@ li.gallerybox{
 	display: none;
 }
 
+a.external {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
