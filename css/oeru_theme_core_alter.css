@@ -76,7 +76,10 @@ footer#colophon{
 	float:right;
 	margin-left: 2em;
 }
-
+.tleft {
+	float:left;
+	margin-right: 2em;
+}
 .thumbinner{
 	display: inline-block;
 	padding: 4px;
