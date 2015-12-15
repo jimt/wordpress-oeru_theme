@@ -449,28 +449,34 @@ EOT;
 				$title = $label;
 			}
 
+			$added_classes = '';
+			if ( isset( $atts['classes'] ) ) {
+				$added_classes = ' ' . str_replace( '"', '', $atts['classes'] );
+			}
+
 			// FIXME the WP Codex claimed $content will be null for the self-closing
 			// form, but in practice it is an empty string (WordPress 4.x)
 			if ( empty( $content ) ) {
 				$content = $atts['body'];
 			}
 
-			return '<div class="panel">
-				<div class="panel-heading idevice-heading">
-					<div>
-						<img class="pedagogicalicon" alt="' . $label . '" src="' . $img . '">
-					</div>
-				<div>
-					<h2>' . $title . '</h2>
-				</div>
-			</div>
-			<div class="panel-body">
-				<div class="col-md-12">'
-					. $content .
-				'</div>
-			</div>
-			</div>';
-        	
+			return <<<EOD
+<div class="panel">
+	<div class="panel-heading idevice-heading">
+		<div>
+			<img class="pedagogicalicon" alt="$label" src="$img">
+		</div>
+		<div>
+			<h2>$title</h2>
+		</div>
+	</div>
+	<div class="panel-body$added_classes">
+		<div class="col-md-12">
+			$content
+		</div>
+	</div>
+</div>
+EOD;
 		}
 		
 		function fitb($atts){
