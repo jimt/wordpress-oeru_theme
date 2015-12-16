@@ -69,7 +69,7 @@ strong
     line-height: 28px;
     font-weight: 300;
 }
-ul li {
+ul {
     font-weight: 300;
     list-style-type: disc;
 }
@@ -236,3 +236,4 @@ color: #FFF;
         margin-top: 0px !important;
     }
 }
+

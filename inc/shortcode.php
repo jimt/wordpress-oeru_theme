@@ -461,7 +461,7 @@ EOT;
 			}
 
 			return <<<EOD
-<div class="panel">
+<div class="panel iDevice$added_classes">
 	<div class="panel-heading idevice-heading">
 		<div>
 			<img class="pedagogicalicon" alt="$label" src="$img">
@@ -470,7 +470,7 @@ EOT;
 			<h2>$title</h2>
 		</div>
 	</div>
-	<div class="panel-body$added_classes">
+	<div class="panel-body">
 		<div class="col-md-12">
 			$content
 		</div>
