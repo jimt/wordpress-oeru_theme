@@ -55,33 +55,33 @@ function oeru_theme_shortcodes(){
 	<p>Use this short code to place a button on a page</p>
 	<p>Example [oeru_button target="_blank" title="search the web with google" href="http://www.google.com" label="google"] - will display a button labelled google which will open google in a new window</p>
 	<h2>[oeru_feedback_button]</h2>
-	<p>Use this short code to place a button on a page which when clicked on reveals feedback</p>
-	<p>Example [oeru_feedback_button label="Explain this" feedback="it is easy"] - will display a button labelled Explain this which when clicked on will reveal the feedback</p>
+	<p>Use this short code to place a button on a page which when clicked on reveals feedback.</p>
+	<p>Example [oeru_feedback_button label="Explain this" feedback="it is easy"] - will display a button labelled Explain this which when clicked on will reveal the feedback.</p>
 	<h2>[oeru_faq]</h2>
 	<p>Use this short code to place a clickable, expandable option on a page</p>
-	<p>Example [oeru_faq question="What is this?" feedback="It is a FAQ"] - will display a the text in question which when clicked on will reveal the feedback</p>
+	<p>Example [oeru_faq question="What is this?" feedback="It is a FAQ"] - will display a the text in question which when clicked on will reveal the feedback.</p>
 	<h2>[oeru_hint]</h2>
 	<p>Use this short code to place a clickable, expandable option on a page (as above but with an information symbol)</p>
-	<p>Example [oeru_hint hint="What is this?" reveal="It is a FAQ"] - will display a the text in hint which when clicked on will reveal the text in revea</p>
+	<p>Example [oeru_hint hint="What is this?" reveal="It is a FAQ"] - will display a the text in hint which when clicked on will reveal the text in reveal.</p>
 	<h2>[oeru_accordion]</h2>
-	<p>Use this short code to place a clickable, expandable option on a page (as above but with an information symbol)</p>
+	<p>Use this short code to place a clickable, expandable option on a page (as above but with an information symbol).</p>
 	<p>Example [oeru_accordion title="What is Science?" body="Lots of things"] - will display an accordion.</p>
 	<h2>[oeru_accordion_multi]</h2>
 	<p>Use this short code to place multiple, clickable, expandable option on a page (as above but multiple labels)</p>
 	<p>If you want one level to be open add <em>active="number of that level"</em> to have a level open when the page loads. In the example below, science is 1, and art is 2</p>
-	<p>Example [oeru_accordion_multi science="What is Science?" science_data="Lots of things" art="What is Art?" art_data="Not science"] - will display an accordion. The clickable label can be called whatever you want, but the content for that click must be the same name but with _data amended</p>
+	<p>Example [oeru_accordion_multi science="What is Science?" science_data="Lots of things" art="What is Art?" art_data="Not science"] - will display an accordion. The clickable label can be called whatever you want, but the content for that click must be the same name but with _data amended.</p>
 	<h2>[oeru_basic_footer]</h2>
-	<p>Use this short code to place an additional widget</p>
-	<p>Example [oeru_basic_footer title="Our University" content="Our address"] - will add a widget with title as the title and content as the content</p>
+	<p>Use this short code to place an additional widget.</p>
+	<p>Example [oeru_basic_footer title="Our University" content="Our address"] - will add a widget with title as the title and content as the content.</p>
 	<h2>[oeru_advanced_footer]</h2>
-	<p>Use this short code to place additional content in the footer</p>
+	<p>Use this short code to place additional content in the footer.</p>
 	<p>Example <tt>[oeru_advanced_footer content="Our address"]</tt> - will add the content to the footer</p>
 	<p><em>or</em></p>
 	<p><tt>[oeru_advanced_footer]<br>
 	Our address<br>
 	[/oeru_advanced_footer]</tt></p>
 	<h2>[oeru_extended_footer]</h2>
-	<p>Use this short code to place a series of widgets in the footer</p>
+	<p>Use this short code to place a series of widgets in the footer.</p>
 	<p>Example <tt>[oeru_extended_footer widget_1_title="hello" widget_1_content="text stuff" widget_2_title="hello" widget_2_content="text stuff" widget_4_title="hello" widget_4_content="text stuff" widget_3_title="hello" widget_3_content="text stuff"]</tt> - will add the content to the footer.</p>
 	<p>Each title is a widget title, each content is the body of the widget.</p>
 	<h2>[oeru_table]</h2>
@@ -150,27 +150,27 @@ function oeru_theme_shortcodes(){
 	</div>
 	<h2>[oeru_fitb]</h2>
 	<p>Use this to create a fill in the blank area</p>
-	<p>Example [oeru_fitb answer="lima"] to create an area which will the learner will need to enter lima to have it accepted as an answer</p>
+	<p>Example [oeru_fitb answer="lima"] to create an area which will the learner will need to enter lima to have it accepted as an answer.</p>
 	<h2>[oeru_true_false]</h2>
 	<p>Use this to create a true or false question</p>
-	<p>Example [oeru_true_false question="which way is up?" option_1_answer="up" option_1="true" option_1_text="Well done!" option_1_feedback="yes that is up" option_2_answer="down" option_2="false" option_2_text="Wrong!" option_2_feedback="No, up was the correct aswer"] </p>
+	<p>Example [oeru_true_false question="which way is up?" option_1_answer="up" option_1="true" option_1_text="Well done!" option_1_feedback="yes that is up" option_2_answer="down" option_2="false" option_2_text="Wrong!" option_2_feedback="No, up was the correct answer"] </p>
 	<p>This will create two options, "up" and "down". Use option_1 to say whether it is true or false - option_2 for question 2. Option_1_text is the text after the tick or cross, and the feedback is what appears after that</p>
 	<h2>[oeru_mcq]</h2>
-	<p>Use this to create a multiple choice question. Only one answer can be correct</p>
+	<p>Use this to create a multiple choice question. Only one answer can be correct.</p>
 	<p>Example [oeru_mcq question="which is biggest?" option_1="The Sun" option_1_feedback_response="correct" option_1_feedback="Well done!" option_2="The Moon" option_2_feedback_response="incorrect" option_2_feedback="Wrong" option_3="The Earth" option_3_feedback_response="incorrect" option_3_feedback="Wrong"]   </p>
 	<p>This will create three clickable options, with these being set by option_ and then a number. Each option has a _feedback_response to say it correct or incorrect, and then a _feedback for the text which is displayed on screen</p>
 	<h2>[oeru_mtq]</h2>
 	<p>Creates a quiz in which a series of answers need to be marked as correct to achieve success</p>
 	<p>Example [oeru_mtq question="Which is what?" success=""ell done amazing work let's move on" failure="oh dear, why did you do that" question_1="is this true" question_1_status="correct" question_2="is this not true" question_2_status="incorrect" question_2="is this not true" question_2_status="incorrect" question_3="correct" question_3_status="correct" question_4="incorrect" question_4_status="incorrect" label="check your answers"] </p>
-	<p>So question sets the question text. Success sets the positive feedback, failure the next feedback. Question_ and then a number creates a possible, with _status setting that question as correct or incorrect. Label is the text on the button</p>
+	<p>So question sets the question text. Success sets the positive feedback, failure the next feedback. Question_ and then a number creates a possible, with _status setting that question as correct or incorrect. Label is the text on the button.</p>
 	<h2>[oeru_column]</h2>
 	<p>Creates columns</p>
 	<p>Example [oeru_column per_row="2" column1="hello" column2="goodbye" column3="amazing"]</p>
-	<p>"Per row" is how many columns in a line acorss the page. The other variables are the content for each column</p>
+	<p>"Per row" is how many columns in a line across the page. The other variables are the content for each column.</p>
 	<h2>[oeru_quotation]</h2>
 	<p>Displays a quotation</p>
 	<p>Example [oeru_quotation quote="What is google?" name="John Doe" link="http://www.google.com" number="1"]</p>
-	<p>This will display the quote "What is google?", attributed to John Doe, with a clickable link to google, and a footnote of 1</p>
+	<p>This will display the quote "What is google?", attributed to John Doe, with a clickable link to google, and a footnote of 1.</p>
 	<?PHP
 }
 
