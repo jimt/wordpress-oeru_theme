@@ -5,7 +5,7 @@ jQuery(document).ready(function() {
     
     function showLoginForm() {
         $('#loginbutton,#goregisterbutton,#goforgotbutton').show();
-        $('.regodiv,#registerbutton,#gologinbutton').hide();
+        $('.regodiv,#registerbutton,#gologinbutton,.help-block').hide();
         $('#userstatus').html('');
     }
     
@@ -22,8 +22,10 @@ jQuery(document).ready(function() {
           email = $.trim($('#useremail').val()),
           courseblog = $.trim($('#courseblog').val()),
           security = $('#security').val();
+      console.log('processForm', bdo);
       $('.oeru-user-login-button').prop('disabled', true);
       $('#userstatus').text('Processing...');
+      console.log('url', oeru_user_object.ajaxurl);
       $.ajax({
           type: 'POST',
           dataType: 'json',
@@ -41,13 +43,17 @@ jQuery(document).ready(function() {
           },
           success: function(data) {
               var msg = '';
+              console.log('data', data);
               if (data.hasOwnProperty('result')) {
                   msg = data.result.replace(/<a[^>]*>[^<]*<\/a>/g, '');
+                  console.log('result msg', msg);
               }
               if (data.hasOwnProperty('error')) {
                   msg = data.error.replace(/<a[^>]*>[^<]*<\/a>/g, '');
+                  console.log('msg', msg);
                   $('#userstatus').html(msg);
               } else if (data.hasOwnProperty('loggedin')) {
+                console.log('got a logged in result');
                 // use the messages, but remove the links
                 $('#userstatus').html(msg);
                 if (data.loggedin === true) {
@@ -101,7 +107,7 @@ jQuery(document).ready(function() {
     $('#goregisterbutton').click(function() {
         // convert to a registration form
         $('#loginbutton,#goregisterbutton,#goforgotbutton').hide();
-        $('#registerbutton,#gologinbutton').show();
+        $('#registerbutton,#gologinbutton,.help-block').show();
         $('.regodiv').show();
     });
 

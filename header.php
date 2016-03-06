@@ -125,7 +125,8 @@
 		      	<form>
 		      		<div class="form-group">
 		      			<label for="username">Username</label>
-		      			<input type="text" class="form-control" id="username" placeholder="user">
+		      			<input type="text" class="form-control" id="username" placeholder="user" aria-describedby="helpUsername">
+		      			<span id="helpUsername" class="help-block">Use lower case letters and numbers, no spaces or special characters.</span>
 		      		</div>
 		      		<div class="form-group regodiv" style="display: none;">
 		      			<label for="name">Name</label>
@@ -133,7 +134,8 @@
 		      		</div>
 		      		<div class="form-group">
 		      			<label for="password">Password</label>
-		      			<input type="password" class="form-control" id="password">
+		      			<input type="password" class="form-control" id="password" aria-describedby="helpPassword">
+		      			<span id="helpPassword" class="help-block">At least 6 characters.</span>
 		      		</div>
 		      		<div class="form-group regodiv" style="display: none;">
 		      			<label for="confirmpassword">Confirm password</label>
@@ -144,7 +146,7 @@
 		      			<input type="text" class="form-control" id="useremail" placeholder="me@example.com">
 		      		</div>
 		      		<div class="form-group regodiv" style="display: none;">
-		      			<label for="courseblog">Course blog</label>
+		      			<label for="courseblog">Blog URL</label>
 		      			<input type="text" class="form-control" id="courseblog" placeholder="http://example.com/feed.rss">
 		      		</div>
 		      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
