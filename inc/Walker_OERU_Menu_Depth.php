@@ -41,6 +41,7 @@ class Walker_OERU_Menu_Depth extends Walker {
 	}
 	
     function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+    	global $fixup;
 		if($depth<=1){
 	
 			$page_class = "";
@@ -100,7 +101,7 @@ class Walker_OERU_Menu_Depth extends Walker {
 
 			$output .=  "</a>";
 		
-		} else if ( fixup && ( $depth == 2 ) ) {
+		} else if ( $fixup && ( $depth == 2 ) ) {
 			// backfill the last first second level URL with the first third level one
 			$output = str_replace( '-OERU--SECOND-LEVEL-MENU', $item->url, $output );
 			$fixup = false;
