@@ -82,7 +82,7 @@
 							
 								if(get_theme_mod("log_on_page")=="on"):
 							
-									?><li><a href="<?PHP echo wp_login_url(); ?>"><span class="glyphicon glyphicon-user"></span></a></li><?PHP
+									?><li><a data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span></a></li><?PHP
 							
 								endif;
 							
@@ -91,6 +91,86 @@
 				</div>
 			</nav>
 		</div>
+		<?PHP if (get_theme_mod("log_on_page") == "on"):
+		?><div id="userModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="logintitle">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		      	<?php if (is_user_logged_in()):
+		        ?><h4 class="modal-title" id="logintitle">Update / Logout</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<?php
+		      	global $current_user, $user_ID, $user_email;
+		      	get_currentuserinfo();
+		      	?>
+		      	<form>
+		      		<div class="form-group">
+		      			<label for="name">Name</label>
+		      			<input type="text" class="form-control update-field" id="name" value="<?php echo $current_user->display_name; ?>">
+		      		</div>
+		      		<div class="form-group">
+		      			<label for="useremail">Email</label>
+		      			<input type="text" class="form-control update-field" id="useremail" value="<?php echo $user_email; ?>">
+		      		</div>
+		      		<div class="form-group">
+		      			<label for="courseblog">Course blog</label>
+		      			<input type="text" class="form-control update-field" id="courseblog" value="<?php echo get_user_meta($user_ID, 'url_' . get_current_blog_id(), true); ?>">
+		      		</div>
+		      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
+		      	</form>
+		      	<?php else:
+		        ?><h4 class="modal-title" id="logintitle">Login / Register</h4>
+		      	<form>
+		      		<div class="form-group">
+		      			<label for="username">Username</label>
+		      			<input type="text" class="form-control" id="username" placeholder="user">
+		      		</div>
+		      		<div class="form-group regodiv" style="display: none;">
+		      			<label for="name">Name</label>
+		      			<input type="text" class="form-control" id="name" placeholder="Sue Smith">
+		      		</div>
+		      		<div class="form-group">
+		      			<label for="password">Password</label>
+		      			<input type="password" class="form-control" id="password">
+		      		</div>
+		      		<div class="form-group regodiv" style="display: none;">
+		      			<label for="confirmpassword">Confirm password</label>
+		      			<input type="password" class="form-control" id="confirmpassword">
+		      		</div>
+		      		<div class="form-group regodiv" style="display: none;">
+		      			<label for="useremail">Email</label>
+		      			<input type="text" class="form-control" id="useremail" placeholder="me@example.com">
+		      		</div>
+		      		<div class="form-group regodiv" style="display: none;">
+		      			<label for="courseblog">Course blog</label>
+		      			<input type="text" class="form-control" id="courseblog" placeholder="http://example.com/feed.rss">
+		      		</div>
+		      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
+	      		</form>
+		      	<?php endif;
+	      		?><p id="userstatus" style="color: red;">&nbsp;</p>
+		      	</a>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      	<?php if (is_user_logged_in()):
+		        ?><a href="<?php echo wp_logout_url(get_permalink());?>" class="btn btn-default oeru-user-login-button" id="logoutbutton">Logout</a>
+		        <button type="button" class="btn btn-primary oeru-user-login-button" id="updatebutton">Update</button>
+		      	<?php else:
+		        ?><button type="button" class="btn btn-default oeru-user-login-button" id="goregisterbutton">Register</button>
+		        <a class="btn btn-default oeru-user-login-button" id="goforgotbutton" href="<?php echo wp_lostpassword_url(get_permalink()); ?>">Forgot password</a>
+		        <button type="button" class="btn btn-primary oeru-user-login-button" id="loginbutton">Login</button>
+		        <button type="button" class="btn btn-primary oeru-user-login-button" style="display: none;" id="registerbutton">Register</button>
+		        <button type="button" class="btn btn-default oeru-user-login-button" style="display: none;" id="gologinbutton">Login</button>
+		      	<?php endif;
+		      ?></div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<?PHP endif;
+		?>
     </header>
 	<div id="scroller">Scroll to the top</div>
 	<div id="main" class="site-main">

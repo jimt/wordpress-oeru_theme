@@ -117,6 +117,12 @@ function oeru_theme_scripts_and_styles() {
 	wp_enqueue_script( 'wordpress-oeru_theme-fitb_shortcode', get_template_directory_uri() . '/js/wikieducatorjs/oeru_fitb.js', array('jquery'), '20131205', true );
 	wp_localize_script( 'wordpress-oeru_theme-fitb_shortcode', 'wordpress_oeru_theme_fitb_shortcode', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'answerNonce' => wp_create_nonce( 'oeru_fitb_check' ) ) );
 
+	if (get_theme_mod('log_on_page') == 'on') {
+		wp_enqueue_script( 'wordpress-oeru_user', get_template_directory_uri() . '/js/wikieducatorjs/oeru_user.js', array('jquery'), '20160305', true );
+		wp_localize_script( 'wordpress-oeru_user', 'oeru_user_object', array(
+			'ajaxurl' => admin_url('admin-ajax.php')
+		));
+	}
 }
 add_action( 'wp_enqueue_scripts', 'oeru_theme_scripts_and_styles' );
 
@@ -189,6 +195,157 @@ function oeru_theme_allow_iframe( $allowedposttags ) {
 	return $allowedposttags;
 }
 add_filter( 'wp_kses_allowed_html', 'oeru_theme_allow_iframe' );
+
+/* AJAX login/update API
+ * called with 'bdo' set to 'login', 'register', or 'update'
+ */
+add_action('wp_ajax_oerulogin', 'oeru_login');
+add_action('wp_ajax_nopriv_oerulogin', 'oeru_login');
+function oeru_login_response($a) {
+	echo json_encode($a);
+	die();
+}
+
+function oeru_login() {
+	check_ajax_referer('oeru_user_nonce', 'security');
+	
+	$blogid = get_current_blog_id();
+	$bdo = (isset($_POST['do'])) ? $_POST['do'] : '';
+	switch ($bdo) {
+		case 'login':
+			$uin = array(
+				'user_login' => $_POST['username'],
+				'user_password' => $_POST['password'],
+				'remember' => true
+			);
+			$ouser = wp_signon($uin, false);
+			if (is_wp_error($ouser)) {
+				oeru_login_response(array(
+					'loggedin' => false,
+					'result' => $ouser->get_error_message()
+				));
+			} else {
+				oeru_login_response(array(
+					'loggedin' => true,
+					'result' => 'Logged in, redirecting...'
+				));
+			}
+			break;
+		case 'register':
+			$password = trim($_POST['password']);
+			$cpw = trim($_POST['confirmpassword']);
+			$username = trim($_POST['username']);
+			$email = trim($_POST['useremail']);
+			$display_name = sanitize_text_field($_POST['name']);
+			$meta = array(
+				"url_$blogid" => sanitize_text_field($_POST['courseblog'])
+			);
+			if (strlen($password) == 0 || strlen($cpw) == 0 || strlen($username) == 0 || strlen($email) == 0) {
+				oeru_login_response(array(
+					'registered' => false,
+					'result' => 'Username, password(s), and email are required.'
+				));
+			}
+			if (strlen($password) < 2) {
+				oeru_login_response(array(
+					'registered' => false,
+					'result' => 'Password must be at least 6 characters.'
+				));
+			}
+			if ($password != $cpw) {
+				oeru_login_response(array(
+					'registered' => false,
+					'result' => 'Passwords do not match.'
+				));
+			}
+			$pw = trim($_POST['password']);
+			$r = wpmu_validate_user_signup($username, $email);
+			$username = $r['user_name'];	// sanitized username
+			if (sizeof($r['errors']->errors) > 0) {
+				oeru_login_response(array(
+					'registered' => false,
+					'result' => 'validate: ' . $r['errors']->get_error_message()
+				));
+			}
+			$user_id = wpmu_create_user($username, $password, $email);
+			if ($user_id === false) {
+				oeru_login_response(array(
+					'registered' => false,
+					'result' => "Unable to create user: $username"
+				));
+			}
+			$r = add_user_to_blog(get_current_blog_id(), $user_id, 'subscriber');
+			if (is_wp_error($r)) {
+				oeru_login_response(array(
+					'registered' => false,
+					'result' => 'addtoblog: ' . $r->get_error_message()
+				));
+			}
+			$credentials = array(
+				'user_login' => $username,
+				'user_password' => $password,
+				'remember' => true
+			);
+			$user = wp_signon($credentials, false);
+			if (is_wp_error($user)) {
+				oeru_login_response(array(
+					'registered' => false,
+					'result' => 'signon: ' . $user->get_error_message()
+				));
+			}
+			wp_set_current_user($user_id);
+			wp_set_auth_cookie($user_id);
+			wp_update_user(array(
+				'ID' => $user_id,
+				'display_name' => $display_name
+			));
+			foreach($meta as $k => $v) {
+				update_user_meta($user_id, $k, $v);
+			}
+			oeru_login_response(array(
+				'registered' => true,
+				'result' => 'Registered, redirecting...'
+			));
+			break;
+		case 'update':
+			$current_user = wp_get_current_user();
+			if ($current_user->ID == 0) {
+				oeru_login_response(array(
+					'updated' => false,
+					'result' => 'Not logged in.'
+				));
+			}
+			$user_id = $current_user->ID;
+			$email = trim($_POST['useremail']);
+			$display_name = sanitize_text_field($_POST['name']);
+			$user_id = wp_update_user(array(
+				'ID' => $user_id,
+				'email' => $email,
+				'display_name' => $display_name
+			));
+			if (is_wp_error($user_id)) {
+				oeru_login_response(array(
+					'updated' => false,
+					'result' => 'Error updating name and email. Please try later.'
+				));
+			}
+			update_user_meta($user_id, "url_$blogid", sanitize_text_field($_POST['courseblog']));
+			oeru_login_response(array(
+				'updated' => true,
+				'result' => 'Updated.'
+			));
+			break;
+		default:
+			oeru_login_response(array(
+				'error' => 'Ill-formed login request:  ' . htmlspecialchars($bdo)
+			));
+	}
+	die();
+}
+
+if (!current_user_can('edit_posts')) {
+	show_admin_bar(false);
+}
 
 // Custom template tags for this theme.
 require get_template_directory() . '/inc/template-tags.php';
