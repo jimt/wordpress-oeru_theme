@@ -459,6 +459,9 @@ EOT;
 			if ( empty( $content ) ) {
 				$content = $atts['body'];
 			}
+			
+			// allow nested shortcodes
+			$content = do_shortcode( $content );
 
 			return <<<EOD
 <div class="panel iDevice$added_classes">
