@@ -153,7 +153,6 @@
 	      		</form>
 		      	<?php endif;
 	      		?><p id="userstatus" style="color: red;">&nbsp;</p>
-		      	</a>
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
