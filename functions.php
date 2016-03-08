@@ -343,6 +343,29 @@ function oeru_login() {
 	die();
 }
 
+function add_user_blog_column( $columns ) {
+	$columns['xname'] = 'Name';	// user display_name (not first, last)
+    $columns['blog'] = 'Blog';
+
+    unset( $columns['name'] );
+    unset( $columns['role'] );
+    unset( $columns['posts'] );
+    return $columns;
+} 
+add_filter( 'manage_users_columns', 'add_user_blog_column' );
+
+function add_blog_column_data( $v = '', $column_name, $user_id ) {
+	switch ($column_name) {
+		case 'xname':
+			$user_info = get_userdata( $user_id );
+			return $user_info->display_name;
+		case 'blog':
+			$k = 'url_' . get_current_blog_id();
+			return get_user_meta( $user_id, $k, true );
+	}
+}
+add_filter( 'manage_users_custom_column', 'add_blog_column_data', 10, 3 );
+
 if (!current_user_can('edit_posts')) {
 	show_admin_bar(false);
 }
