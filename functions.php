@@ -343,14 +343,45 @@ function oeru_login() {
 	die();
 }
 
+// add JSON REST API retrieval of course registrations
+//   user meta entries of the form url_nn where nn is the WP site number
+function register_user_courses_field() {
+        register_rest_field( 'user',
+                'courses',
+                array (
+                        'get_callback'    => 'get_courses_field',
+                        'update_callback' => null,  // read-only for now
+                        'schema'          => null,
+                )
+        );
+}
+
+function get_courses_field( $object, $field_name, $request ) {
+	$meta = get_user_meta( $object['id'] );
+	$meta = array_filter(
+			array_map( function( $a ) { return $a[0]; }, $meta ),
+			function( $k ) { return substr( $k, 0, 4 ) === 'url_'; },
+			ARRAY_FILTER_USE_KEY
+		);
+	return $meta;
+}
+add_action( 'rest_api_init', 'register_user_courses_field' );
+
+// all users, not just those that have published posts
+function custom_rest_user_query( $prepared_args, $request = null ) {
+  unset($prepared_args['has_published_posts']);
+  return $prepared_args;
+}
+add_filter( 'rest_user_query' , 'custom_rest_user_query' );
+
 function add_user_blog_column( $columns ) {
 	$columns['xname'] = 'Name';	// user display_name (not first, last)
-    $columns['blog'] = 'Blog';
+	$columns['blog'] = 'Blog';
 
-    unset( $columns['name'] );
-    unset( $columns['role'] );
-    unset( $columns['posts'] );
-    return $columns;
+	unset( $columns['name'] );
+	unset( $columns['role'] );
+	unset( $columns['posts'] );
+	return $columns;
 } 
 add_filter( 'manage_users_columns', 'add_user_blog_column' );
 
