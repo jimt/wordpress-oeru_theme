@@ -1,5 +1,6 @@
 		</div><!-- #main -->
-		<div class="modal fade in" id="siteMapmodal" tabindex="-1" role="dialog" aria-labelledby="siteMapLabel" aria-hidden="false">
+		<?php if(get_theme_mod("scan_page")=="on" || get_option("oeru_theme_scan_page")=="on"):
+		?><div class="modal fade in" id="siteMapmodal" tabindex="-1" role="dialog" aria-labelledby="siteMapLabel" aria-hidden="false">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -29,7 +30,8 @@
 				</div>
 			 </div>
 		</div>
-		<footer id="colophon" class="site-footer" role="contentinfo">
+		<?php endif;
+		?><footer id="colophon" class="site-footer" role="contentinfo">
 			<div class="entry-header container">
 				<?php get_sidebar("sidebar-1"); ?>
 			</div>
