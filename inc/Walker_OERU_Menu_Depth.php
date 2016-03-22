@@ -40,17 +40,20 @@ class Walker_OERU_Menu_Depth extends Walker {
 	
 	}
 	
-    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-    	global $fixup;
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		global $fixup;
+
 		if($depth<=1){
 	
 			$page_class = "";
 			
 			foreach($item->classes as $index => $class){
 
-				if(strpos($class,"-")===FALSE){
+				// filter out class names that don't contain a - or _
+				//   (specifically, the page name with each word of
+				//   the name as an individual class)
+				if ((strpos($class,"-")===FALSE) && (strpos($class, '_') === FALSE)) {
 
-					$page_class .= $class . " ";
 					unset($item->classes[$index]);
 
 				}
