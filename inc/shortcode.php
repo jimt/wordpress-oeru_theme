@@ -439,6 +439,7 @@ EOT;
 				)
 			);
 
+			$id = (isset($atts['id'])) ? ' id="' . $atts['id'] . '"' : '';
 			$label = $atts['type'];
 			
 			$img = get_template_directory_uri() . '/idevices/' . $this->array_get($icon[get_theme_mod('icon_set', 'Line')][strtolower($atts['type'])], $icon[get_theme_mod('icon_set')]['default']);
@@ -464,7 +465,7 @@ EOT;
 			$content = do_shortcode( $content );
 
 			return <<<EOD
-<div class="panel iDevice$added_classes">
+<div$id class="panel iDevice$added_classes">
 	<div class="panel-heading idevice-heading">
 		<div>
 			<img class="pedagogicalicon" alt="$label" src="$img">

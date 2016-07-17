@@ -100,14 +100,16 @@ function oeru_theme_shortcodes(){
 	</dl>
 	<h2>[oeru_idevice]</h2>
 	<p>Use this to add a pedagogical template</p>
-	<p>Example [oeru_idevice type="Question" body="What is the best way to do this"]</p>
+	<p>Example [oeru_idevice type="Question" body="What is the best way to do this" id="anchor"]</p>
 	<p><em>or</em></p>
-	<p>[oeru_idevice type="Question" title="What do you think?"]<br>
+	<p>[oeru_idevice type="Question" title="What do you think?" id="anchor"]<br>
 	What is the best way to do this?</br>
 	[/oeru_idevice]</p>
 	<p><em>Because of a limitation in WordPress, the two types must not be mixed on a page.</em></p>
 	<p>The type value sets the title on the page and the associated image. Body sets what appears below this.</p>
 	<p>If you use title="This is my title" it overrides the displayed title for this iDevice.</p>
+	<p>The <em>optional</em> <tt>id</tt> attribute allows setting an HTML id on the iDevice,
+allowing it to be targetted as a named anchor.</p>
 	<p>The types are as follows:</p>
 	<div style="-webkit-column-width: 20em; -moz-column-width: 20em; column-width: 20em;">
 	<ul style="margin-top: 0;">
