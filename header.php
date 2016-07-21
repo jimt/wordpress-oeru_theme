@@ -103,7 +103,7 @@
 		      <div class="modal-body">
 		      	<?php
 		      	global $current_user, $user_ID, $user_email;
-		      	get_currentuserinfo();
+		      	wp_get_current_user();
 		      	?>
 		      	<form>
 		      		<div class="form-group">
