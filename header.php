@@ -102,8 +102,7 @@
 		      </div>
 		      <div class="modal-body">
 		      	<?php
-		      	global $current_user, $user_ID, $user_email;
-		      	get_currentuserinfo();
+		      	$current_user = wp_get_current_user();
 		      	?>
 		      	<form>
 		      		<div class="form-group">
@@ -112,11 +111,11 @@
 		      		</div>
 		      		<div class="form-group">
 		      			<label for="useremail">Email</label>
-		      			<input type="text" class="form-control update-field" id="useremail" value="<?php echo $user_email; ?>">
+		      			<input type="text" class="form-control update-field" id="useremail" value="<?php echo $current_user->user_email; ?>">
 		      		</div>
 		      		<div class="form-group">
 		      			<label for="courseblog">Course blog</label>
-		      			<input type="text" class="form-control update-field" id="courseblog" value="<?php echo get_user_meta($user_ID, 'url_' . get_current_blog_id(), true); ?>">
+		      			<input type="text" class="form-control update-field" id="courseblog" value="<?php echo get_user_meta($current_user->user_ID, 'url_' . get_current_blog_id(), true); ?>">
 		      		</div>
 		      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
 		      	</form>
