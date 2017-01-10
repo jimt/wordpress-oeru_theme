@@ -1,5 +1,254 @@
 <?php
 
+// https://gist.github.com/vxnick/380904
+$country_picker = array (
+	'AF' => 'Afghanistan',
+	'AX' => 'Aland Islands',
+	'AL' => 'Albania',
+	'DZ' => 'Algeria',
+	'AS' => 'American Samoa',
+	'AD' => 'Andorra',
+	'AO' => 'Angola',
+	'AI' => 'Anguilla',
+	'AQ' => 'Antarctica',
+	'AG' => 'Antigua And Barbuda',
+	'AR' => 'Argentina',
+	'AM' => 'Armenia',
+	'AW' => 'Aruba',
+	'AU' => 'Australia',
+	'AT' => 'Austria',
+	'AZ' => 'Azerbaijan',
+	'BS' => 'Bahamas',
+	'BH' => 'Bahrain',
+	'BD' => 'Bangladesh',
+	'BB' => 'Barbados',
+	'BY' => 'Belarus',
+	'BE' => 'Belgium',
+	'BZ' => 'Belize',
+	'BJ' => 'Benin',
+	'BM' => 'Bermuda',
+	'BT' => 'Bhutan',
+	'BO' => 'Bolivia',
+	'BA' => 'Bosnia And Herzegovina',
+	'BW' => 'Botswana',
+	'BV' => 'Bouvet Island',
+	'BR' => 'Brazil',
+	'IO' => 'British Indian Ocean Territory',
+	'BN' => 'Brunei Darussalam',
+	'BG' => 'Bulgaria',
+	'BF' => 'Burkina Faso',
+	'BI' => 'Burundi',
+	'KH' => 'Cambodia',
+	'CM' => 'Cameroon',
+	'CA' => 'Canada',
+	'CV' => 'Cape Verde',
+	'KY' => 'Cayman Islands',
+	'CF' => 'Central African Republic',
+	'TD' => 'Chad',
+	'CL' => 'Chile',
+	'CN' => 'China',
+	'CX' => 'Christmas Island',
+	'CC' => 'Cocos (Keeling) Islands',
+	'CO' => 'Colombia',
+	'KM' => 'Comoros',
+	'CG' => 'Congo',
+	'CD' => 'Congo, Democratic Republic',
+	'CK' => 'Cook Islands',
+	'CR' => 'Costa Rica',
+	'CI' => 'Cote D\'Ivoire',
+	'HR' => 'Croatia',
+	'CU' => 'Cuba',
+	'CY' => 'Cyprus',
+	'CZ' => 'Czech Republic',
+	'DK' => 'Denmark',
+	'DJ' => 'Djibouti',
+	'DM' => 'Dominica',
+	'DO' => 'Dominican Republic',
+	'EC' => 'Ecuador',
+	'EG' => 'Egypt',
+	'SV' => 'El Salvador',
+	'GQ' => 'Equatorial Guinea',
+	'ER' => 'Eritrea',
+	'EE' => 'Estonia',
+	'ET' => 'Ethiopia',
+	'FK' => 'Falkland Islands (Malvinas)',
+	'FO' => 'Faroe Islands',
+	'FJ' => 'Fiji',
+	'FI' => 'Finland',
+	'FR' => 'France',
+	'GF' => 'French Guiana',
+	'PF' => 'French Polynesia',
+	'TF' => 'French Southern Territories',
+	'GA' => 'Gabon',
+	'GM' => 'Gambia',
+	'GE' => 'Georgia',
+	'DE' => 'Germany',
+	'GH' => 'Ghana',
+	'GI' => 'Gibraltar',
+	'GR' => 'Greece',
+	'GL' => 'Greenland',
+	'GD' => 'Grenada',
+	'GP' => 'Guadeloupe',
+	'GU' => 'Guam',
+	'GT' => 'Guatemala',
+	'GG' => 'Guernsey',
+	'GN' => 'Guinea',
+	'GW' => 'Guinea-Bissau',
+	'GY' => 'Guyana',
+	'HT' => 'Haiti',
+	'HM' => 'Heard Island & Mcdonald Islands',
+	'VA' => 'Holy See (Vatican City State)',
+	'HN' => 'Honduras',
+	'HK' => 'Hong Kong',
+	'HU' => 'Hungary',
+	'IS' => 'Iceland',
+	'IN' => 'India',
+	'ID' => 'Indonesia',
+	'IR' => 'Iran, Islamic Republic Of',
+	'IQ' => 'Iraq',
+	'IE' => 'Ireland',
+	'IM' => 'Isle Of Man',
+	'IL' => 'Israel',
+	'IT' => 'Italy',
+	'JM' => 'Jamaica',
+	'JP' => 'Japan',
+	'JE' => 'Jersey',
+	'JO' => 'Jordan',
+	'KZ' => 'Kazakhstan',
+	'KE' => 'Kenya',
+	'KI' => 'Kiribati',
+	'KR' => 'Korea',
+	'KW' => 'Kuwait',
+	'KG' => 'Kyrgyzstan',
+	'LA' => 'Lao People\'s Democratic Republic',
+	'LV' => 'Latvia',
+	'LB' => 'Lebanon',
+	'LS' => 'Lesotho',
+	'LR' => 'Liberia',
+	'LY' => 'Libyan Arab Jamahiriya',
+	'LI' => 'Liechtenstein',
+	'LT' => 'Lithuania',
+	'LU' => 'Luxembourg',
+	'MO' => 'Macao',
+	'MK' => 'Macedonia',
+	'MG' => 'Madagascar',
+	'MW' => 'Malawi',
+	'MY' => 'Malaysia',
+	'MV' => 'Maldives',
+	'ML' => 'Mali',
+	'MT' => 'Malta',
+	'MH' => 'Marshall Islands',
+	'MQ' => 'Martinique',
+	'MR' => 'Mauritania',
+	'MU' => 'Mauritius',
+	'YT' => 'Mayotte',
+	'MX' => 'Mexico',
+	'FM' => 'Micronesia, Federated States Of',
+	'MD' => 'Moldova',
+	'MC' => 'Monaco',
+	'MN' => 'Mongolia',
+	'ME' => 'Montenegro',
+	'MS' => 'Montserrat',
+	'MA' => 'Morocco',
+	'MZ' => 'Mozambique',
+	'MM' => 'Myanmar',
+	'NA' => 'Namibia',
+	'NR' => 'Nauru',
+	'NP' => 'Nepal',
+	'NL' => 'Netherlands',
+	'AN' => 'Netherlands Antilles',
+	'NC' => 'New Caledonia',
+	'NZ' => 'New Zealand',
+	'NI' => 'Nicaragua',
+	'NE' => 'Niger',
+	'NG' => 'Nigeria',
+	'NU' => 'Niue',
+	'NF' => 'Norfolk Island',
+	'MP' => 'Northern Mariana Islands',
+	'NO' => 'Norway',
+	'OM' => 'Oman',
+	'PK' => 'Pakistan',
+	'PW' => 'Palau',
+	'PS' => 'Palestinian Territory, Occupied',
+	'PA' => 'Panama',
+	'PG' => 'Papua New Guinea',
+	'PY' => 'Paraguay',
+	'PE' => 'Peru',
+	'PH' => 'Philippines',
+	'PN' => 'Pitcairn',
+	'PL' => 'Poland',
+	'PT' => 'Portugal',
+	'PR' => 'Puerto Rico',
+	'QA' => 'Qatar',
+	'RE' => 'Reunion',
+	'RO' => 'Romania',
+	'RU' => 'Russian Federation',
+	'RW' => 'Rwanda',
+	'BL' => 'Saint Barthelemy',
+	'SH' => 'Saint Helena',
+	'KN' => 'Saint Kitts And Nevis',
+	'LC' => 'Saint Lucia',
+	'MF' => 'Saint Martin',
+	'PM' => 'Saint Pierre And Miquelon',
+	'VC' => 'Saint Vincent And Grenadines',
+	'WS' => 'Samoa',
+	'SM' => 'San Marino',
+	'ST' => 'Sao Tome And Principe',
+	'SA' => 'Saudi Arabia',
+	'SN' => 'Senegal',
+	'RS' => 'Serbia',
+	'SC' => 'Seychelles',
+	'SL' => 'Sierra Leone',
+	'SG' => 'Singapore',
+	'SK' => 'Slovakia',
+	'SI' => 'Slovenia',
+	'SB' => 'Solomon Islands',
+	'SO' => 'Somalia',
+	'ZA' => 'South Africa',
+	'GS' => 'South Georgia And Sandwich Isl.',
+	'ES' => 'Spain',
+	'LK' => 'Sri Lanka',
+	'SD' => 'Sudan',
+	'SR' => 'Suriname',
+	'SJ' => 'Svalbard And Jan Mayen',
+	'SZ' => 'Swaziland',
+	'SE' => 'Sweden',
+	'CH' => 'Switzerland',
+	'SY' => 'Syrian Arab Republic',
+	'TW' => 'Taiwan',
+	'TJ' => 'Tajikistan',
+	'TZ' => 'Tanzania',
+	'TH' => 'Thailand',
+	'TL' => 'Timor-Leste',
+	'TG' => 'Togo',
+	'TK' => 'Tokelau',
+	'TO' => 'Tonga',
+	'TT' => 'Trinidad And Tobago',
+	'TN' => 'Tunisia',
+	'TR' => 'Turkey',
+	'TM' => 'Turkmenistan',
+	'TC' => 'Turks And Caicos Islands',
+	'TV' => 'Tuvalu',
+	'UG' => 'Uganda',
+	'UA' => 'Ukraine',
+	'AE' => 'United Arab Emirates',
+	'GB' => 'United Kingdom',
+	'US' => 'United States',
+	'UM' => 'United States Outlying Islands',
+	'UY' => 'Uruguay',
+	'UZ' => 'Uzbekistan',
+	'VU' => 'Vanuatu',
+	'VE' => 'Venezuela',
+	'VN' => 'Viet Nam',
+	'VG' => 'Virgin Islands, British',
+	'VI' => 'Virgin Islands, U.S.',
+	'WF' => 'Wallis And Futuna',
+	'EH' => 'Western Sahara',
+	'YE' => 'Yemen',
+	'ZM' => 'Zambia',
+	'ZW' => 'Zimbabwe',
+);
+
 function oeru_theme_defaults() {
 	global $wp_rewrite;
 
@@ -196,6 +445,61 @@ function oeru_theme_allow_iframe( $allowedposttags ) {
 }
 add_filter( 'wp_kses_allowed_html', 'oeru_theme_allow_iframe' );
 
+
+/* 
+ * Add registration/user field: user_country
+ * see http://www.setupmyvps.com/how-to-add-a-custom-field-to-wordpress-registration/
+ */
+add_action('register_form', 'oeru_show_country_field',10,1);
+//add_action('register_post', 'oeru_check_country_field',10,3);
+//add_action('user_register', 'oeru_register_country_field');
+//add_action('profile_update', 'oeru_profile_update', 10, 2);
+
+// Create the country picker form
+function oeru_show_country_field($selection) {
+	global $country_picker;
+
+	//$user_country = ( isset( $_POST['usercountry'] ) ) ? $_POST['usercountry']: "";
+	$user_country = ( isset( $selection ) ) ? $selection : "";
+?>
+<select name="usercountry" class="form-control" id="usercountry">
+<option value=""></option>
+<?php 	foreach ($country_picker as $abbr => $country) {
+		if ($user_country == $abbr) {
+			$selected = 'selected'; 
+		}
+		else {
+			$selected = '';
+		}
+		echo '<option value="' . $abbr . '" ' . $selected . '>' . $country . '</option>';
+	} 
+?>
+</select>
+<?php        
+}
+
+// check a country's been picked
+/*function oeru_check_country_field($sanitized_user_login, $user_email, $errors) {
+	if (empty($_POST['user_country'])) {
+		$errors->add( 'user_country_error', 
+			__('<strong>ERROR</strong>: You must choose a country.','mydomain') 
+		);
+	}
+	return $errors;
+}*/
+
+// save the country against the user's id
+/*function oeru_register_country_field($user_id) {
+	if (isset($_POST['user_country'])) {
+		update_user_meta($user_id, 'user_country', $_POST['user_country']);
+	}
+}*/
+
+// save updates of country
+/*function oeru_profile_update($user_id, $old_user_data) {
+  	print_r($old_user_data);
+}*/
+
 /* AJAX login/update API
  * called with 'bdo' set to 'login', 'register', or 'update'
  */
@@ -238,7 +542,8 @@ function oeru_login() {
 			$email = trim($_POST['useremail']);
 			$display_name = sanitize_text_field($_POST['name']);
 			$meta = array(
-				"url_$blogid" => sanitize_text_field($_POST['courseblog'])
+				"url_$blogid" => sanitize_text_field($_POST['courseblog']),
+				"user_country" => $_POST['usercountry']
 			);
 			if (strlen($password) == 0 || strlen($cpw) == 0 || strlen($username) == 0 || strlen($email) == 0) {
 				oeru_login_response(array(
@@ -261,6 +566,12 @@ function oeru_login() {
 			$pw = trim($_POST['password']);
 			$r = wpmu_validate_user_signup($username, $email);
 			$username = $r['user_name'];	// sanitized username
+			if ($meta['user_country'] == "") {
+				oeru_login_response(array(
+					'registered' => false,
+					'result' => 'You must select a country. (not ' . $_POST['usercountry'] . ')...'
+				));	
+			}
 			if (sizeof($r['errors']->errors) > 0) {
 				oeru_login_response(array(
 					'registered' => false,
@@ -329,7 +640,15 @@ function oeru_login() {
 					'result' => 'Error updating name and email. Please try later.'
 				));
 			}
+			if ($meta['user_country'] == "") {
+				oeru_login_response(array(
+					'updated' => false,
+					'result' => 'You must select a country.'
+				));	
+			}
+
 			update_user_meta($user_id, "url_$blogid", sanitize_text_field($_POST['courseblog']));
+			update_user_meta($user_id, "user_country", $_POST['usercountry']);
 			oeru_login_response(array(
 				'updated' => true,
 				'result' => 'Updated.'

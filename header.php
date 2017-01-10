@@ -21,6 +21,9 @@
 	<![endif]-->
 </head>
 <body <?php body_class(oeru_theme_body_class()); ?>>
+<script>var dataLayer = window.dataLayer = window.dataLayer || [];</script>
+<!-- Google Tag Manager --> <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WVTG5T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-WVTG5T');</script> <!-- End Google Tag Manager -->
+
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
 		<div>
@@ -117,7 +120,12 @@
 		      			<label for="courseblog">Course blog</label>
 		      			<input type="text" class="form-control update-field" id="courseblog" value="<?php echo get_user_meta($current_user->user_ID, 'url_' . get_current_blog_id(), true); ?>">
 		      		</div>
-		      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
+		      		<div class="form-group">
+		      			<label for="usercountry">Country of origin</label>
+					<?php oeru_show_country_field(); ?>
+					<span id="helpUsername" class="help-block" style="display: block;">The country with which you most closely identify.</span>
+		      		</div>
+	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
 		      	</form>
 		      	<?php else:
 		        ?><h4 class="modal-title" id="logintitle">Login / Register</h4>
@@ -145,10 +153,15 @@
 		      			<input type="text" class="form-control" id="useremail" placeholder="me@example.com">
 		      		</div>
 		      		<div class="form-group regodiv" style="display: none;">
-		      			<label for="courseblog">Blog URL</label>
+		      			<label for="usercountry">Country of origin</label>
+					<?php oeru_show_country_field(); ?>
+					<span id="helpUsername" class="help-block" style="display: block;">Select the country with which you most closely identify.</span>
+		      		</div>
+		      		<div class="form-group regodiv" style="display: none;">
+		      			<label for="courseblog">Blog Feed URL</label>
 		      			<input type="text" class="form-control" id="courseblog" placeholder="http://example.com/feed.rss">
 		      		</div>
-		      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
+	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
 	      		</form>
 		      	<?php endif;
 	      		?><p id="userstatus" style="color: red;">&nbsp;</p>
