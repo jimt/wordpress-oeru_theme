@@ -115,15 +115,18 @@
 		      		<div class="form-group">
 		      			<label for="useremail">Email</label>
 		      			<input type="text" class="form-control update-field" id="useremail" value="<?php echo $current_user->user_email; ?>">
-		      		</div>
-		      		<div class="form-group">
-		      			<label for="courseblog">Course blog</label>
-		      			<input type="text" class="form-control update-field" id="courseblog" value="<?php echo get_user_meta($current_user->user_ID, 'url_' . get_current_blog_id(), true); ?>">
-		      		</div>
-		      		<div class="form-group">
-		      			<label for="usercountry">Country of origin</label>
-					<?php oeru_show_country_field(); ?>
+				</div>
+			      	<div class="form-group">
+					<?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
+		      			<label for="usercountry">Country of origin </label>
+					<?php oeru_show_country_field( $country ); ?>
 					<span id="helpUsername" class="help-block" style="display: block;">The country with which you most closely identify.</span>
+		      		</div>
+		      		<div class="form-group">
+					<?php $blog = get_user_meta($current_user->ID, 'url_' . get_current_blog_id(), true); ?>
+					<?php //$blog = get_user_meta($current_user->ID, 'url_1', true); ?>
+		      			<label for="courseblog">Course blog feed URL</label>
+		      			<input type="text" class="form-control update-field" id="courseblog" value="<?php echo $blog; ?>">
 		      		</div>
 	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
 		      	</form>
@@ -153,12 +156,13 @@
 		      			<input type="text" class="form-control" id="useremail" placeholder="me@example.com">
 		      		</div>
 		      		<div class="form-group regodiv" style="display: none;">
-		      			<label for="usercountry">Country of origin</label>
-					<?php oeru_show_country_field(); ?>
+                                        <?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
+                                        <label for="usercountry">Country of origin <?php $txt = ($country) ? "($country)": "(none)"; echo $txt; ?></label>
+                                        <?php oeru_show_country_field($country); ?>
 					<span id="helpUsername" class="help-block" style="display: block;">Select the country with which you most closely identify.</span>
 		      		</div>
 		      		<div class="form-group regodiv" style="display: none;">
-		      			<label for="courseblog">Blog Feed URL</label>
+		      			<label for="courseblog">Course blog feed URL</label>
 		      			<input type="text" class="form-control" id="courseblog" placeholder="http://example.com/feed.rss">
 		      		</div>
 	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
@@ -185,5 +189,3 @@
 		<?PHP endif;
 		?>
     </header>
-	<div id="scroller">Scroll to the top</div>
-	<div id="main" class="site-main">

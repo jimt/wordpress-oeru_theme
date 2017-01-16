@@ -20,6 +20,7 @@ jQuery(document).ready(function() {
           password = $.trim($('#password').val()),
           confirmpassword = $.trim($('#confirmpassword').val()),
           email = $.trim($('#useremail').val()),
+          usercountry = $('#usercountry').val(),
           courseblog = $.trim($('#courseblog').val()),
           security = $('#security').val();
       console.log('processForm', bdo);
@@ -38,6 +39,7 @@ jQuery(document).ready(function() {
               'password': password,
               'useremail': email,
               'confirmpassword': confirmpassword,
+              'usercountry': usercountry,
               'courseblog': courseblog,
               'security': security
           },
@@ -114,4 +116,23 @@ jQuery(document).ready(function() {
     $('.update-field').focus(function() {
         $('#userstatus').html('');
     });
+});
+
+
+// accept "Enter" as the default action, hitting the ".btn-primary"
+// based on http://stackoverflow.com/questions/868889/submit-jquery-ui-dialog-on-enter
+// update jqueryui defaults
+$.extend($.ui.dialog.prototype.options, { 
+    create: function() {
+        var $this = $(this);
+
+        // focus first button and bind enter to it
+        $this.parent().find('.ui-dialog-buttonpane .btn-primary').focus();
+        $this.keypress(function(e) {
+            if( e.keyCode == $.ui.keyCode.ENTER ) {
+                $this.parent().find('.ui-dialog-buttonpane .btn-primary').click();
+                return false;
+            }
+        });
+    } 
 });

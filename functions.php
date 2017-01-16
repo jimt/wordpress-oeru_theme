@@ -447,26 +447,23 @@ add_filter( 'wp_kses_allowed_html', 'oeru_theme_allow_iframe' );
 
 
 /* 
- * Add registration/user field: user_country
+ * Add registration/user field: usercountry
  * see http://www.setupmyvps.com/how-to-add-a-custom-field-to-wordpress-registration/
  */
 add_action('register_form', 'oeru_show_country_field',10,1);
-//add_action('register_post', 'oeru_check_country_field',10,3);
-//add_action('user_register', 'oeru_register_country_field');
-//add_action('profile_update', 'oeru_profile_update', 10, 2);
 
 // Create the country picker form
-function oeru_show_country_field($selection) {
+function oeru_show_country_field($selection = "") {
 	global $country_picker;
 
 	//$user_country = ( isset( $_POST['usercountry'] ) ) ? $_POST['usercountry']: "";
-	$user_country = ( isset( $selection ) ) ? $selection : "";
+	$user_country = ( $selection != "" ) ? $selection : "Nothing";
 ?>
 <select name="usercountry" class="form-control" id="usercountry">
 <option value=""></option>
 <?php 	foreach ($country_picker as $abbr => $country) {
 		if ($user_country == $abbr) {
-			$selected = 'selected'; 
+			$selected = 'selected="true"'; 
 		}
 		else {
 			$selected = '';
@@ -477,28 +474,6 @@ function oeru_show_country_field($selection) {
 </select>
 <?php        
 }
-
-// check a country's been picked
-/*function oeru_check_country_field($sanitized_user_login, $user_email, $errors) {
-	if (empty($_POST['user_country'])) {
-		$errors->add( 'user_country_error', 
-			__('<strong>ERROR</strong>: You must choose a country.','mydomain') 
-		);
-	}
-	return $errors;
-}*/
-
-// save the country against the user's id
-/*function oeru_register_country_field($user_id) {
-	if (isset($_POST['user_country'])) {
-		update_user_meta($user_id, 'user_country', $_POST['user_country']);
-	}
-}*/
-
-// save updates of country
-/*function oeru_profile_update($user_id, $old_user_data) {
-  	print_r($old_user_data);
-}*/
 
 /* AJAX login/update API
  * called with 'bdo' set to 'login', 'register', or 'update'
@@ -543,7 +518,7 @@ function oeru_login() {
 			$display_name = sanitize_text_field($_POST['name']);
 			$meta = array(
 				"url_$blogid" => sanitize_text_field($_POST['courseblog']),
-				"user_country" => $_POST['usercountry']
+				"usercountry" => $_POST['usercountry']
 			);
 			if (strlen($password) == 0 || strlen($cpw) == 0 || strlen($username) == 0 || strlen($email) == 0) {
 				oeru_login_response(array(
@@ -566,7 +541,13 @@ function oeru_login() {
 			$pw = trim($_POST['password']);
 			$r = wpmu_validate_user_signup($username, $email);
 			$username = $r['user_name'];	// sanitized username
-			if ($meta['user_country'] == "") {
+                        /*if ($meta["url_$blogid"] == "") {
+                                oeru_login_response(array(
+                                        'registered' => false,
+                                        'result' => 'You must provide a blog feed URL.'
+                                ));
+                        }*/
+			if ($meta['usercountry'] == "") {
 				oeru_login_response(array(
 					'registered' => false,
 					'result' => 'You must select a country. (not ' . $_POST['usercountry'] . ')...'
@@ -640,15 +621,18 @@ function oeru_login() {
 					'result' => 'Error updating name and email. Please try later.'
 				));
 			}
-			if ($meta['user_country'] == "") {
+			if ($_POST['usercountry'] == "") {
 				oeru_login_response(array(
 					'updated' => false,
 					'result' => 'You must select a country.'
 				));	
 			}
-
-			update_user_meta($user_id, "url_$blogid", sanitize_text_field($_POST['courseblog']));
-			update_user_meta($user_id, "user_country", $_POST['usercountry']);
+			else {
+				update_user_meta($user_id, "usercountry", $_POST['usercountry']);
+			}	
+			if ($_POST['courseblog'] != "") {
+				update_user_meta($user_id, "url_$blogid", sanitize_text_field($_POST['courseblog']));
+			}
 			oeru_login_response(array(
 				'updated' => true,
 				'result' => 'Updated.'
