@@ -261,7 +261,7 @@ add_action( 'wp_install', 'oeru_theme_defaults' );
 function oeru_theme_menu_default() {
 
 	if(!get_option("oeru_theme_menu_create")){
-	
+
 		require_once("inc/theme_guidance.php");
 		$menu_id = oeru_theme_create_menu();
 		if($menu_id == false){
@@ -273,7 +273,7 @@ function oeru_theme_menu_default() {
 		$locations['primary'] = $menu_id;
 		set_theme_mod('nav_menu_locations', $locations);
 		add_option("oeru_theme_menu_create", "true");
-		
+
 	}
 
 }
@@ -296,24 +296,24 @@ add_action( 'widgets_init', 'oeru_theme_widgets_init' );
 function oeru_theme_setup() {
 
 	if(!get_option("oeru_course_colour_profile_setup")){
-	
+
 		require_once("inc/install_profile.php");
 		add_option("oeru_course_colour_profile_setup", "true");
-		
+
 	}
 
 	load_theme_textdomain( 'oeru_theme', get_template_directory() . '/languages' );
 
 	add_theme_support( 'post-thumbnails' );
-	
+
 	$chargs = array(
 		'width' => 980,
 		'height' => 150,
 		'uploads' => true,
 	);
-	
+
 	add_theme_support( 'custom-header', $chargs );
-	
+
 	set_post_thumbnail_size( 672, 372, true );
 
 	register_nav_menus( array(
@@ -323,7 +323,7 @@ function oeru_theme_setup() {
 	add_theme_support( 'html5', array(
 		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
 	) );
-	
+
 }
 add_action( 'after_setup_theme', 'oeru_theme_setup' );
 
@@ -332,14 +332,14 @@ function oeru_theme_add_category(){
 		'cat_name' => "Front Page Featured",
 		'category_description' => "Items to feature on the front page",
 		'category_nicename' => "front-page",
-		'taxonomy' => 'category' 
+		'taxonomy' => 'category'
 	);
 	wp_insert_term("Front Page", "category", $catarr);
 }
 add_action( 'after_setup_theme', 'oeru_theme_add_category' );
 
 function oeru_theme_scripts_and_styles() {
-	
+
 	wp_enqueue_style( 'wordpress-oeru-theme-bootstrap', get_template_directory_uri() . '/css/bootstrap.css', array(), '1' );
 	wp_enqueue_style( 'wordpress-oeru-theme-font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '1' );
 	wp_enqueue_style( 'wordpress-oeru-theme-layout', get_template_directory_uri() . '/css/layout.css', array(), '1' );
@@ -348,7 +348,7 @@ function oeru_theme_scripts_and_styles() {
 	wp_enqueue_style( 'wordpress-oeru-theme-core-alter', get_template_directory_uri() . '/css/oeru_theme_core_alter.css', array(), '1' );
 	wp_enqueue_style( 'wordpress-oeru-theme-jquery-ui', get_template_directory_uri() . '/css/jquery-ui.min.css', array(), '1' );
 	wp_enqueue_style( 'wordpress-oeru-theme-open-sans-font', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,700,600&subset=latin,greek-ext,greek,cyrillic,latin-ext,vietnamese,cyrillic-ext', array(), '1' );
-	
+
 	wp_enqueue_script( 'wordpress-oeru_theme-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '20131205', true );
 	if ( get_theme_mod( 'swipe' ) === 'on' ) {
 		wp_enqueue_script( 'wordpress-oeru_theme-swipe', get_template_directory_uri() . '/js/jquery.touchSwipe.min.js', array('jquery'), '20131205', true );
@@ -445,34 +445,32 @@ function oeru_theme_allow_iframe( $allowedposttags ) {
 }
 add_filter( 'wp_kses_allowed_html', 'oeru_theme_allow_iframe' );
 
-
-/* 
+/*
  * Add registration/user field: usercountry
  * see http://www.setupmyvps.com/how-to-add-a-custom-field-to-wordpress-registration/
  */
-add_action('register_form', 'oeru_show_country_field',10,1);
+add_action('register_form', 'oeru_show_country_field', 10, 1);
 
 // Create the country picker form
 function oeru_show_country_field($selection = "") {
 	global $country_picker;
 
 	//$user_country = ( isset( $_POST['usercountry'] ) ) ? $_POST['usercountry']: "";
-	$user_country = ( $selection != "" ) ? $selection : "Nothing";
-?>
-<select name="usercountry" class="form-control" id="usercountry">
-<option value=""></option>
-<?php 	foreach ($country_picker as $abbr => $country) {
-		if ($user_country == $abbr) {
-			$selected = 'selected="true"'; 
-		}
-		else {
-			$selected = '';
-		}
-		echo '<option value="' . $abbr . '" ' . $selected . '>' . $country . '</option>';
-	} 
-?>
-</select>
-<?php        
+	$user_country = ( $selection != "" ) ? $selection : "Nothing"; ?>
+
+    <select name="usercountry" class="form-control" id="usercountry">
+        <option value=""></option>
+        <?php 	foreach ($country_picker as $abbr => $country) {
+            if ($user_country == $abbr) {
+                $selected = 'selected="true"';
+            }
+            else {
+                $selected = '';
+            }
+            echo '<option value="' . $abbr . '" ' . $selected . '>' . $country . '</option>';
+        } ?>
+    </select>
+<?php
 }
 
 /* AJAX login/update API
@@ -487,7 +485,7 @@ function oeru_login_response($a) {
 
 function oeru_login() {
 	check_ajax_referer('oeru_user_nonce', 'security');
-	
+
 	$blogid = get_current_blog_id();
 	$bdo = (isset($_POST['do'])) ? $_POST['do'] : '';
 	switch ($bdo) {
@@ -541,17 +539,17 @@ function oeru_login() {
 			$pw = trim($_POST['password']);
 			$r = wpmu_validate_user_signup($username, $email);
 			$username = $r['user_name'];	// sanitized username
-                        /*if ($meta["url_$blogid"] == "") {
-                                oeru_login_response(array(
-                                        'registered' => false,
-                                        'result' => 'You must provide a blog feed URL.'
-                                ));
-                        }*/
+            /*if ($meta["url_$blogid"] == "") {
+                oeru_login_response(array(
+                    'registered' => false,
+                    'result' => 'You must provide a blog feed URL.'
+                ));
+            }*/
 			if ($meta['usercountry'] == "") {
 				oeru_login_response(array(
 					'registered' => false,
 					'result' => 'You must select a country. (not ' . $_POST['usercountry'] . ')...'
-				));	
+				));
 			}
 			if (sizeof($r['errors']->errors) > 0) {
 				oeru_login_response(array(
@@ -608,8 +606,8 @@ function oeru_login() {
 				));
 			}
 			$user_id = $current_user->ID;
-			$email = trim($_POST['useremail']);
-			$display_name = sanitize_text_field($_POST['name']);
+			$email = (trim($_POST['useremail']) ? trim($_POST['useremail']) : $current_user->email;
+			$display_name = (sanitize_text_field($_POST['name'])) ? sanitize_text_field($_POST['name']) : $current_user->display_name;
 			$user_id = wp_update_user(array(
 				'ID' => $user_id,
 				'email' => $email,
@@ -625,11 +623,11 @@ function oeru_login() {
 				oeru_login_response(array(
 					'updated' => false,
 					'result' => 'You must select a country.'
-				));	
+				));
 			}
 			else {
 				update_user_meta($user_id, "usercountry", $_POST['usercountry']);
-			}	
+			}
 			if ($_POST['courseblog'] != "") {
 				update_user_meta($user_id, "url_$blogid", sanitize_text_field($_POST['courseblog']));
 			}
@@ -649,23 +647,23 @@ function oeru_login() {
 // add JSON REST API retrieval of course registrations
 //   user meta entries of the form url_nn where nn is the WP site number
 function register_user_courses_field() {
-        register_rest_field( 'user',
-                'courses',
-                array (
-                        'get_callback'    => 'get_courses_field',
-                        'update_callback' => null,  // read-only for now
-                        'schema'          => null,
-                )
-        );
+    register_rest_field( 'user',
+        'courses',
+        array (
+            'get_callback'    => 'get_courses_field',
+            'update_callback' => null,  // read-only for now
+            'schema'          => null,
+        )
+    );
 }
 
 function get_courses_field( $object, $field_name, $request ) {
 	$meta = get_user_meta( $object['id'] );
 	$meta = array_filter(
-			array_map( function( $a ) { return $a[0]; }, $meta ),
-			function( $k ) { return substr( $k, 0, 4 ) === 'url_'; },
-			ARRAY_FILTER_USE_KEY
-		);
+		array_map( function( $a ) { return $a[0]; }, $meta ),
+		function( $k ) { return substr( $k, 0, 4 ) === 'url_'; },
+		ARRAY_FILTER_USE_KEY
+	);
 	return $meta;
 }
 add_action( 'rest_api_init', 'register_user_courses_field' );
@@ -685,7 +683,7 @@ function add_user_blog_column( $columns ) {
 	unset( $columns['role'] );
 	unset( $columns['posts'] );
 	return $columns;
-} 
+}
 add_filter( 'manage_users_columns', 'add_user_blog_column' );
 
 function add_blog_column_data( $v = '', $column_name, $user_id ) {
@@ -736,4 +734,3 @@ require_once("inc/icon_set.php");
 
 //Add analytics configuration
 require_once("inc/analytics.php");
-
