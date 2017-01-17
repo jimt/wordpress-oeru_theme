@@ -13,7 +13,7 @@
 			$favicon_url = get_template_directory_uri() . '/favicon.ico';
 		}
 	?>
-	<link rel="icon" href="<?PHP echo $favicon_url; ?>">
+	<link rel="icon" href="<?php echo $favicon_url; ?>">
 	<?php oeru_theme_extra_style(); ?>
 	<?php wp_head(); ?>
 	<!--[if lt IE 9]>
@@ -27,16 +27,16 @@
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
 		<div>
-		  <?PHP
+		  <?php
 			if(get_header_image()!="") : ?>
-		  <div class="container header_image" style="background:url(<?PHP echo get_header_image(); ?>) 0px 0px / cover no-repeat">
+			  <div class="container header_image" style="background:url(<?php echo get_header_image(); ?>) 0px 0px / cover no-repeat">
 		  </div>
-		  <?PHP
+		  <?php
 			endif;
 		  ?>
 		  <div class="container">
 			  <div class="brandtext">
-				<h1><a href="<?PHP echo home_url("/"); ?>"><?PHP echo get_bloginfo ( 'name' ); ?></a></h1>
+				<h1><a href="<?php echo home_url("/"); ?>"><?PHP echo get_bloginfo ( 'name' ); ?></a></h1>
 			  </div>
 		  </div>
 		</div>
@@ -72,20 +72,20 @@
 						}
 					?>
 						<ul class="nav navbar-nav navbar-right">
-							<?PHP
+							<?php
 							
 								if(get_theme_mod("scan_page")=="on" || get_option("oeru_theme_scan_page")=="on"):
 							
-									?><li><a data-toggle="modal" data-target="#siteMapmodal"><span class="glyphicon glyphicon-tree-conifer"></span></a></li><?PHP
+									?><li><a data-toggle="modal" data-target="#siteMapmodal"><span class="glyphicon glyphicon-tree-conifer"></span></a></li><?php
 							
 								endif;
 							
 							?>
-							<?PHP
+							<?php
 							
 								if(get_theme_mod("log_on_page")=="on"):
 							
-									?><li><a data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span></a></li><?PHP
+									?><li><a data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span></a></li><?php
 							
 								endif;
 							
@@ -94,7 +94,7 @@
 				</div>
 			</nav>
 		</div>
-		<?PHP if (get_theme_mod("log_on_page") == "on"):
+		<?php if (get_theme_mod("log_on_page") == "on"):
 		?><div id="userModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="logintitle">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
@@ -109,24 +109,20 @@
 		      	?>
 		      	<form>
 		      		<div class="form-group">
-		      			<label for="name">Name</label>
-		      			<input type="text" class="form-control update-field" id="name" value="<?php echo $current_user->display_name; ?>">
+		      			<label for="userpreferences">Change User Settings</label>
+					<span id="helpPreferences" class="help-block">You can <a href="/wp-admin/profile.php">change your password or display name</a>.</span> 
 		      		</div>
-		      		<div class="form-group">
-		      			<label for="useremail">Email</label>
-		      			<input type="text" class="form-control update-field" id="useremail" value="<?php echo $current_user->user_email; ?>">
-				</div>
 			      	<div class="form-group">
 					<?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
-		      			<label for="usercountry">Country of origin </label>
+		      			<label for="usercountry">Set your Country of Origin</label>
 					<?php oeru_show_country_field( $country ); ?>
-					<span id="helpUsername" class="help-block" style="display: block;">The country with which you most closely identify.</span>
+					<span id="helpCountry" class="help-block">The country with which you most closely identify.</span>
 		      		</div>
 		      		<div class="form-group">
 					<?php $blog = get_user_meta($current_user->ID, 'url_' . get_current_blog_id(), true); ?>
-					<?php //$blog = get_user_meta($current_user->ID, 'url_1', true); ?>
-		      			<label for="courseblog">Course blog feed URL</label>
+		      			<label for="courseblog">Set your Course blog feed URL</label>
 		      			<input type="text" class="form-control update-field" id="courseblog" value="<?php echo $blog; ?>">
+					<span id="helpCourseBlog" class="help-block">This is a web address that may be specific for this course, or could be one you've used elsewhere but are also using for this course.</span>
 		      		</div>
 	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
 		      	</form>
@@ -139,7 +135,7 @@
 		      			<span id="helpUsername" class="help-block">Use lower case letters and numbers, no spaces or special characters.</span>
 		      		</div>
 		      		<div class="form-group regodiv" style="display: none;">
-		      			<label for="name">Name</label>
+		      			<label for="name">Display Name</label>
 		      			<input type="text" class="form-control" id="name" placeholder="Sue Smith">
 		      		</div>
 		      		<div class="form-group">
@@ -186,6 +182,6 @@
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
-		<?PHP endif;
+		<?php endif;
 		?>
     </header>
