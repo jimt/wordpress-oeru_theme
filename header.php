@@ -27,18 +27,15 @@
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
 		<div>
-		  <?php
-			if(get_header_image()!="") : ?>
-			  <div class="container header_image" style="background:url(<?php echo get_header_image(); ?>) 0px 0px / cover no-repeat">
-		  </div>
-		  <?php
-			endif;
-		  ?>
-		  <div class="container">
-			  <div class="brandtext">
-				<h1><a href="<?php echo home_url("/"); ?>"><?PHP echo get_bloginfo ( 'name' ); ?></a></h1>
-			  </div>
-		  </div>
+		<?php	if (get_header_image()!="") : ?>
+		    <div class="container header_image" style="background:url(<?php echo get_header_image(); ?>) 0px 0px / cover no-repeat">
+		</div>
+        <?php endif; ?>
+		    <div class="container">
+                <div class="brandtext">
+                    <h1><a href="<?php echo home_url("/"); ?>"><?php echo get_bloginfo ( 'name' ); ?></a></h1>
+                </div>
+		    </div>
 		</div>
 		<div class="container">
 			<nav id="primary-navigation" class="site-navigation primary-navigation navbar">
@@ -51,137 +48,116 @@
 					</button>
 				</div>
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
-					<?php
-			
-						if ( has_nav_menu( "primary" ) ) {
-						
-							if(get_theme_mod("menu_depth")=="two"){
-								$menu_obj = new Walker_OERU_Menu_Depth();
-							}else{
-								$menu_obj = new Walker_OERU_Menu();
-							}
-						
-							wp_nav_menu( 
-									array( 
-										'theme_location' => 'primary', 
-										'menu_class' => 'nav navbar-nav' ,
-										'walker'  => $menu_obj 
-									)
-								); 
-								
+					<?php if ( has_nav_menu( "primary" ) ) {
+						if(get_theme_mod("menu_depth")=="two"){
+							$menu_obj = new Walker_OERU_Menu_Depth();
+						}
+                        else{
+							$menu_obj = new Walker_OERU_Menu();
+						}
+						wp_nav_menu(array('theme_location' => 'primary',
+							'menu_class' => 'nav navbar-nav' ,
+							'walker'  => $menu_obj)
+							);
 						}
 					?>
-						<ul class="nav navbar-nav navbar-right">
-							<?php
-							
-								if(get_theme_mod("scan_page")=="on" || get_option("oeru_theme_scan_page")=="on"):
-							
-									?><li><a data-toggle="modal" data-target="#siteMapmodal"><span class="glyphicon glyphicon-tree-conifer"></span></a></li><?php
-							
-								endif;
-							
-							?>
-							<?php
-							
-								if(get_theme_mod("log_on_page")=="on"):
-							
-									?><li><a data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span></a></li><?php
-							
-								endif;
-							
-							?>							
-						</ul>
+					<ul class="nav navbar-nav navbar-right">
+					<?php if (get_theme_mod("scan_page")=="on" || get_option("oeru_theme_scan_page")=="on"): ?>
+                        <li><a data-toggle="modal" data-target="#siteMapmodal"><span class="glyphicon glyphicon-tree-conifer"></span></a></li>
+                    <?php endif; ?>
+					<?php if (get_theme_mod("log_on_page")=="on"): ?>
+                        <li><a data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span></a></li>
+                    <?php endif; ?>
+					</ul>
 				</div>
 			</nav>
 		</div>
-		<?php if (get_theme_mod("log_on_page") == "on"):
-		?><div id="userModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="logintitle">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		      	<?php if (is_user_logged_in()):
-		        ?><h4 class="modal-title" id="logintitle">Update / Logout</h4>
-		      </div>
-		      <div class="modal-body">
-		      	<?php
-		      	$current_user = wp_get_current_user();
-		      	?>
-		      	<form>
-		      		<div class="form-group">
-		      			<label for="userpreferences">Change User Settings</label>
-					<span id="helpPreferences" class="help-block">You can <a href="/wp-admin/profile.php">change your password or display name</a>.</span> 
-		      		</div>
-			      	<div class="form-group">
-					<?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
-		      			<label for="usercountry">Set your Country of Origin</label>
-					<?php oeru_show_country_field( $country ); ?>
-					<span id="helpCountry" class="help-block">The country with which you most closely identify.</span>
-		      		</div>
-		      		<div class="form-group">
-					<?php $blog = get_user_meta($current_user->ID, 'url_' . get_current_blog_id(), true); ?>
-		      			<label for="courseblog">Set your Course blog feed URL</label>
-		      			<input type="text" class="form-control update-field" id="courseblog" value="<?php echo $blog; ?>">
-					<span id="helpCourseBlog" class="help-block">This is a web address that may be specific for this course, or could be one you've used elsewhere but are also using for this course.</span>
-		      		</div>
-	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
-		      	</form>
-		      	<?php else:
-		        ?><h4 class="modal-title" id="logintitle">Login / Register</h4>
-		      	<form>
-		      		<div class="form-group">
-		      			<label for="username">Username</label>
-		      			<input type="text" class="form-control" id="username" placeholder="user" aria-describedby="helpUsername">
-		      			<span id="helpUsername" class="help-block">Use lower case letters and numbers, no spaces or special characters.</span>
-		      		</div>
-		      		<div class="form-group regodiv" style="display: none;">
-		      			<label for="name">Display Name</label>
-		      			<input type="text" class="form-control" id="name" placeholder="Sue Smith">
-		      		</div>
-		      		<div class="form-group">
-		      			<label for="password">Password</label>
-		      			<input type="password" class="form-control" id="password" aria-describedby="helpPassword">
-		      			<span id="helpPassword" class="help-block">At least 6 characters.</span>
-		      		</div>
-		      		<div class="form-group regodiv" style="display: none;">
-		      			<label for="confirmpassword">Confirm password</label>
-		      			<input type="password" class="form-control" id="confirmpassword">
-		      		</div>
-		      		<div class="form-group regodiv" style="display: none;">
-		      			<label for="useremail">Email</label>
-		      			<input type="text" class="form-control" id="useremail" placeholder="me@example.com">
-		      		</div>
-		      		<div class="form-group regodiv" style="display: none;">
-                                        <?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
-                                        <label for="usercountry">Country of origin <?php $txt = ($country) ? "($country)": "(none)"; echo $txt; ?></label>
-                                        <?php oeru_show_country_field($country); ?>
-					<span id="helpUsername" class="help-block" style="display: block;">Select the country with which you most closely identify.</span>
-		      		</div>
-		      		<div class="form-group regodiv" style="display: none;">
-		      			<label for="courseblog">Course blog feed URL</label>
-		      			<input type="text" class="form-control" id="courseblog" placeholder="http://example.com/feed.rss">
-		      		</div>
-	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
-	      		</form>
-		      	<?php endif;
-	      		?><p id="userstatus" style="color: red;">&nbsp;</p>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      	<?php if (is_user_logged_in()):
-		        ?><a href="<?php echo wp_logout_url(get_permalink());?>" class="btn btn-default oeru-user-login-button" id="logoutbutton">Logout</a>
-		        <button type="button" class="btn btn-primary oeru-user-login-button" id="updatebutton">Update</button>
-		      	<?php else:
-		        ?><button type="button" class="btn btn-default oeru-user-login-button" id="goregisterbutton">Register</button>
-		        <a class="btn btn-default oeru-user-login-button" id="goforgotbutton" href="<?php echo wp_lostpassword_url(get_permalink()); ?>">Forgot password</a>
-		        <button type="button" class="btn btn-primary oeru-user-login-button" id="loginbutton">Login</button>
-		        <button type="button" class="btn btn-primary oeru-user-login-button" style="display: none;" id="registerbutton">Register</button>
-		        <button type="button" class="btn btn-default oeru-user-login-button" style="display: none;" id="gologinbutton">Login</button>
-		      	<?php endif;
-		      ?></div>
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-		<?php endif;
-		?>
-    </header>
+		<?php if (get_theme_mod("log_on_page") == "on"): ?>
+        <div id="userModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="logintitle">
+            <div class="modal-dialog">
+    		    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php if (is_user_logged_in()): ?>
+                        <h4 class="modal-title" id="logintitle">Update / Logout</h4>
+                    </div>
+                    <div class="modal-body">
+                        <?php $current_user = wp_get_current_user(); ?>
+    		      	    <form>
+    		      		    <div class="form-group">
+    		      			    <label for="userpreferences">Change User Settings</label>
+                                <span id="helpPreferences" class="help-block">You can <a href="/wp-admin/profile.php">change your password or display name</a>.</span>
+        		      		</div>
+        			      	<div class="form-group">
+        					<?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
+        		      			<label for="usercountry">Set your Country of Origin</label>
+        					    <?php oeru_show_country_field( $country ); ?>
+        					    <span id="helpCountry" class="help-block">The country with which you most closely identify.</span>
+        		      		</div>
+        		      		<div class="form-group">
+        					<?php $blog = get_user_meta($current_user->ID, 'url_' . get_current_blog_id(), true); ?>
+        		      			<label for="courseblog">Set your Course blog feed URL</label>
+        		      			<input type="text" class="form-control update-field" id="courseblog" value="<?php echo $blog; ?>">
+        					    <span id="helpCourseBlog" class="help-block">This is a web address that may be specific for this course, or could be one you've used elsewhere but are also using for this course.</span>
+        		      		</div>
+        	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
+        		      	</form>
+    		      	<?php else: ?>
+                        <h4 class="modal-title" id="logintitle">Login / Register</h4>
+        		      	<form>
+        		      		<div class="form-group">
+        		      			<label for="username">Username</label>
+        		      			<input type="text" class="form-control" id="username" placeholder="user" aria-describedby="helpUsername">
+        		      			<span id="helpUsername" class="help-block">Use lower case letters and numbers, no spaces or special characters.</span>
+        		      		</div>
+        		      		<div class="form-group regodiv" style="display: none;">
+        		      			<label for="name">Display Name</label>
+        		      			<input type="text" class="form-control" id="name" placeholder="Sue Smith">
+        		      		</div>
+        		      		<div class="form-group">
+        		      			<label for="password">Password</label>
+        		      			<input type="password" class="form-control" id="password" aria-describedby="helpPassword">
+        		      			<span id="helpPassword" class="help-block">At least 6 characters.</span>
+        		      		</div>
+        		      		<div class="form-group regodiv" style="display: none;">
+        		      			<label for="confirmpassword">Confirm password</label>
+        		      			<input type="password" class="form-control" id="confirmpassword">
+        		      		</div>
+        		      		<div class="form-group regodiv" style="display: none;">
+        		      			<label for="useremail">Email</label>
+        		      			<input type="text" class="form-control" id="useremail" placeholder="me@example.com">
+        		      		</div>
+        		      		<div class="form-group regodiv" style="display: none;">
+                                <?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
+                                <label for="usercountry">Country of origin <?php $txt = ($country) ? "($country)": "(none)"; echo $txt; ?></label>
+                                <?php oeru_show_country_field($country); ?>
+        					<span id="helpUsername" class="help-block" style="display: block;">Select the country with which you most closely identify.</span>
+        		      		</div>
+        		      		<div class="form-group regodiv" style="display: none;">
+        		      			<label for="courseblog">Course blog feed URL</label>
+        		      			<input type="text" class="form-control" id="courseblog" placeholder="http://example.com/feed.rss">
+        		      		</div>
+        	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
+        	      		</form>
+    		      	<?php endif; ?>
+                    <p id="userstatus" style="color: red;">&nbsp;</p>
+                </div>
+                <div class="modal-footer">
+    		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    		      	<?php if (is_user_logged_in()): ?>
+                    <a href="<?php echo wp_logout_url(get_permalink());?>" class="btn btn-default oeru-user-login-button" id="logoutbutton">Logout</a>
+    		        <button type="button" class="btn btn-primary oeru-user-login-button" id="updatebutton">Update</button>
+    		      	<?php else: ?>
+                    <button type="button" class="btn btn-default oeru-user-login-button" id="goregisterbutton">Register</button>
+    		        <a class="btn btn-default oeru-user-login-button" id="goforgotbutton" href="<?php echo wp_lostpassword_url(get_permalink()); ?>">Forgot password</a>
+    		        <button type="button" class="btn btn-primary oeru-user-login-button" id="loginbutton">Login</button>
+    		        <button type="button" class="btn btn-primary oeru-user-login-button" style="display: none;" id="registerbutton">Register</button>
+    		        <button type="button" class="btn btn-default oeru-user-login-button" style="display: none;" id="gologinbutton">Login</button>
+    		      	<?php endif; ?>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <?php endif; ?>
+</header>
+</div><!-- /.page -->

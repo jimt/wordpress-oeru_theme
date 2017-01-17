@@ -2,18 +2,19 @@
 /*global oeru_user_object*/
 jQuery(document).ready(function() {
     var $ = jQuery;
-    
+
     function showLoginForm() {
         $('#loginbutton,#goregisterbutton,#goforgotbutton').show();
-        $('.regodiv,#registerbutton,#gologinbutton,.help-block').hide();
+        //$('.regodiv,#registerbutton,#gologinbutton,.help-block').hide();
+        $('.regodiv,#registerbutton,#gologinbutton').hide();
         $('#userstatus').html('');
     }
-    
+
     $('#userModal').on('show.bs.modal', function() {
         // make sure we initially display the login version of the form
         showLoginForm();
     });
-    
+
     function processForm(bdo) {
       var username = $.trim($('#username').val()),
           name = $.trim($('#name').val()),
@@ -83,8 +84,6 @@ jQuery(document).ready(function() {
               $('.oeru-user-login-button').prop('disabled', false);
           }
       });
-        
-        
     }
     $('#loginbutton').click(function(e) {
         processForm('login');
@@ -95,7 +94,7 @@ jQuery(document).ready(function() {
         processForm('register');
         e.preventDefault();
     });
-    
+
     $('#updatebutton').click(function(e) {
         processForm('update');
         e.preventDefault();
@@ -109,7 +108,8 @@ jQuery(document).ready(function() {
     $('#goregisterbutton').click(function() {
         // convert to a registration form
         $('#loginbutton,#goregisterbutton,#goforgotbutton').hide();
-        $('#registerbutton,#gologinbutton,.help-block').show();
+        //$('#registerbutton,#gologinbutton,.help-block').show();
+        $('#registerbutton,#gologinbutton').show();
         $('.regodiv').show();
     });
 
@@ -122,7 +122,7 @@ jQuery(document).ready(function() {
 // accept "Enter" as the default action, hitting the ".btn-primary"
 // based on http://stackoverflow.com/questions/868889/submit-jquery-ui-dialog-on-enter
 // update jqueryui defaults
-$.extend($.ui.dialog.prototype.options, { 
+$.extend($.ui.dialog.prototype.options, {
     create: function() {
         var $this = $(this);
 
@@ -134,5 +134,5 @@ $.extend($.ui.dialog.prototype.options, {
                 return false;
             }
         });
-    } 
+    }
 });
