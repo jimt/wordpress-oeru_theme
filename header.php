@@ -84,21 +84,21 @@
                     <div class="modal-body">
                         <?php $current_user = wp_get_current_user(); ?>
     		      	    <form>
-    		      		    <div class="form-group">
-    		      			    <label for="userpreferences">Change User Settings</label>
-                                <span id="helpPreferences" class="help-block">You can <a href="/wp-admin/profile.php">change your password or display name</a>.</span>
-        		      		</div>
-        			      	<div class="form-group">
-        					<?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
-        		      			<label for="usercountry">Set your Country of Origin</label>
-        					    <?php oeru_show_country_field( $country ); ?>
-        					    <span id="helpCountry" class="help-block">The country with which you most closely identify.</span>
-        		      		</div>
-        		      		<div class="form-group">
-                                <?php $blog = get_user_meta($current_user->ID, 'url_' . get_current_blog_id(), true); ?>
-        		      			<label for="courseblog">Set your Course blog feed URL</label>
-        		      			<input type="text" class="form-control update-field" id="courseblog" value="<?php echo $blog; ?>">
-        					    <span id="helpCourseBlog" class="help-block">This is a web address that may be specific for this course, or could be one you've used elsewhere but are also using for this course.</span>
+    		      		<div class="form-group">
+    		      			<label for="userpreferences">Change User Settings</label>
+					<span id="helpPreferences" class="help-block">You can <a href="/wp-admin/profile.php">change your password or display name/nickname</a>. Changes here will affect your details across any OERu courses in which you're participating.</span>
+        		      	</div>
+        			<div class="form-group">
+        				<?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
+        		      		<label for="usercountry">Set your Country of Origin</label>
+        				<?php oeru_show_country_field( $country ); ?>
+        				<span id="helpCountry" class="help-block">The country with which you most closely identify.</span>
+        		      	</div>
+        		      	<div class="form-group">
+                                	<?php $blog = get_user_meta($current_user->ID, 'url_' . get_current_blog_id(), true); ?>
+        		      		<label for="courseblog">Set your Course blog feed URL</label>
+        		      		<input type="text" class="form-control update-field" id="courseblog" value="<?php echo $blog; ?>">
+        				<span id="helpCourseBlog" class="help-block">This is a web address that may be specific for this course, or could be one you've used elsewhere but are also using for this course.</span>
         		      		</div>
         	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
         		      	</form>
@@ -113,6 +113,7 @@
         		      		<div class="form-group regodiv" style="display: none;">
         		      			<label for="name">Display Name</label>
         		      			<input type="text" class="form-control" id="name" placeholder="Sue Smith">
+        		      			<span id="helpName" class="help-block">Your publicly visible name/nickname.</span>
         		      		</div>
         		      		<div class="form-group">
         		      			<label for="password">Password</label>
