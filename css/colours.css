@@ -16,3 +16,5 @@
 .faqnav .nav>li>a:hover {
     background-color: transparent;
 }
+
+p.modal-info { color: #737373; }

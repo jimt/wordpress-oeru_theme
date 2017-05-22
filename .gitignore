@@ -7,4 +7,6 @@
 .DS_Store
 # ignore temp/state files
 .netrwhist
-
+# config files with secrets
+*.conf
+config/*.conf

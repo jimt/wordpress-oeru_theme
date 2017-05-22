@@ -117,22 +117,3 @@ jQuery(document).ready(function() {
         $('#userstatus').html('');
     });
 });
-
-
-// accept "Enter" as the default action, hitting the ".btn-primary"
-// based on http://stackoverflow.com/questions/868889/submit-jquery-ui-dialog-on-enter
-// update jqueryui defaults
-$.extend($.ui.dialog.prototype.options, {
-    create: function() {
-        var $this = $(this);
-
-        // focus first button and bind enter to it
-        $this.parent().find('.ui-dialog-buttonpane .btn-primary').focus();
-        $this.keypress(function(e) {
-            if( e.keyCode == $.ui.keyCode.ENTER ) {
-                $this.parent().find('.ui-dialog-buttonpane .btn-primary').click();
-                return false;
-            }
-        });
-    }
-});
