@@ -10,3 +10,4 @@
 # config files with secrets
 *.conf
 config/*.conf
+composer.lock
