@@ -35,6 +35,11 @@ html body{
 	padding: 0px;
 }
 
+.not-home #primary #content article div.container.mw-body .row .col-md-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .not-home header.entry-header > div:first-child{
 	margin: 0px;
 }
@@ -64,6 +69,15 @@ html body{
 .home article header .row{
 	padding-bottom: 0px;
 	margin-bottom: 0px;
+}
+
+/* added dave@oerfoundation.org 2017-06-15 to remove unused chrome from the main site homepage */
+.home.blog #masthead > .container {
+  display: none;
+}
+
+.home.blog #primary #content .page .entry-header {
+  display: none;
 }
 
 footer#colophon{
@@ -250,6 +264,10 @@ li {
 	font-weight: normal;
 }
 
+.panel-heading {
+  margin-top: 10px;
+}
+
 .panel-heading h2{
 
 }
@@ -353,6 +371,10 @@ footer li{
 
 #content .accordion  .ui-accordion-content{
 	padding: 10px;
+}
+
+#content #accordion.panel-group {
+  margin-bottom: 0px;
 }
 
 /* third level menu clickable panel */

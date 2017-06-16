@@ -1,10 +1,10 @@
 .navbar-form input[type=text]
 {
-    background: #6FA92E;
+  background: #6FA92E;
 }
 #SearchResults a h4, #SearchResults a
 {
-    color: #333 !important;
+  color: #333 !important;
 }
 .course-information hr { 
 	border-color: #FF675B; 
@@ -14,7 +14,7 @@
   color: #333;
 }
 .faqnav .nav>li>a:hover {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 p.modal-info { color: #737373; }
