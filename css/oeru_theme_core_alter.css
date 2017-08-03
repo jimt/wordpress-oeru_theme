@@ -56,7 +56,7 @@ html body{
 	border-bottom: 1px solid #dfdfdd;
 }
 
-#main p{
+#main p, #main-content p {
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
 	white-space: -pre-wrap; /* Opera 4-6 */
@@ -631,3 +631,7 @@ a.external {
 	word-wrap: break-word;
 }
 
+#bodyContent #mw-content-text .floatright {
+  margin-top: 0px !important;
+  margin-left: 12px !important;
+}
