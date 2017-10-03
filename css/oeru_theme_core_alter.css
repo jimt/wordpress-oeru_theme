@@ -635,3 +635,12 @@ a.external {
   margin-top: 0px !important;
   margin-left: 12px !important;
 }
+
+.fa {
+  padding-right: 6px;
+}
+
+/* for all Font Awesome text following icons */
+.fa + a {
+  padding-right: 18px;
+}
