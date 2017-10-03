@@ -644,3 +644,7 @@ a.external {
 .fa + a {
   padding-right: 18px;
 }
+
+.fa-link + a {
+  padding-right: 0px;
+}
