@@ -116,4 +116,13 @@ jQuery(document).ready(function() {
     $('.update-field').focus(function() {
         $('#userstatus').html('');
     });
+
+    $(document).keypress(function(e) {
+        if(e.which == 13) {
+            // this should be the default button
+            e.preventDefault();
+            $('.btn-primary').click();
+            //alert('enter pushed');
+        }
+    });
 });
