@@ -86,7 +86,7 @@
     		      	    <form>
     		      	  	<div class="form-group">
     		      		    	<label for="userpreferences">Change User Settings</label>
-					              <span id="helpPreferences" class="help-block">You can <a href="/wp-admin/profile.php">change your password or display name/nickname</a>. Changes here will affect your details across any OERu courses in which you're participating.</span>
+					              <span id="helpPreferences" class="help-block">You can <a href="wp-admin/profile.php">generate a new password or change your display name/nickname</a>. Changes here will affect your details across any OERu courses in which you're participating.</span>
         		      	</div>
         			      <div class="form-group">
           				      <?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
@@ -102,7 +102,7 @@
                         ?>
           		      		<label for="courseblog">Set your Course blog feed URL</label>
           		      		<input type="text" class="form-control update-field" id="courseblog" value="<?php echo $blog; ?>">
-          				      <span id="hel`pCourseBlog" class="help-block">This is a web address that may be specific for this course, or could be one you've used elsewhere but are also using for this course.</span>
+          				      <span id="hel`pCourseBlog" class="help-block">This is the web address for your blog. It may be specificly for this course, or a blog you've used elsewhere but are also using for this course. <a href="https://oer.nz/blog-url-help" title="Some help working out what to enter as your Blog URL">Here's</a> some help if youhave a blog, but aren't sure what to enter here.</span>
         		      	</div>
         	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
         		      	</form>
