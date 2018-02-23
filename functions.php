@@ -1,7 +1,22 @@
 <?php
 
+$blog_platforms = array(
+  'WP' => array( 'label' => 'WordPress.com',
+    'help' => 'Specify your WordPress sub-domain',
+    'example' => '[yourname] as in [yourname].wordpress.com' ),
+  'Blogger' => array( 'label' => 'Blogger.com',
+    'help' => 'Specify your Blogger sub-domain',
+    'example' => '[yourname] as in [yourname].blogger.com' ),
+  'Medium' => array( 'label' => 'Medium.com',
+    'help' => 'Specify your Medium "handle"',
+    'example' => '[yourname] as in medium.com/@[yourname]' ),
+  'Other' => array( 'label' => 'Something else...',
+    'help' => 'We need the full URL for your blog\'s RSS feed',
+    'example' => 'e.g. https://yoursite.net/blog/rss.xml or https://yoursite.org/blog.rss' )
+);
+
 // https://gist.github.com/vxnick/380904
-$country_picker = array (
+$country_picker = array(
   'AF' => 'Afghanistan',
   'AX' => 'Aland Islands',
   'AL' => 'Albania',
@@ -259,9 +274,7 @@ add_action( 'after_switch_theme', 'oeru_theme_defaults' );
 add_action( 'wp_install', 'oeru_theme_defaults' );
 
 function oeru_theme_menu_default() {
-
   if(!get_option("oeru_theme_menu_create")){
-
     require_once("inc/theme_guidance.php");
     $menu_id = oeru_theme_create_menu();
     if($menu_id == false){
@@ -273,9 +286,7 @@ function oeru_theme_menu_default() {
     $locations['primary'] = $menu_id;
     set_theme_mod('nav_menu_locations', $locations);
     add_option("oeru_theme_menu_create", "true");
-
   }
-
 }
 add_action( 'admin_head', 'oeru_theme_menu_default' );
 
@@ -294,36 +305,25 @@ function oeru_theme_widgets_init() {
 add_action( 'widgets_init', 'oeru_theme_widgets_init' );
 
 function oeru_theme_setup() {
-
   if(!get_option("oeru_course_colour_profile_setup")){
-
     require_once("inc/install_profile.php");
     add_option("oeru_course_colour_profile_setup", "true");
-
   }
-
   load_theme_textdomain( 'oeru_theme', get_template_directory() . '/languages' );
-
   add_theme_support( 'post-thumbnails' );
-
   $chargs = array(
     'width' => 980,
     'height' => 150,
     'uploads' => true,
   );
-
   add_theme_support( 'custom-header', $chargs );
-
   set_post_thumbnail_size( 672, 372, true );
-
   register_nav_menus( array(
     'primary'   => __( 'Top primary menu', 'oeru_theme' ),
   ) );
-
   add_theme_support( 'html5', array(
     'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
   ) );
-
 }
 add_action( 'after_setup_theme', 'oeru_theme_setup' );
 
@@ -340,7 +340,6 @@ function oeru_theme_add_category() {
 add_action( 'after_setup_theme', 'oeru_theme_add_category' );
 
 function oeru_theme_scripts_and_styles() {
-
   wp_enqueue_style( 'wordpress-oeru-theme-bootstrap', get_template_directory_uri() . '/css/bootstrap.css', array(), '1' );
   wp_enqueue_style( 'wordpress-oeru-theme-font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '1' );
   wp_enqueue_style( 'wordpress-oeru-theme-layout', get_template_directory_uri() . '/css/layout.css', array(), '1' );
@@ -379,7 +378,6 @@ add_action( 'wp_enqueue_scripts', 'oeru_theme_scripts_and_styles' );
 function oeru_admin_theme_scripts_and_styles() {
   wp_enqueue_style( 'wordpress-oeru-theme-admin', get_template_directory_uri() . '/css/oeru_theme_admin.css', array(), '1' );
 }
-
 add_action( 'admin_enqueue_scripts', 'oeru_admin_theme_scripts_and_styles' );
 
 // add XMLRPC options
@@ -461,7 +459,7 @@ function oeru_show_country_field($selection = "") {
 
     <select name="usercountry" class="form-control" id="usercountry">
         <option value=""></option>
-        <?php   foreach ($country_picker as $abbr => $country) {
+        <?php foreach($country_picker as $abbr => $country) {
             if ($user_country == $abbr) {
                 $selected = 'selected="true"';
             }
@@ -472,6 +470,47 @@ function oeru_show_country_field($selection = "") {
         } ?>
     </select>
 <?php
+}
+
+function oeru_show_blog_field($selection = "", $blog_info = "") {
+    global $blog_platforms;
+
+    $blog_platform = ( $selection != "" ) ? $selection : "None"; ?>
+
+    <label for="courseblog">Course blog platform</label>
+    <select name="courseblogplatform" class="form-control" id="courseblogplatform">
+    <?php
+        $help = array(); $input = array(); $label = array();
+        foreach($blog_platforms as $platform => $platform_info) {
+            if ($blog_platform == $platform) {
+                $selected = 'selected="true"';
+                $style = '';
+            }
+            else {
+                $selected = '';
+                $style = ' style="display: none;"';
+            }
+            echo '<option value="' . $platform . '" ' . $selected . '>' . $platform_info["label"] . '</option>';
+            $label[$platform] = '<label for="courseblog" class="form-label" id="coursebloglabel-'
+                .$platform.'"' .$style. ' >Instructions for ' .$platform_info['label']. '</label>';
+            $input[$platform] = '<input type="text" class="form-control" name="coursebloginfo" id="coursebloginfo-'
+                .$platform.'" placeholder="' .$platform_info['example'].
+                 '"' .$style. '" value="' .$blog_info. '"/>';
+            $help[$platform] = '<span id="coursebloghelp-' .$platform.
+                '" class="help-blog"' .$style. '>'
+                .$platform_info['help']. '</span>';
+        } ?>
+    </select>
+    <span id="helpBlog" class="help-blog">Choose from among these widely used
+        blogging platforms or select "Something else..." if you're using a
+        different option or hosting your own.
+    </span><br/>
+    <?php
+        foreach($label as $platform => $value) echo $value;
+        foreach($input as $platform => $value) echo $value;
+        foreach($help as $platform => $value) echo $value;
+        echo '<p class="blog-info" >' .$blog_info. '</p>';
+
 }
 
 /* AJAX login/update API
@@ -517,6 +556,8 @@ function oeru_login() {
       $display_name = sanitize_text_field($_POST['name']);
       $meta = array(
         "url_$blogid" => sanitize_text_field($_POST['courseblog']),
+        "blog_platform_$blogid" => sanitize_text_field($_POST['courseblogplatform']),
+        "blog_info_$blogid" => sanitize_text_field($_POST['courseblogplatform']),
         "usercountry" => $_POST['usercountry']
       );
       if (strlen($password) == 0 || strlen($cpw) == 0 || strlen($username) == 0 || strlen($email) == 0) {
@@ -636,6 +677,12 @@ function oeru_login() {
       }
       if ($_POST['courseblog'] != "") {
         update_user_meta($user_id, "url_$blogid", sanitize_text_field($_POST['courseblog']));
+      }
+      if ($_POST['courseblogplatform'] != "") {
+        update_user_meta($user_id, "blog_platform_$blogid", sanitize_text_field($_POST['courseblogplatform']));
+      }
+      if ($_POST['courseblog'] != "") {
+        update_user_meta($user_id, "blog_info_$blogid", sanitize_text_field($_POST['coursebloginfo']));
       }
       oeru_login_response(array(
         'updated' => true,

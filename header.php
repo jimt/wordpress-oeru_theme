@@ -85,24 +85,28 @@
                         <?php $current_user = wp_get_current_user(); ?>
     		      	    <form>
     		      	  	<div class="form-group">
-    		      		    	<label for="userpreferences">Change User Settings</label>
-					              <span id="helpPreferences" class="help-block">You can <a href="wp-admin/profile.php">generate a new password or change your display name/nickname</a>. Changes here will affect your details across any OERu courses in which you're participating.</span>
+		      		    	<label for="userpreferences">Change User Settings</label>
+  			                <span id="helpPreferences" class="help-block">You can <a href="wp-admin/profile.php">generate a new password or change your display name/nickname</a>. Changes here will affect your details across any OERu courses in which you're participating.</span>
         		      	</div>
-        			      <div class="form-group">
-          				      <?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
+                        <?php
+                            // get a blog URL if one exists.
+                            $blog = '';
+                            $blog = get_user_meta($current_user->ID, 'url_' . get_current_blog_id(), true);
+
+                            $country = get_user_meta($current_user->ID, 'usercountry', true);
+                            $blog_platform = get_user_meta($current_user->ID, 'blog_platform_' . get_current_blog_id(), true);
+                            $blog_info = get_user_meta($current_user->ID, 'blog_info_' . get_current_blog_id(), true);
+                            if ($blog) {
+                              $blog_info = $blog;
+                            }
+                        ?>
+        			    <div class="form-group">
           		      		<label for="usercountry">Set your Country of Origin</label>
-          				      <?php oeru_show_country_field( $country ); ?>
+          				    <?php oeru_show_country_field( $country ); ?>
           			      	<span id="helpCountry" class="help-block">The country with which you most closely identify.</span>
         		      	</div>
-        		      	<div class="form-group">
-                        <?php
-                          // get a blog URL if one exists.
-                          $blog = '';
-                          $blog = get_user_meta($current_user->ID, 'url_' . get_current_blog_id(), true);
-                        ?>
-          		      		<label for="courseblog">Set your Course blog feed URL</label>
-          		      		<input type="text" class="form-control update-field" id="courseblog" value="<?php echo $blog; ?>">
-          				      <span id="hel`pCourseBlog" class="help-block">This is the web address for your blog. It may be specificly for this course, or a blog you've used elsewhere but are also using for this course. <a href="https://oer.nz/blog-url-help" title="Some help working out what to enter as your Blog URL">Here's</a> some help if youhave a blog, but aren't sure what to enter here.</span>
+        		      	<div class="form-group" id="userbloginfo">
+                            <?php oeru_show_blog_field($blog_platform, $blog_info); ?>
         		      	</div>
         	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
         		      	</form>
@@ -133,17 +137,17 @@
             		      			<label for="useremail">Email</label>
             		      			<input type="text" class="form-control" id="useremail" placeholder="me@example.com">
           		      		</div>
-        		      		  <div class="form-group regodiv" style="display: none;">
-                            <?php $country = get_user_meta($current_user->ID, 'usercountry', true); ?>
-                            <label for="usercountry">Country of origin <?php $txt = ($country) ? "($country)": "(none)"; echo $txt; ?></label>
-                            <?php oeru_show_country_field($country); ?>
-                            <span id="helpUserCountry" class="help-block" style="display: block;">Select the country with which you most closely identify.</span>
+      		      		    <div class="form-group regodiv" style="display: none;">
+                                <label for="usercountry">Country of origin</label>
+                                <?php oeru_show_country_field(); ?>
+                                <span id="helpUserCountry" class="help-block" style="display: block;">Select the country with which you most closely identify.</span>
         		      	    </div>
-        		      		  <div class="form-group regodiv" style="display: none;">
-            		      			<label for="courseblog">Course blog feed URL</label>
-            		      			<input type="text" class="form-control" id="courseblog" placeholder="http://example.com/feed.rss">
+        		      		<div class="form-group regodiv" id="userbloginfo" style="display: none;">
+                            <!--<div class="form-group regodiv" id="userbloginfo">-->
+                                <label for="courseblog">Course blog feed URL</label>
+                                <?php oeru_show_blog_field(); ?>
           		      		</div>
-         	      		<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
+         	      	     	<?php wp_nonce_field('oeru_user_nonce', 'security'); ?>
         	      		</form>
     		      	<?php endif; ?>
                     <p id="userstatus" style="color: red;">&nbsp;</p>

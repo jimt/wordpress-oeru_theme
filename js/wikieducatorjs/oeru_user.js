@@ -117,6 +117,7 @@ jQuery(document).ready(function() {
         $('#userstatus').html('');
     });
 
+    /* "click" the default button if the user hits ENTR */
     $(document).keypress(function(e) {
         if(e.which == 13) {
             // this should be the default button
@@ -124,5 +125,17 @@ jQuery(document).ready(function() {
             $('.btn-primary').click();
             //alert('enter pushed');
         }
+    });
+
+    /* provide suitable documentation and validation when the
+       user has to enter their blog details */
+    $('#courseblogplatform').change(function(e) {
+        console.log('Value "' + this.value + '" selected.');
+        $("[id^='coursebloglabel']").hide();
+        $('#coursebloglabel-' + this.value).show();
+        $("[id^='coursebloginfo']").hide();
+        $('#coursebloginfo-' + this.value).show();
+        $("[id^='coursebloghelp']").hide();
+        $('#coursebloghelp-' + this.value).show();
     });
 });
