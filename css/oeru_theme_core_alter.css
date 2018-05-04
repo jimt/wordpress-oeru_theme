@@ -161,7 +161,7 @@ article h1{
 .home article .panel{
 	margin-bottom: 0px;
 	border-bottom: none;
-}	
+}
 
 .home article div.container{
 	padding-left: -15px;
@@ -183,7 +183,7 @@ article h1{
 
 article .container .container{
 	width:100%;
-}	
+}
 
 .home .pager{
 	display: none;
@@ -290,8 +290,8 @@ li {
 
 	body #main #main-content header.container{
 		padding-right: 30px;
-	}	
-	
+	}
+
 	body #pagenav span.counter{
 		display: none;
 	}
@@ -317,7 +317,7 @@ li {
 		min-width: 160px;
 		left: 75px;
 	}
-	
+
 	.menu-depth-1{
 		left: 75px;
 	}
@@ -329,7 +329,7 @@ li {
 	.menu-depth-3{
 		left: 75px;
 	}
-	
+
 	body #main #main-content header.container{
 		padding-right: 30px;
 	}
@@ -405,7 +405,7 @@ footer li{
 }
 
 details summary::-webkit-details-marker { display:none; }
-	
+
 .entry-content blockquote{
 	margin-left: 20px;
 }
@@ -434,7 +434,7 @@ details summary::-webkit-details-marker { display:none; }
 
 .oeru_true_false .accordian-heading .panel-title a{
 	color:#000;
-} 
+}
 
 .oeru_true_false .correct,
 .oeru_mcq .correct,
@@ -444,7 +444,7 @@ details summary::-webkit-details-marker { display:none; }
 .oeru_mtq .incorrect{
 	padding-right: 10px;
 }
-	
+
 .oeru_mcq label,
 .oeru_mtq label{
 	padding-left:10px;
@@ -545,7 +545,7 @@ dd{
 }
 
 dt{
-	margin-top: 10px; 
+	margin-top: 10px;
 }
 
 dd p{
@@ -556,7 +556,7 @@ dd p{
 #bodyContent dd{
 	margin-left: 10px;
 }
-	
+
 #bodyContent td b{
 	background-color: inherit;
 }
@@ -617,12 +617,12 @@ li.gallerybox{
 
 .oeru_footer div.container{
 	padding: 0px;
-}	
+}
 
 #main #primary #content .entry-and-comments .oeru_footer div.advanced_footer{
 	margin: 10px 0px;
 	padding: 0px;
-}	
+}
 
 #menu-oeru-import-menu>li:first-child {
 	display: none;
@@ -649,4 +649,15 @@ a.external {
 
 .fa-link + a {
   padding-right: 0px;
+}
+
+/* fix bug issue #45 https://github.com/oeru/oeru_course/issues/45 */
+footer#colophon {
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.main-content .oeru_footer .container {
+    margin-top: 10px;
+    padding-bottom: 20px;
 }
