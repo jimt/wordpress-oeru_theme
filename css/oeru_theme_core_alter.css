@@ -661,3 +661,8 @@ footer#colophon {
     margin-top: 10px;
     padding-bottom: 20px;
 }
+
+/* fix our Cookie Notification layout */
+#cookie-notice #cn-notice-text { 
+    margin-bottom: 1em;
+}

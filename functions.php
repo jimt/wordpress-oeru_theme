@@ -1,20 +1,5 @@
 <?php
 
-$blog_platforms = array(
-  'WP' => array( 'label' => 'WordPress.com',
-    'help' => 'Specify your WordPress sub-domain',
-    'example' => '[yourname] as in [yourname].wordpress.com' ),
-  'Blogger' => array( 'label' => 'Blogger.com',
-    'help' => 'Specify your Blogger sub-domain',
-    'example' => '[yourname] as in [yourname].blogger.com' ),
-  'Medium' => array( 'label' => 'Medium.com',
-    'help' => 'Specify your Medium "handle"',
-    'example' => '[yourname] as in medium.com/@[yourname]' ),
-  'Other' => array( 'label' => 'Something else...',
-    'help' => 'We need the full URL for your blog\'s RSS feed',
-    'example' => 'e.g. https://yoursite.net/blog/rss.xml or https://yoursite.org/blog.rss' )
-);
-
 // https://gist.github.com/vxnick/380904
 $country_picker = array(
   'AF' => 'Afghanistan',
@@ -472,46 +457,6 @@ function oeru_show_country_field($selection = "") {
 <?php
 }
 
-function oeru_show_blog_field($selection = "", $blog_info = "") {
-    global $blog_platforms;
-
-    $blog_platform = ( $selection != "" ) ? $selection : "None"; ?>
-
-    <label for="courseblog">Course blog platform</label>
-    <select name="courseblogplatform" class="form-control" id="courseblogplatform">
-    <?php
-        $help = array(); $input = array(); $label = array();
-        foreach($blog_platforms as $platform => $platform_info) {
-            if ($blog_platform == $platform) {
-                $selected = 'selected="true"';
-                $style = '';
-            }
-            else {
-                $selected = '';
-                $style = ' style="display: none;"';
-            }
-            echo '<option value="' . $platform . '" ' . $selected . '>' . $platform_info["label"] . '</option>';
-            $label[$platform] = '<label for="courseblog" class="form-label" id="coursebloglabel-'
-                .$platform.'"' .$style. ' >Instructions for ' .$platform_info['label']. '</label>';
-            $input[$platform] = '<input type="text" class="form-control" name="coursebloginfo" id="coursebloginfo-'
-                .$platform.'" placeholder="' .$platform_info['example'].
-                 '"' .$style. '" value="' .$blog_info. '"/>';
-            $help[$platform] = '<span id="coursebloghelp-' .$platform.
-                '" class="help-blog"' .$style. '>'
-                .$platform_info['help']. '</span>';
-        } ?>
-    </select>
-    <span id="helpBlog" class="help-blog">Choose from among these widely used
-        blogging platforms or select "Something else..." if you're using a
-        different option or hosting your own.
-    </span><br/>
-    <?php
-        foreach($label as $platform => $value) echo $value;
-        foreach($input as $platform => $value) echo $value;
-        foreach($help as $platform => $value) echo $value;
-        echo '<p class="blog-info" >' .$blog_info. '</p>';
-
-}
 
 /* AJAX login/update API
  * called with 'bdo' set to 'login', 'register', or 'update'
@@ -555,9 +500,6 @@ function oeru_login() {
       $email = trim($_POST['useremail']);
       $display_name = sanitize_text_field($_POST['name']);
       $meta = array(
-        "url_$blogid" => sanitize_text_field($_POST['courseblog']),
-        "blog_platform_$blogid" => sanitize_text_field($_POST['courseblogplatform']),
-        "blog_info_$blogid" => sanitize_text_field($_POST['courseblogplatform']),
         "usercountry" => $_POST['usercountry']
       );
       if (strlen($password) == 0 || strlen($cpw) == 0 || strlen($username) == 0 || strlen($email) == 0) {
@@ -581,12 +523,6 @@ function oeru_login() {
       $pw = trim($_POST['password']);
       $r = wpmu_validate_user_signup($username, $email);
       $username = $r['user_name'];  // sanitized username
-            /*if ($meta["url_$blogid"] == "") {
-                oeru_login_response(array(
-                    'registered' => false,
-                    'result' => 'You must provide a blog feed URL.'
-                ));
-            }*/
       if ($meta['usercountry'] == "") {
         oeru_login_response(array(
           'registered' => false,
@@ -674,15 +610,6 @@ function oeru_login() {
       }
       else {
         update_user_meta($user_id, "usercountry", $_POST['usercountry']);
-      }
-      if ($_POST['courseblog'] != "") {
-        update_user_meta($user_id, "url_$blogid", sanitize_text_field($_POST['courseblog']));
-      }
-      if ($_POST['courseblogplatform'] != "") {
-        update_user_meta($user_id, "blog_platform_$blogid", sanitize_text_field($_POST['courseblogplatform']));
-      }
-      if ($_POST['courseblog'] != "") {
-        update_user_meta($user_id, "blog_info_$blogid", sanitize_text_field($_POST['coursebloginfo']));
       }
       oeru_login_response(array(
         'updated' => true,
