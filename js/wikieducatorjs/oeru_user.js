@@ -5,6 +5,8 @@ jQuery(document).ready(function() {
 
     function showLoginForm() {
         $('#loginbutton,#goregisterbutton,#goforgotbutton').show();
+        $('#goregisterbutton').removeClass('btn-primary');
+        $('#goregisterbutton').addClass('btn-default');
         //$('.regodiv,#registerbutton,#gologinbutton,.help-block').hide();
         $('.regodiv,#registerbutton,#gologinbutton').hide();
         $('#userstatus').html('');
@@ -110,6 +112,8 @@ jQuery(document).ready(function() {
         $('#loginbutton,#goregisterbutton,#goforgotbutton').hide();
         //$('#registerbutton,#gologinbutton,.help-block').show();
         $('#registerbutton,#gologinbutton').show();
+        $('#registerbutton').removeClass('btn-default');
+        $('#registerbutton').addClass('btn-primary');
         $('.regodiv').show();
     });
 
@@ -118,12 +122,16 @@ jQuery(document).ready(function() {
     });
 
     /* "click" the default button if the user hits ENTR */
-    $(document).keypress(function(e) {
-        if(e.which == 13) {
+    $('input').keypress(function(e) {
+        c = e.which ? e.which : e.keyCode;
+        console.log('oeru input: ' + c);
+        if (c == 13) {
             // this should be the default button
-            e.preventDefault();
+            //e.preventDefault();
             $('.btn-primary').click();
-            //alert('enter pushed');
+            e.preventDefault();
+            return false;
+            console.log('enter pushed');
         }
     });
 

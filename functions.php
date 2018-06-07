@@ -439,6 +439,7 @@ add_action('register_form', 'oeru_show_country_field', 10, 1);
 function oeru_show_country_field($selection = "") {
   global $country_picker;
 
+  //echo "country = $selection";
   //$user_country = ( isset( $_POST['usercountry'] ) ) ? $_POST['usercountry']: "";
   $user_country = ( $selection != "" ) ? $selection : "Nothing"; ?>
 

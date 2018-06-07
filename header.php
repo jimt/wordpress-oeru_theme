@@ -140,7 +140,7 @@
                     <a href="<?php echo wp_logout_url(get_permalink());?>" class="btn btn-default oeru-user-login-button" id="logoutbutton">Logout</a>
         		        <button type="button" class="btn btn-primary oeru-user-login-button" id="updatebutton">Update</button>
     		      	<?php else: ?>
-                    <button type="button" class="btn btn-default oeru-user-login-button" id="goregisterbutton">Register</button>
+                        <button type="button" class="btn btn-default oeru-user-login-button" id="goregisterbutton">Register</button>
         		        <a class="btn btn-default oeru-user-login-button" id="goforgotbutton" href="<?php echo wp_lostpassword_url(get_permalink()); ?>">Forgot password</a>
         		        <button type="button" class="btn btn-primary oeru-user-login-button" id="loginbutton">Login</button>
         		        <button type="button" class="btn btn-primary oeru-user-login-button" style="display: none;" id="registerbutton">Register</button>
