@@ -1,4 +1,4 @@
-// support for Bootstrap modal login/registration,
+e/ support for Bootstrap modal login/registration,
 /*global oeru_user_object*/
 jQuery(document).ready(function() {
     var $ = jQuery;
@@ -130,8 +130,8 @@ jQuery(document).ready(function() {
             //e.preventDefault();
             $('.btn-primary').click();
             e.preventDefault();
-            return false;
             console.log('enter pushed');
+            return false;
         }
     });
 
