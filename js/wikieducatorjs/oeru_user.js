@@ -1,4 +1,3 @@
-e/ support for Bootstrap modal login/registration,
 /*global oeru_user_object*/
 jQuery(document).ready(function() {
     var $ = jQuery;
