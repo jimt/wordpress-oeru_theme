@@ -66,14 +66,24 @@
                           <li><a data-toggle="modal" data-target="#siteMapmodal"><span class="glyphicon glyphicon-tree-conifer"></span></a></li>
                 <?php endif; ?>
     					  <?php if (get_theme_mod("log_on_page")=="on"): ?>
-                          <li><a data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span></a></li>
+                          <?php //<li><a data-toggle="modal" data-target="#userModal"><span class="glyphicon glyphicon-user"></span></a></li> ?>
+                          <?php /*<li id='ore-login'><a href="/start-learning?redirect_to=<?php echo $_SERVER['REQUEST_SCHEME'].
+                          '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>"
+                           title="Register or Log into OERu!"><span id='ore-icon' class="glyphicon glyphicon-user"></span> Log in/Register</a></li> */ ?>
+                           <?php /*<li id='ore-login-status'><a id='ore-login-modal' data-toggle="modal" data-target="#userModal" href="/start-learning?redirect_to=<?php echo $_SERVER['REQUEST_SCHEME'].
+                           '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>"
+                            title="Register or Log into OERu!"><span id='ore-icon' class="glyphicon glyphicon-user"></span>&nbsp;<span id='ore-label'>Log in/Register</span></a></li>*/ ?>
+                            <li id='ore-container'><div id='ore-login-status'><a id='ore-login-modal' class="ore-trigger" title="Register or Log into OERu!"><span
+                                id='ore-icon' class="glyphicon glyphicon-user"></span>&nbsp;<span
+                                id='ore-label'>Log in/Register</span></a></div></li>
                 <?php endif; ?>
     					       </ul>
+                               <p><?php //print_r($_SERVER); ?></p>
     				    </div>
     			  </nav>
     		</div>
 		<?php if (get_theme_mod("log_on_page") == "on"): ?>
-        <div id="userModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="logintitle">
+        <div id="userModalOld" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="logintitle">
             <div class="modal-dialog">
     		        <div class="modal-content">
                     <div class="modal-header">
